@@ -1,0 +1,10 @@
+.agent/
+.claude/
+.shared/
+.vscode/
+node_modules/
+.env
+.env.*
+*.log
+dist/
+build/

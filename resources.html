@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources | CannaShield</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <section class="section-container fade-in">
+    <h1>Resources</h1>
+    <p>Access guides, articles, and tools to help secure your cannabis business.</p>
+    <h1>Security Resources & Guides (Coming Soon)</h1>
+    <p class="subtitle">Practical tools, checklists, and insights for cannabis operators.</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>Download: Cybersecurity Starter Kit</h3>
+        <p>Our free PDF includes a compliance checklist, IT basics, and how to avoid common threats.</p>
+      </div>
+      <div class="card">
+        <h3>FAQ: Cannabis Security Regulations</h3>
+        <p>We break down security laws in CT, MA, and NY for dispensaries and growers.</p>
+      </div>
+      <div class="card">
+        <h3>Blog: Trends in Cannabis Cyber Threats</h3>
+        <p>Monthly updates on attack trends, case studies, and security best practices.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    // Load Navbar
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("navbar-placeholder").innerHTML = data);
+
+      // Load Footer
+      fetch("footer.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+    });
+  </script>
+</body>
+</html>

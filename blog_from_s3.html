@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="CannaShield Blog - Insights on Cannabis Cybersecurity, Compliance, and Risk Management." />
+    <title>Blog | CannaShield</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <section class="section-container fade-in" style="margin-top: 2rem;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h1>Security Insights</h1>
+            <p>Latest updates on Cannabis Security, Compliance, and Tech.</p>
+        </div>
+
+        <div class="card-container">
+            <!-- Blog Post - Gig Worker Ransomware -->
+            <article class="card">
+                <div
+                    style="height: 200px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; margin: -1.5rem -1.5rem 1.5rem -1.5rem; border-bottom: 1px solid var(--border-color); overflow: hidden;">
+                    <img src="gig_worker_ransomware.png" alt="Gig Worker Ransomware"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <span
+                        style="color: var(--primary); font-family: var(--font-mono); font-size: 0.8rem; border: 1px solid var(--primary); padding: 0.2rem 0.6rem; border-radius: 4px;">PHYSICAL
+                        SECURITY</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem; margin-left: 0.5rem;">Jan 25, 2026</span>
+                </div>
+                <h3>The "Gig Worker" Ransomware Threat</h3>
+                <p>When the Hacker Doesn’t Email—They Walk Through the Front Door.</p>
+                <a href="blog/gig-worker-ransomware.html" class="cta-button"
+                    style="font-size: 0.9rem; padding: 0.5rem 1rem;">Read More</a>
+            </article>
+
+            <!-- Blog Post - Ghost in Your Phone -->
+            <article class="card">
+                <div
+                    style="height: 200px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; margin: -1.5rem -1.5rem 1.5rem -1.5rem; border-bottom: 1px solid var(--border-color); overflow: hidden;">
+                    <img src="ghost_in_phone_infostealers.png" alt="Ghost in Phone Infostealer"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <span
+                        style="color: var(--primary); font-family: var(--font-mono); font-size: 0.8rem; border: 1px solid var(--primary); padding: 0.2rem 0.6rem; border-radius: 4px;">THREAT
+                        INTEL</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem; margin-left: 0.5rem;">Jan 24, 2026</span>
+                </div>
+                <h3>The Ghost in Your Phone: How "Infostealers" Just Swiped 149 Million Logins</h3>
+                <p>Your Big-Tech Passwords Just Leaked—And It Wasn’t Even a "Hack."</p>
+                <a href="blog/ghost-in-your-phone-infostealers.html" class="cta-button"
+                    style="font-size: 0.9rem; padding: 0.5rem 1rem;">Read More</a>
+            </article>
+
+            <!-- Blog Post - Daily Cyber Intel -->
+            <article class="card">
+                <div
+                    style="height: 200px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; margin: -1.5rem -1.5rem 1.5rem -1.5rem; border-bottom: 1px solid var(--border-color); overflow: hidden;">
+                    <img src="daily_cyber_intel_icon.png" alt="Cyber Intel Icon"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <span
+                        style="color: var(--primary); font-family: var(--font-mono); font-size: 0.8rem; border: 1px solid var(--primary); padding: 0.2rem 0.6rem; border-radius: 4px;">THREAT
+                        INTEL</span>
+                    <span style="color: var(--text-muted); font-size: 0.8rem; margin-left: 0.5rem;">Jan 21, 2026</span>
+                </div>
+                <h3>Daily Cyber Intel: Securing the Cannabis Supply Chain</h3>
+                <p>Cybersecurity news roundup: Zoom & GitLab fixes, Node.js bugs, Tesla 0-days, and supply chain
+                    threats.</p>
+                <a href="blog/daily-cyber-intel-jan-21-2026.html" class="cta-button"
+                    style="font-size: 0.9rem; padding: 0.5rem 1rem;">Read More</a>
+            </article>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("navbar.html")
+                .then(response => response.text())
+                .then(data => document.getElementById("navbar-placeholder").innerHTML = data);
+
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+        });
+    </script>
+
+</body>
+
+</html>

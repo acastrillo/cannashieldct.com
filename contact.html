@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact CannaShield | Get in Touch</title>
+  <meta name="description" content="Contact CannaShield for cybersecurity and compliance solutions tailored for cannabis businesses.">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<section id="hero-contact" class="fade-in">
+  <h1>Contact Us</h1>
+  <p>We’re here to help you secure your cannabis business.</p>
+</section>
+
+<section id="contact-info" class="section-container fade-in">
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h2>📧 Email Us</h2>
+      <p>Have questions? Reach out to us at:</p>
+      <a href="mailto:alejo@cannashieldct.com">alejo@cannashieldct.com</a>
+    </div>
+    <div class="contact-card">
+      <h2>📞 Call Us</h2>
+      <p>Prefer to talk? Give us a call:</p>
+      <p><a href="tel:+12034431473">(203) 443-1473</a></p>
+    </div>
+    <div class="contact-card">
+      <h2>📍 Visit Us</h2>
+      <p>Stop by our office:</p>
+      <p>Coming Soon</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact-form" class="section-container fade-in">
+  <h2>Send Us a Message</h2>
+  <div class="form-container">
+    <form action="https://formspree.io/f/xanoejpw" method="POST">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="cta-button">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("navbar-placeholder").innerHTML = data);
+
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solutions | CannaShield</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <section class="section-container fade-in">
+    <h1>Solutions for Cannabis Businesses</h1>
+    <p class="subtitle">Tailored cybersecurity and compliance services for every stage of your operation.</p>
+
+    <!-- Solutions Tabs Bar -->
+    <div class="solutions-tabs-bar">
+      <nav class="solutions-tabs" role="tablist" aria-label="Solutions Navigation">
+        <button
+          class="solutions-tab active"
+          id="tab-dispensaries"
+          role="tab"
+          aria-controls="panel-dispensaries"
+          aria-selected="true"
+          tabindex="0"
+        >Dispensaries</button>
+        <button
+          class="solutions-tab"
+          id="tab-grow"
+          role="tab"
+          aria-controls="panel-grow"
+          aria-selected="false"
+          tabindex="-1"
+        >Grow Operations</button>
+        <button
+          class="solutions-tab"
+          id="tab-compliance"
+          role="tab"
+          aria-controls="panel-compliance"
+          aria-selected="false"
+          tabindex="-1"
+        >Compliance Support</button>
+        <button
+          class="solutions-tab"
+          id="tab-automation"
+          role="tab"
+          aria-controls="panel-automation"
+          aria-selected="false"
+          tabindex="-1"
+        >Automation &amp; AI</button>
+      </nav>
+    </div>
+
+    <!-- Dynamic Panels -->
+    <div
+      id="panel-dispensaries"
+      class="solutions-panel active"
+      role="tabpanel"
+      aria-labelledby="tab-dispensaries"
+      tabindex="0"
+    >
+      <div class="solutions-panel-graphic left small">
+        <img src="dispensaries icon.png" alt="Dispensaries Icon" style="width:100%;height:100%;object-fit:contain;">
+      </div>
+      <div class="solutions-panel-content">
+        <h2>Dispensary Security & Compliance</h2>
+        <p>Protect customer data, reduce downtime, and stay audit-ready.</p>
+        <p>Running a dispensary means handling sensitive information—from payment details to patient records. CannaShield helps you secure your point-of-sale systems, prevent phishing attacks, and meet HIPAA and state compliance standards with ease. We bring peace of mind so you can focus on growing your business, not worrying about breaches.</p>
+        <a href="contact.html" class="cta-button">Get Started</a>
+      </div>
+    </div>
+    <div
+      id="panel-grow"
+      class="solutions-panel"
+      role="tabpanel"
+      aria-labelledby="tab-grow"
+      tabindex="0"
+      style="display:none"
+    >
+      <div class="solutions-panel-graphic left small">
+        <img src="grow-operations-placeholder.png" alt="Grow Operations Icon" style="width:100%;height:100%;object-fit:contain;">
+      </div>
+      <div class="solutions-panel-content">
+        <h2>Grow Operations Protection</h2>
+        <p>Secure your grow tech and remote systems before attackers do.</p>
+        <p>Modern grow operations rely on networked systems—HVAC, lighting, remote access, and IoT devices—that are vulnerable if left unprotected. CannaShield helps you monitor access, lock down controls, and comply with METRC and facility-specific regulations. Whether you're using mobile devices or cloud dashboards, we keep your operation secure and compliant.</p>
+        <a href="contact.html" class="cta-button">Get Started</a>
+      </div>
+    </div>
+    <div
+      id="panel-compliance"
+      class="solutions-panel"
+      role="tabpanel"
+      aria-labelledby="tab-compliance"
+      tabindex="0"
+      style="display:none"
+    >
+      <div class="solutions-panel-graphic left small">
+        <img src="compliance-support-placeholder.png" alt="Compliance Support Icon" style="width:100%;height:100%;object-fit:contain;">
+      </div>
+      <div class="solutions-panel-content">
+        <h2>Compliance Support (GRC) & Frameworks</h2>
+        <p>Simplify cybersecurity compliance and make audits stress-free.</p>
+        <p>Regulations are complex and constantly evolving—especially in cannabis. CannaShield helps you align with frameworks like NIST, CIS Controls v8, HIPAA, and your local cannabis laws. We break down requirements, build documentation, and prepare your team to pass audits with confidence. No legalese, no overwhelm—just smart, strategic support.</p>
+        <a href="contact.html" class="cta-button">Get Started</a>
+      </div>
+    </div>
+
+    <div
+      id="panel-automation"
+      class="solutions-panel"
+      role="tabpanel"
+      aria-labelledby="tab-automation"
+      tabindex="0"
+      style="display:none"
+    >
+      <div class="solutions-panel-content">
+        <h2>Automation &amp; AI Workflows</h2>
+        <p>Let machines handle the busywork so your team can focus on growth.</p>
+        <p>We design and deploy intelligent automations powered by AI, n8n, and Tines. Whether it's turning a single link into a published blog post, auto-generating social media content with human approval, or building security playbooks that triage alerts without manual intervention&mdash;we build workflows that run 24/7 so you don't have to. Every automation is custom-built around your tools, your data, and your operations.</p>
+        <a href="automations.html" class="cta-button">Explore Automations</a>
+      </div>
+    </div>
+
+    <!-- End of tab panels -->
+
+  </section>
+
+  <!-- Trust/Testimonial Card Section -->
+  <div class="solutions-trust-card" aria-label="Trust and Testimonials">
+    <div class="trust-badge">Trusted by Cannabis Operators</div>
+    <div class="trust-quote">
+      “CannaShield made compliance and security simple for our dispensary.”<br>—Kevin W, BitGuardians
+    </div>
+    <a href="about.html" class="cta-button" style="margin-top:1.5rem;">Learn More</a>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    // Tab logic
+    const tabs = document.querySelectorAll('.solutions-tab');
+    const panels = document.querySelectorAll('.solutions-panel');
+
+    function activateTab(idx) {
+      tabs.forEach((tab, i) => {
+        const selected = i === idx;
+        tab.classList.toggle('active', selected);
+        tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+        tab.setAttribute('tabindex', selected ? '0' : '-1');
+        panels[i].classList.toggle('active', selected);
+        panels[i].style.display = selected ? 'flex' : 'none';
+      });
+    }
+
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => activateTab(idx));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') activateTab((idx + 1) % tabs.length);
+        if (e.key === 'ArrowLeft') activateTab((idx - 1 + tabs.length) % tabs.length);
+      });
+    });
+
+    // Load Navbar and Footer
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("navbar-placeholder").innerHTML = data);
+
+      fetch("footer.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+    });
+  </script>
+</body>
+</html>

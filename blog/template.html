@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- UPDATE THIS: Description of the article -->
+    <meta name="description" content="Article Description Here" />
+    <title>Article Title | CannaShield Blog</title>
+
+    <!-- Adjust path to ../favicon.png because this is in a subdirectory usually, but if staying in root, use favicon.png -->
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="stylesheet" href="../styles.css" />
+
+    <style>
+        /* Article Specific Styles */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .article-meta {
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .article-content {
+            font-size: 1.125rem;
+            color: #ccc;
+            /* Slightly lighter for long reading */
+            line-height: 1.8;
+        }
+
+        .article-content h2 {
+            margin-top: 2rem;
+            color: var(--primary);
+        }
+
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar placeholder - adjust path if in subdirectory -->
+    <div id="navbar-placeholder"></div>
+
+    <article class="article-container fade-in">
+        <a href="../blog.html" class="back-link">← Back to Blog</a>
+
+        <header class="article-header">
+            <span
+                style="border: 1px solid var(--primary); color: var(--primary); padding: 0.2rem 0.6rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem;">CATEGORY</span>
+            <h1 style="margin-top: 1rem;">Article Headline Goes Here</h1>
+            <div class="article-meta">Published on Jan 01, 2026 • 5 min read</div>
+        </header>
+
+        <div class="article-content">
+            <p class="lead" style="font-size: 1.3rem; color: #fff; margin-bottom: 2rem;">
+                This is the lead paragraph. It summarizes the article and hooks the reader.
+            </p>
+
+            <!-- Content Starts Here -->
+            <p>
+                Main content goes here. You can use <strong>bold text</strong> for emphasis.
+            </p>
+
+            <h2>Subheading Example</h2>
+            <p>
+                More detailed content under a subheading.
+            </p>
+
+            <ul>
+                <li>Key point number one</li>
+                <li>Key point number two</li>
+                <li>Key point number three</li>
+            </ul>
+
+            <h3>Smaller Subheading</h3>
+            <p>
+                Conclusion or final thoughts.
+            </p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;">
+
+        <div style="text-align: center;">
+            <h3>Secure Your Business Today</h3>
+            <p>Don't wait for a breach to happen.</p>
+            <a href="../free-cannashieldct-cybersec-assessment.html" class="cta-button">Get Free Assessment</a>
+        </div>
+    </article>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Simple script to load navbar/footer from parent directory
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    // Fix relative links in navbar for subdirectory
+                    let content = data.replace(/href="/g, 'href="../');
+                    // Fix the logo path specifically if needed, or rely on root relative paths if server configured
+                    document.getElementById("navbar-placeholder").innerHTML = content;
+                });
+
+            fetch("../footer.html")
+                .then(response => response.text())
+                .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+        });
+    </script>
+
+</body>
+
+</html>

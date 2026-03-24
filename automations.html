@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automations | CannaShield</title>
+  <meta name="description" content="AI-powered automations for cannabis businesses. Streamline content, security, and compliance with n8n, Tines, and intelligent workflows.">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<!-- Hero -->
+<section id="hero-automations" class="fade-in" style="text-align:center;padding:6rem 2rem 3rem;">
+  <h1 style="font-size:3rem;margin-bottom:1rem;">Intelligent Automations<br>for Cannabis Businesses</h1>
+  <p class="subtitle" style="max-width:680px;margin:0 auto 2rem;">AI-driven workflows that save you time, reduce risk, and keep your operation running on autopilot.</p>
+  <a href="#automation-consultation" class="cta-button main-cta">Request a Consultation</a>
+</section>
+
+<!-- What We Automate -->
+<section class="section-container fade-in">
+  <h2 style="text-align:center;margin-bottom:0.5rem;">What We Automate</h2>
+  <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem;">From content pipelines to security playbooks &mdash; we build workflows that run so you don't have to.</p>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Content &amp; Marketing</h3>
+      <p>Turn a single link into a fully published blog post and social media content. AI handles the writing, formatting, and publishing &mdash; across your blog, Instagram, and beyond.</p>
+    </div>
+    <div class="card">
+      <h3>Security Operations</h3>
+      <p>Automated threat intelligence alerts, incident response playbooks, and log monitoring workflows. Detect threats faster and respond before damage is done &mdash; all without manual intervention.</p>
+    </div>
+    <div class="card">
+      <h3>Compliance &amp; Reporting</h3>
+      <p>Automated audit preparation, policy compliance checks, and regulatory reminders. Stay ahead of HIPAA, state cannabis regulations, and framework requirements without the spreadsheet headaches.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow Showcase -->
+<section class="section-container fade-in">
+  <h2 style="text-align:center;margin-bottom:0.5rem;">Automation in Action</h2>
+  <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem;">Here's what real-world automation looks like &mdash; two workflows we've built that turn manual busywork into hands-free pipelines.</p>
+
+  <div class="workflow-showcase">
+    <div class="workflow-card">
+      <div class="workflow-header">
+        <span class="workflow-badge">Workflow 1</span>
+        <h3>Discord Link &rarr; Published Blog Post</h3>
+      </div>
+      <p>Drop a link to a cybersecurity news story into a Discord channel. That's it. The automation takes over from there.</p>
+      <div class="workflow-steps-list">
+        <div class="workflow-step">
+          <span class="workflow-step-num">1</span>
+          <div>
+            <strong>Discord Trigger</strong>
+            <p>A bot monitors a dedicated Discord channel. When a link is posted, the workflow fires.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <span class="workflow-step-num">2</span>
+          <div>
+            <strong>AI Content Generation</strong>
+            <p>The link is sent to an LLM with a custom system prompt &mdash; CannaShield's strategic voice. It reads the source article and writes a full, branded blog post with a hook, actionable insights, and a CTA.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <span class="workflow-step-num">3</span>
+          <div>
+            <strong>AI Image Generation</strong>
+            <p>A second AI prompt generates a custom cinematic hero image that matches the post's theme &mdash; no stock photos, no manual design work.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <span class="workflow-step-num">4</span>
+          <div>
+            <strong>Publish to Blog</strong>
+            <p>The finished post &mdash; HTML, images, metadata &mdash; is automatically formatted and published to the live site.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workflow-card">
+      <div class="workflow-header">
+        <span class="workflow-badge">Workflow 2</span>
+        <h3>Blog Post &rarr; Instagram (Human in the Loop)</h3>
+      </div>
+      <p>Every new blog post automatically becomes Instagram content &mdash; but nothing goes live without a human saying "yes."</p>
+      <div class="workflow-steps-list">
+        <div class="workflow-step">
+          <span class="workflow-step-num">1</span>
+          <div>
+            <strong>Blog Event Trigger</strong>
+            <p>When a new blog post is published, the workflow picks it up, downloads the article, and extracts the title, excerpt, and content.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <span class="workflow-step-num">2</span>
+          <div>
+            <strong>Duplicate Check</strong>
+            <p>The workflow checks recent Instagram posts to make sure this article hasn't already been shared. If it has, it stops &mdash; no duplicates, no spam.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <span class="workflow-step-num">3</span>
+          <div>
+            <strong>AI Creative Package</strong>
+            <p>An LLM generates a complete Instagram package: caption, hashtags, image prompt, and overlay text &mdash; all tailored to the blog content.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <span class="workflow-step-num">4</span>
+          <div>
+            <strong>Human Approval</strong>
+            <p>The full preview is sent via email. The workflow pauses and waits. Approve it and it publishes. Reject it and it stops. You stay in control.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <span class="workflow-step-num">5</span>
+          <div>
+            <strong>Image Generation &amp; Publish</strong>
+            <p>On approval, the AI generates a custom image, uploads it to cloud storage, and publishes the post to Instagram through the Graph API &mdash; with polling to confirm it went live.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools & Technology -->
+<section class="section-container fade-in">
+  <h2 style="text-align:center;margin-bottom:0.5rem;">The Tech Behind the Automation</h2>
+  <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem;">We combine cutting-edge AI with proven automation platforms to build workflows that actually work.</p>
+  <div class="card-grid">
+    <div class="card">
+      <h3>AI &amp; LLMs</h3>
+      <p>Large language models power our content generation, threat analysis, and smart decision-making. AI doesn't replace your team &mdash; it amplifies them by handling the repetitive, time-consuming work.</p>
+    </div>
+    <div class="card">
+      <h3>n8n</h3>
+      <p>The open-source workflow automation engine behind our blog creation and Instagram posting. n8n connects your tools, APIs, and data sources into seamless, self-running pipelines.</p>
+    </div>
+    <div class="card">
+      <h3>Tines</h3>
+      <p>Enterprise-grade security automation and orchestration (SOAR). Tines powers our security playbooks &mdash; from alert triage to incident response &mdash; with no-code workflows built for SOC teams.</p>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section-container fade-in">
+  <h2 style="text-align:center;margin-bottom:2.5rem;">How It Works</h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <h3>Consult</h3>
+      <p>We learn your workflows, pain points, and goals. Every automation starts with understanding what actually needs fixing.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <h3>Design</h3>
+      <p>We architect custom automations using AI, n8n, Tines, and whatever integrations your stack requires.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <h3>Deploy &amp; Monitor</h3>
+      <p>We launch, test, and continuously improve your automations. You get dashboards, alerts, and peace of mind.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Consultation Form -->
+<section id="automation-consultation" class="section-container fade-in">
+  <h2 style="text-align:center;margin-bottom:0.5rem;">Request an Automation Consultation</h2>
+  <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem;">Tell us what you want to automate. We'll reach out to explore what's possible &mdash; no obligation.</p>
+  <div class="form-container">
+    <form id="automation-form">
+      <div class="form-group">
+        <label for="consult-name">Your Name</label>
+        <input type="text" id="consult-name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="consult-email">Your Email</label>
+        <input type="email" id="consult-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="consult-business">Business Name</label>
+        <input type="text" id="consult-business" name="business" required>
+      </div>
+      <div class="form-group">
+        <label for="consult-category">What Are You Looking to Automate?</label>
+        <select id="consult-category" name="category" required>
+          <option value="" disabled selected>Select a category</option>
+          <option value="Content & Marketing">Content &amp; Marketing</option>
+          <option value="Security Operations">Security Operations</option>
+          <option value="Compliance & Reporting">Compliance &amp; Reporting</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="consult-details">Tell Us More</label>
+        <textarea id="consult-details" name="details" rows="5" placeholder="Describe what you'd like to automate, any tools you currently use, or challenges you're facing."></textarea>
+      </div>
+      <button type="submit" class="cta-button" id="consult-submit">Send Request</button>
+      <div id="form-status" style="margin-top:1rem;text-align:center;display:none;"></div>
+    </form>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  // Load navbar and footer
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("navbar-placeholder").innerHTML = data);
+
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  });
+
+  // Form submission via n8n webhook
+  document.getElementById("automation-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const btn = document.getElementById("consult-submit");
+    const status = document.getElementById("form-status");
+    const form = e.target;
+
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    status.style.display = "none";
+
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      business: form.business.value,
+      category: form.category.value,
+      details: form.details.value,
+      submitted_at: new Date().toISOString()
+    };
+
+    try {
+      // Replace with your actual n8n webhook URL
+      const webhookUrl = "YOUR_N8N_WEBHOOK_URL";
+
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        status.textContent = "Thanks! We'll be in touch soon.";
+        status.style.color = "var(--primary)";
+        status.style.display = "block";
+        form.reset();
+      } else {
+        throw new Error("Submission failed");
+      }
+    } catch (err) {
+      status.textContent = "Something went wrong. Please email us at alejo@cannashieldct.com.";
+      status.style.color = "#ff4444";
+      status.style.display = "block";
+    }
+
+    btn.disabled = false;
+    btn.textContent = "Send Request";
+  });
+</script>
+
+</body>
+</html>

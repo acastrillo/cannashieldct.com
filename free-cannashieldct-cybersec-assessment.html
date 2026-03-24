@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Free cybersecurity self-assessment for cannabis businesses provided by CannaShield CT.">
+  <title>CannaShield Cybersecurity Self-Assessment</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Inline styles for quick adjustments */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar-placeholder"></div> <!-- Navbar dynamically loaded -->
+
+  <section id="assessment-page">
+    <div class="assessment-container">
+      <!-- Left Column -->
+      <div class="assessment-left fade-in">
+        <!-- <img src="icon-security.png" alt="Security Icon" class="assessment-icon" /> -->
+        <h2>🌿 Evaluate Your Security Now</h2>
+        <p>
+          Take the first step toward securing your cannabis business. Our free cybersecurity self-assessment helps you identify gaps and provides actionable insights.
+        </p>
+        <ul>
+          <li>✅ Identify potential vulnerabilities in minutes</li>
+          <li>✅ Access starter security policies</li>
+          <li>✅ Empower your team with phishing awareness</li>
+        </ul>
+      </div>
+
+      <!-- Right Column -->
+      <div class="assessment-right">
+        <div class="cognito-form-container">
+          <script src="https://www.cognitoforms.com/f/seamless.js" data-key="fK14WBvQ2EetdzrxS9NGvw" data-form="2"></script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Dynamically load the navbar
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbarPlaceholder = document.getElementById("navbar-placeholder");
+      const footerPlaceholder = document.getElementById("footer-placeholder");
+
+      if (navbarPlaceholder) {
+        fetch("navbar.html")
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+          })
+          .then(data => {
+            navbarPlaceholder.innerHTML = data;
+          })
+          .catch(error => console.error("Error loading navbar:", error));
+      }
+
+      if (footerPlaceholder) {
+        fetch("footer.html")
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+          })
+          .then(data => {
+            footerPlaceholder.innerHTML = data;
+          })
+          .catch(error => console.error("Error loading footer:", error));
+      }
+    });
+  </script>
+  <div id="footer-placeholder"></div> <!-- Footer dynamically loaded -->
+</body>
+</html>

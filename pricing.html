@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | CannaShield</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <section class="section-container fade-in">
+    <h1>Simple, Transparent Pricing for Cannabis Cybersecurity</h1>
+    <p class="subtitle">
+      Choose the plan that fits your business needs. No hidden fees, just clear value.
+    </p>
+
+    <div class="pricing-tiers">
+      <div class="pricing-tier">
+        <h2>Free Cyber Risk Assessment</h2>
+        <ul>
+          <li>Identify vulnerabilities in your current setup.</li>
+          <li>Receive a high-level report with actionable insights.</li>
+          <li>No commitment required.</li>
+        </ul>
+      </div>
+      <div class="pricing-tier">
+        <h2>Security Training Package</h2>
+        <ul>
+          <li>Phishing simulations and employee awareness training.</li>
+          <li>Access to training materials and reporting dashboard.</li>
+          <li>Monthly updates and support.</li>
+        </ul>
+      </div>
+      <div class="pricing-tier">
+        <h2>Full GRC Support</h2>
+        <ul>
+          <li>Comprehensive compliance mapping (METRC, HIPAA, SOC 2).</li>
+          <li>Continuous risk management and audit preparation.</li>
+          <li>Dedicated support from our cybersecurity experts.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:2rem;">
+      Each plan is designed to provide value at different stages of your business's cybersecurity journey.
+    </p>
+  </section>
+
+  <section id="why-cannashield" class="section-container fade-in">
+    <h2>Why Choose CannaShield?</h2>
+    <p>We're more than a service provider—we're your cybersecurity partner.</p>
+
+    <div class="value-cards">
+      <div class="value-card">
+        <h3>Industry Expertise</h3>
+        <p>We understand the cannabis sector, from dispensaries to grow ops, and tailor our services to match your compliance and risk needs.</p>
+      </div>
+      <div class="value-card">
+        <h3>Custom-Fit Solutions</h3>
+        <p>We don’t believe in copy-paste. Every CannaShield engagement is shaped by your operational reality and compliance goals.</p>
+      </div>
+      <div class="value-card">
+        <h3>Peace of Mind</h3>
+        <p>From risk assessments to full audit prep, our job is to make your security posture strong, simple, and stress-free.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("navbar-placeholder").innerHTML = data);
+
+      fetch("footer.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+    });
+  </script>
+</body>
+</html>

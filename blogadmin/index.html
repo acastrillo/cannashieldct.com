@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Admin | CannaShield</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <style>
+    :root {
+      --bg: #09131a;
+      --panel: #10212d;
+      --panel-2: #162a37;
+      --text: #e5edf2;
+      --muted: #90a3b1;
+      --accent: #32d583;
+      --danger: #ff5b57;
+      --border: #254255;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top, #102431 0%, #09131a 56%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .shell {
+      width: min(1080px, 94vw);
+      margin: 2.5rem auto;
+      background: rgba(16, 33, 45, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    }
+    .header {
+      padding: 1.2rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .header .meta {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+    .content {
+      padding: 1.3rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .panel {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+    .hidden {
+      display: none !important;
+    }
+    label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-bottom: 0.35rem;
+    }
+    input {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #0a1821;
+      color: var(--text);
+      border-radius: 8px;
+      padding: 0.7rem 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #072114;
+    }
+    .btn-danger {
+      background: rgba(255, 91, 87, 0.14);
+      color: #ffc6c3;
+      border: 1px solid rgba(255, 91, 87, 0.45);
+    }
+    .btn-muted {
+      background: #294253;
+      color: #d9e5ec;
+      border: 1px solid #3b576b;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .status {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0;
+    }
+    .alert {
+      margin: 0;
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+    }
+    .alert.error {
+      color: #ffb4b1;
+      background: rgba(255, 91, 87, 0.14);
+      border-color: rgba(255, 91, 87, 0.45);
+    }
+    .alert.ok {
+      color: #bdf9d7;
+      background: rgba(50, 213, 131, 0.12);
+      border-color: rgba(50, 213, 131, 0.38);
+    }
+    .alert.warn {
+      color: #f9e3b7;
+      background: rgba(242, 186, 60, 0.12);
+      border-color: rgba(242, 186, 60, 0.42);
+    }
+    .list {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .post {
+      display: grid;
+      grid-template-columns: 96px 1fr auto;
+      gap: 0.9rem;
+      align-items: center;
+      background: #0d1f2b;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem;
+    }
+    .post img {
+      width: 96px;
+      height: 72px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid #2a4b60;
+      background: #0b171f;
+    }
+    .post h3 {
+      margin: 0 0 0.2rem 0;
+      font-size: 0.98rem;
+    }
+    .post p {
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .post a {
+      color: #8fe5ff;
+      text-decoration: none;
+      font-size: 0.83rem;
+    }
+    .post a:hover { text-decoration: underline; }
+    .empty {
+      padding: 0.7rem;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 760px) {
+      .post {
+        grid-template-columns: 1fr;
+      }
+      .post img {
+        width: 100%;
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <h1>CannaShield Blog Admin</h1>
+      <div class="meta">Route: <code>/blogadmin</code></div>
+    </header>
+
+    <section class="content">
+      <section id="loginPanel" class="panel">
+        <h2 style="margin-top:0;">Sign In</h2>
+        <p class="status">Use your admin email and password.</p>
+        <form id="loginForm">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="username" required>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+          <button class="btn-primary" type="submit">Sign In</button>
+        </form>
+      </section>
+
+      <section id="adminPanel" class="panel hidden">
+        <div class="toolbar">
+          <div>
+            <h2 style="margin:0 0 0.2rem 0;">Blog Posts</h2>
+            <p id="summary" class="status">Loading...</p>
+          </div>
+          <div style="display:flex; gap:0.6rem;">
+            <button id="refreshBtn" class="btn-muted" type="button">Refresh</button>
+            <button id="logoutBtn" class="btn-muted" type="button">Sign Out</button>
+          </div>
+        </div>
+        <p id="message" class="alert hidden"></p>
+        <div id="postList" class="list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const loginPanel = document.getElementById('loginPanel');
+    const adminPanel = document.getElementById('adminPanel');
+    const loginForm = document.getElementById('loginForm');
+    const postList = document.getElementById('postList');
+    const summary = document.getElementById('summary');
+    const message = document.getElementById('message');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    function showMessage(text, kind) {
+      message.textContent = text;
+      message.className = 'alert ' + (kind || 'ok');
+      message.classList.remove('hidden');
+    }
+
+    function clearMessage() {
+      message.classList.add('hidden');
+      message.textContent = '';
+    }
+
+    function setSignedIn(signedIn) {
+      loginPanel.classList.toggle('hidden', signedIn);
+      adminPanel.classList.toggle('hidden', !signedIn);
+    }
+
+    function renderPosts(payload) {
+      const posts = Array.isArray(payload && payload.posts) ? payload.posts : [];
+      const sourceLabel = payload && payload.sourceLabel ? payload.sourceLabel : 'blog.html';
+      const counts = payload && payload.counts ? payload.counts : {};
+      const localCount = Number.isFinite(counts.local) ? counts.local : null;
+      const remoteCount = Number.isFinite(counts.remote) ? counts.remote : null;
+
+      if (!Array.isArray(posts) || posts.length === 0) {
+        postList.innerHTML = '<div class="empty">No posts found in the selected source.</div>';
+        summary.textContent = '0 posts';
+        return;
+      }
+
+      let meta = posts.length + ' post' + (posts.length === 1 ? '' : 's') + ' • source: ' + sourceLabel;
+      if (localCount !== null || remoteCount !== null) {
+        const localText = localCount === null ? '-' : String(localCount);
+        const remoteText = remoteCount === null ? '-' : String(remoteCount);
+        meta += ` • local:${localText} live:${remoteText}`;
+      }
+      summary.textContent = meta;
+      postList.innerHTML = posts.map((post) => {
+        const safeTitle = escapeHtml(post.title || post.slug);
+        const safeExcerpt = escapeHtml(post.excerpt || '');
+        const safeDate = escapeHtml(post.published || '');
+        const safeHref = escapeHtml('/blog/' + post.slug + '.html');
+        const safeImage = escapeHtml('/' + (post.image || 'favicon.png').replace(/^\/+/, ''));
+        const safeSlug = escapeHtml(post.slug);
+        return `
+          <article class="post" data-slug="${safeSlug}">
+            <img src="${safeImage}" alt="${safeTitle}">
+            <div>
+              <h3>${safeTitle}</h3>
+              <p>${safeExcerpt}</p>
+              <div style="margin-top:0.35rem;">
+                <span style="color:#90a3b1;font-size:0.82rem;">${safeDate}</span>
+                <span style="margin:0 0.4rem;color:#355062;">•</span>
+                <a href="${safeHref}" target="_blank" rel="noopener noreferrer">${safeHref}</a>
+              </div>
+            </div>
+            <button class="btn-danger" type="button" data-delete="${safeSlug}">Delete</button>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    async function api(path, options) {
+      const response = await fetch(path, {
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        ...(options || {}),
+      });
+
+      let payload = {};
+      try { payload = await response.json(); } catch (_) {}
+      if (!response.ok) {
+        const err = new Error(payload.error || ('Request failed: ' + response.status));
+        err.status = response.status;
+        throw err;
+      }
+      return payload;
+    }
+
+    async function loadPosts() {
+      summary.textContent = 'Loading...';
+      try {
+        const data = await api('/api/blogadmin/posts');
+        setSignedIn(true);
+        renderPosts(data);
+        if (data.warning) {
+          showMessage(data.warning, 'warn');
+        } else if (data.remoteError) {
+          showMessage('Live source warning: ' + data.remoteError, 'warn');
+        } else {
+          clearMessage();
+        }
+      } catch (error) {
+        if (error.status === 401) {
+          setSignedIn(false);
+          summary.textContent = '';
+          return;
+        }
+        showMessage(error.message, 'error');
+      }
+    }
+
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearMessage();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      try {
+        await api('/api/blogadmin/login', {
+          method: 'POST',
+          body: JSON.stringify({ email, password }),
+        });
+        document.getElementById('password').value = '';
+        await loadPosts();
+      } catch (error) {
+        showMessage(error.message, 'error');
+      }
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+      clearMessage();
+      try {
+        await api('/api/blogadmin/logout', { method: 'POST', body: '{}' });
+      } catch (_) {}
+      setSignedIn(false);
+    });
+
+    refreshBtn.addEventListener('click', loadPosts);
+
+    postList.addEventListener('click', async (event) => {
+      const button = event.target.closest('button[data-delete]');
+      if (!button) return;
+      const slug = button.getAttribute('data-delete');
+      if (!slug) return;
+      const ok = window.confirm('Delete this blog post and its card?\n\n' + slug);
+      if (!ok) return;
+      button.disabled = true;
+      clearMessage();
+      try {
+        const data = await api('/api/blogadmin/posts', {
+          method: 'DELETE',
+          body: JSON.stringify({ slug }),
+        });
+        showMessage(data.message || ('Deleted: ' + slug), 'ok');
+        await loadPosts();
+      } catch (error) {
+        showMessage(error.message, 'error');
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    loadPosts();
+  </script>
+</body>
+</html>
