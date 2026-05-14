@@ -4,14 +4,45 @@
   "version": "1.0.0",
   "description": "CannaShield static site and blog admin utilities.",
   "scripts": {
-    "check": "node --check blogadmin-server.js && node --check blogadmin-api-lambda.js",
-    "blogadmin:local": "node blogadmin-server.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && node --check blogadmin-server.js && node --check blogadmin-api-lambda.js && node --check scorecard-api-lambda.js && node --check scorecard-local-server.js",
+    "blogadmin:local": "node blogadmin-server.js",
+    "scorecard:scan": "node scorecard-api-lambda.js",
+    "scorecard:local-api": "node scorecard-local-server.js"
   },
   "engines": {
     "node": ">=18"
   },
   "dependencies": {
     "@aws-sdk/client-cloudfront": "^3.1015.0",
-    "@aws-sdk/client-s3": "^3.1015.0"
+    "@aws-sdk/client-s3": "^3.1015.0",
+    "@next/mdx": "^16.2.6",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.16.0",
+    "next": "^16.2.6",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^25.7.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.6",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^6.0.3"
   }
 }

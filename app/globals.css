@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 5% 4%;
+    --foreground: 34 21% 93%;
+    --card: 240 8% 7%;
+    --card-foreground: 34 21% 93%;
+    --primary: 38 61% 56%;
+    --primary-foreground: 240 5% 4%;
+    --secondary: 240 9% 13%;
+    --secondary-foreground: 34 21% 93%;
+    --muted: 240 8% 10%;
+    --muted-foreground: 255 4% 55%;
+    --accent: 38 61% 56%;
+    --accent-foreground: 240 5% 4%;
+    --destructive: 6 61% 46%;
+    --destructive-foreground: 34 21% 93%;
+    --border: 240 9% 13%;
+    --input: 240 9% 13%;
+    --ring: 38 61% 56%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    background: #0a0a0b;
+    color: #f0ede8;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-brand-background font-sans text-brand-primary antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(212, 162, 76, 0.28);
+    color: #f0ede8;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply container py-20 sm:py-24 lg:py-28;
+  }
+
+  .section-label {
+    @apply mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-brand-accent;
+  }
+
+  .section-heading {
+    @apply max-w-3xl font-serif text-4xl font-semibold leading-headline text-brand-primary sm:text-5xl lg:text-6xl;
+  }
+
+  .support-copy {
+    @apply text-base leading-relaxed text-brand-secondary sm:text-lg;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-background;
+  }
+}
+
+.marquee-track {
+  animation: marquee 34s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+    transform: none;
+  }
+}

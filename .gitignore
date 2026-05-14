@@ -3,8 +3,11 @@
 .shared/
 .vscode/
 node_modules/
+.next/
 .env
 .env.*
 *.log
+*.tsbuildinfo
+.DS_Store
 dist/
 build/
