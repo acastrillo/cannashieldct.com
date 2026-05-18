@@ -26,16 +26,45 @@ type TurnstileApi = {
 
 type ScorecardCheck = {
   label: string
-  status: 'pass' | 'warning' | 'fail' | 'unknown'
+  status: string
   message: string
+}
+
+type ScorecardChecks = {
+  dmarc?: {
+    policy?: string
+    status?: string
+    warnings?: string[]
+    hasReporting?: boolean
+  }
+  spf?: {
+    status?: string
+    allMechanism?: string | null
+    lookupCount?: number
+    warnings?: string[]
+  }
+  dkim?: {
+    status?: string
+    detectedSelectors?: string[]
+    warnings?: string[]
+  }
+  mx?: {
+    status?: string
+    records?: string[]
+  }
+}
+
+type SpoofScenario = {
+  outcome?: string
+  detail?: string
 }
 
 type ScorecardAnalysis = {
   domain: string
   score: number
   riskTier: string
-  spoofScenario?: string
-  checks?: ScorecardCheck[]
+  spoofScenario?: SpoofScenario
+  checks?: ScorecardChecks
   recommendations?: string[]
 }
 
@@ -43,6 +72,53 @@ declare global {
   interface Window {
     turnstile?: TurnstileApi
   }
+}
+
+function firstWarning(warnings?: string[]) {
+  return warnings?.[0] || ''
+}
+
+function formatCheckCards(checks?: ScorecardChecks): ScorecardCheck[] {
+  if (!checks) return []
+
+  return [
+    {
+      label: 'DMARC',
+      status: checks.dmarc?.status || 'unknown',
+      message:
+        firstWarning(checks.dmarc?.warnings) ||
+        `Policy: ${checks.dmarc?.policy || 'unknown'}. Reporting ${
+          checks.dmarc?.hasReporting ? 'is configured' : 'is not configured'
+        }.`,
+    },
+    {
+      label: 'SPF',
+      status: checks.spf?.status || 'unknown',
+      message:
+        firstWarning(checks.spf?.warnings) ||
+        `Mechanism: ${checks.spf?.allMechanism || 'not detected'}. DNS lookups: ${
+          checks.spf?.lookupCount ?? 'unknown'
+        }.`,
+    },
+    {
+      label: 'DKIM',
+      status: checks.dkim?.status || 'unknown',
+      message:
+        firstWarning(checks.dkim?.warnings) ||
+        `Detected selectors: ${
+          checks.dkim?.detectedSelectors?.length
+            ? checks.dkim.detectedSelectors.join(', ')
+            : 'none on common selectors'
+        }.`,
+    },
+    {
+      label: 'MX',
+      status: checks.mx?.status || 'unknown',
+      message: checks.mx?.records?.length
+        ? `Mail exchangers: ${checks.mx.records.join(', ')}.`
+        : 'No mail exchanger records were detected.',
+    },
+  ]
 }
 
 export function CyberCheckForm() {
@@ -131,6 +207,8 @@ export function CyberCheckForm() {
   }
 
   if (submitted) {
+    const checkCards = formatCheckCards(analysis?.checks)
+
     return (
       <div className="rounded-lg border border-brand-border bg-brand-surface p-6">
         <div className="grid gap-5">
@@ -150,9 +228,9 @@ export function CyberCheckForm() {
             ) : null}
           </div>
 
-          {analysis?.checks?.length ? (
+          {checkCards.length ? (
             <div className="grid gap-3">
-              {analysis.checks.map((check) => (
+              {checkCards.map((check) => (
                 <div
                   key={check.label}
                   className="rounded-md border border-brand-border bg-brand-background p-4"
@@ -174,9 +252,16 @@ export function CyberCheckForm() {
           ) : null}
 
           {analysis?.spoofScenario ? (
-            <p className="text-sm leading-relaxed text-brand-secondary">
-              {analysis.spoofScenario}
-            </p>
+            <div className="rounded-md border border-brand-border bg-brand-background p-4">
+              <p className="text-sm font-semibold text-brand-primary">
+                {analysis.spoofScenario.outcome || 'Spoofing scenario'}
+              </p>
+              {analysis.spoofScenario.detail ? (
+                <p className="mt-2 text-sm leading-relaxed text-brand-secondary">
+                  {analysis.spoofScenario.detail}
+                </p>
+              ) : null}
+            </div>
           ) : null}
 
           {analysis?.recommendations?.length ? (
