@@ -3,48 +3,304 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resources | CannaShield</title>
+  <meta name="description" content="Free cannabis cybersecurity checklists, policy templates, and risk self-assessment resources for Connecticut dispensaries and operators." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://cannashieldct.com/resources.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CannaShield" />
+  <meta property="og:title" content="Cannabis Cybersecurity Resources | CannaShield" />
+  <meta property="og:description" content="Free checklists, policy templates, and risk assessment resources for cannabis cybersecurity and compliance." />
+  <meta property="og:url" content="https://cannashieldct.com/resources.html" />
+  <meta property="og:image" content="https://cannashieldct.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cannabis Cybersecurity Resources | CannaShield" />
+  <meta name="twitter:description" content="Free cybersecurity checklists, policy templates, and risk assessment resources for cannabis operators." />
+  <meta name="twitter:image" content="https://cannashieldct.com/og-image.png" />
+  <title>Cannabis Cybersecurity Resources | CannaShield</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": "https://cannashieldct.com/resources.html#webpage",
+      "url": "https://cannashieldct.com/resources.html",
+      "name": "Cannabis Cybersecurity Resources",
+      "description": "Free checklists, policy templates, and risk assessment resources for cannabis cybersecurity and compliance.",
+      "publisher": { "@id": "https://cannashieldct.com/#organization" },
+      "hasPart": [
+        { "@type": "CreativeWork", "name": "CT Cannabis Cybersecurity Compliance Checklist" },
+        { "@type": "CreativeWork", "name": "Cybersecurity Policy Template Pack" },
+        { "@type": "CreativeWork", "name": "Cybersecurity Risk Self-Assessment" }
+      ]
+    }
+  </script>
 </head>
 <body>
   <div id="navbar-placeholder"></div>
 
   <section class="section-container fade-in">
-    <h1>Resources</h1>
-    <p>Access guides, articles, and tools to help secure your cannabis business.</p>
-    <h1>Security Resources & Guides (Coming Soon)</h1>
-    <p class="subtitle">Practical tools, checklists, and insights for cannabis operators.</p>
+    <h1>Cybersecurity Resources for Cannabis Businesses</h1>
+    <p class="subtitle">Free tools, checklists, and guides to help secure your Connecticut cannabis operation.</p>
 
     <div class="card-container">
+      <!-- Resource 1: CT Compliance Checklist -->
       <div class="card">
-        <h3>Download: Cybersecurity Starter Kit</h3>
-        <p>Our free PDF includes a compliance checklist, IT basics, and how to avoid common threats.</p>
+        <div class="card-icon">📋</div>
+        <h3>CT Cannabis Cybersecurity Compliance Checklist</h3>
+        <p>15-minute checklist to identify gaps in your security program. Covers METRC reporting, data protection, access controls, and CT-specific requirements.</p>
+        <div class="resource-form" id="checklist-section">
+          <h4>Download Free Checklist</h4>
+          <form id="checklist-form" onsubmit="return submitForm(event, 'checklist')">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <select name="business_type" required>
+              <option value="">Business Type</option>
+              <option value="dispensary">Dispensary</option>
+              <option value="grow">Grow Operation</option>
+              <option value="manufacturer">Manufacturer</option>
+              <option value="distributor">Distributor</option>
+            </select>
+            <select name="locations" required>
+              <option value="">Number of Locations</option>
+              <option value="1">1 location</option>
+              <option value="2-3">2-3 locations</option>
+              <option value="4-10">4-10 locations</option>
+              <option value="10+">10+ locations</option>
+            </select>
+            <button type="submit" class="cta-button">Get Free Checklist</button>
+          </form>
+          <div id="checklist-success" class="success-message" style="display:none;">
+            ✅ Checklist sent to your email! Check your inbox.
+          </div>
+        </div>
       </div>
+
+      <!-- Resource 2: Policy Templates -->
       <div class="card">
-        <h3>FAQ: Cannabis Security Regulations</h3>
-        <p>We break down security laws in CT, MA, and NY for dispensaries and growers.</p>
+        <div class="card-icon">📄</div>
+        <h3>Cybersecurity Policy Template Pack</h3>
+        <p>5 essential security policies for cannabis businesses: Acceptable Use, Incident Response, Data Classification, Access Control, and Vendor Security.</p>
+        <div class="resource-form" id="policy-section">
+          <h4>Get Policy Templates</h4>
+          <form id="policy-form" onsubmit="return submitForm(event, 'policy')">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="role" placeholder="Your Role" required>
+            <select name="compliance_status" required>
+              <option value="">Current Compliance Status</option>
+              <option value="none">No formal program</option>
+              <option value="basic">Basic policies in place</option>
+              <option value="partial">Some frameworks implemented</option>
+              <option value="comprehensive">Comprehensive program</option>
+            </select>
+            <button type="submit" class="cta-button">Download Templates</button>
+          </form>
+          <div id="policy-success" class="success-message" style="display:none;">
+            ✅ Templates sent! Check your email.
+          </div>
+        </div>
       </div>
+
+      <!-- Resource 3: Risk Assessment -->
       <div class="card">
-        <h3>Blog: Trends in Cannabis Cyber Threats</h3>
-        <p>Monthly updates on attack trends, case studies, and security best practices.</p>
+        <div class="card-icon">📊</div>
+        <h3>Cybersecurity Risk Self-Assessment</h3>
+        <p>Get your custom risk score and tier recommendation. 20 questions about your security practices, compliance status, and business profile.</p>
+        <div class="resource-form" id="assessment-section">
+          <h4>Take Assessment</h4>
+          <form id="assessment-form" onsubmit="return submitForm(event, 'assessment')">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <select name="revenue" required>
+              <option value="">Annual Revenue</option>
+              <option value="under-500k">Under $500K</option>
+              <option value="500k-2m">$500K - $2M</option>
+              <option value="2m-5m">$2M - $5M</option>
+              <option value="5m-10m">$5M - $10M</option>
+              <option value="over-10m">Over $10M</option>
+            </select>
+            <select name="biggest_concern" required>
+              <option value="">Biggest Security Concern</option>
+              <option value="data_breach">Data breach</option>
+              <option value="regulatory_fines">Regulatory fines</option>
+              <option value="downtime">Business interruption</option>
+              <option value="employee_theft">Employee theft/fraud</option>
+              <option value="physical_security">Physical security</option>
+            </select>
+            <button type="submit" class="cta-button">Get Risk Score</button>
+          </form>
+          <div id="assessment-success" class="success-message" style="display:none;">
+            ✅ Assessment results sent! Check your email.
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="how-it-works">
+      <h2>How Our Resources Help Connecticut Cannabis Businesses</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Identify Gaps</h3>
+          <p>Use our checklist to find vulnerabilities in your cybersecurity program.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Build Foundation</h3>
+          <p>Implement policies that meet CT cannabis regulations and security standards.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Get Professional Help</h3>
+          <p>Based on your risk score, we recommend the right CannaShield tier for your needs.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h2>Ready for Professional Cybersecurity Support?</h2>
+      <p>Our 3-tier service model starts at $5,000/year for essential compliance and scales to enterprise security at $50,000/year.</p>
+      <a href="pricing.html" class="cta-button">See Service Tiers</a>
+      <a href="contact.html" class="cta-button secondary">Book Free Consultation</a>
     </div>
   </section>
 
   <div id="footer-placeholder"></div>
   <script>
-    // Load Navbar
+    // Form submission handler
+    function submitForm(event, formType) {
+      event.preventDefault();
+      const form = event.target;
+      const successId = formType + '-success';
+      
+      // In a real implementation, this would send to your backend
+      // For now, just show success message
+      document.getElementById(successId).style.display = 'block';
+      form.reset();
+      
+      // Log to console (replace with actual API call)
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      console.log('Form submitted:', { type: formType, data: data });
+      
+      return false;
+    }
+
+    // Load Navbar and Footer
     document.addEventListener("DOMContentLoaded", function () {
       fetch("navbar.html")
         .then(response => response.text())
         .then(data => document.getElementById("navbar-placeholder").innerHTML = data);
 
-      // Load Footer
       fetch("footer.html")
         .then(response => response.text())
         .then(data => document.getElementById("footer-placeholder").innerHTML = data);
     });
   </script>
+  <style>
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .resource-form {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0e0e0;
+    }
+    .resource-form h4 {
+      margin-bottom: 1rem;
+      color: #2c5530;
+    }
+    .resource-form input,
+    .resource-form select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .resource-form button {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .how-it-works {
+      margin: 4rem 0;
+      text-align: center;
+    }
+    .steps {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .step {
+      flex: 1;
+      min-width: 250px;
+      margin: 1rem;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    .step-number {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: #2c5530;
+      color: white;
+      border-radius: 50%;
+      line-height: 40px;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .cta-section {
+      text-align: center;
+      padding: 3rem;
+      background: linear-gradient(135deg, #2c5530 0%, #3e7c3e 100%);
+      color: white;
+      border-radius: 12px;
+      margin: 4rem 0;
+    }
+    .cta-section h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      color: rgba(255,255,255,0.9);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .cta-section .cta-button {
+      background: white;
+      color: #2c5530;
+      margin: 0 0.5rem;
+    }
+    .cta-section .cta-button.secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    @media (max-width: 768px) {
+      .steps {
+        flex-direction: column;
+      }
+      .cta-section .cta-button {
+        display: block;
+        margin: 0.5rem auto;
+        width: 80%;
+      }
+    }
+  </style>
 </body>
 </html>

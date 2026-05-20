@@ -61,7 +61,7 @@ function WaitlistToolCard({ title, description, tool }: WaitlistToolCardProps) {
           <Button type="submit">Notify me when it&apos;s live →</Button>
           {error ? (
             <p className="text-sm text-brand-primary">
-              Try again or email alex@cannashieldct.com.
+              Try again or email Alejo@cannashieldct.com.
             </p>
           ) : null}
         </form>

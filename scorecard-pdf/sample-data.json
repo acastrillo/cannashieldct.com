@@ -1,0 +1,51 @@
+{
+  "lead": {
+    "name": "Morgan Lee",
+    "email": "morgan@examplecannabis.com",
+    "company": "Example Cannabis Co.",
+    "role": "Operations Director"
+  },
+  "analysis": {
+    "domain": "examplecannabis.com",
+    "generatedAt": "2026-05-18T14:35:00.000Z",
+    "score": 62,
+    "riskTier": "High",
+    "spoofScenario": {
+      "outcome": "Likely delivered or filtered inconsistently",
+      "detail": "DMARC is in monitor mode, so spoofed mail is not explicitly blocked by policy. A direct impersonation attempt may still reach finance, payroll, or vendor-facing inboxes depending on the receiver."
+    },
+    "recommendations": [
+      "Move DMARC from p=none to a phased quarantine/reject enforcement plan.",
+      "Tighten SPF with a stronger all mechanism and reduce risky lookups.",
+      "Confirm DKIM is enabled for the actual mail platform and document the selector.",
+      "Review cannabis-specific BEC exposure: vendor payments, payroll changes, and wholesale invoices."
+    ],
+    "checks": {
+      "dmarc": {
+        "policy": "none",
+        "status": "warn",
+        "warnings": [
+          "DMARC is monitoring only (p=none). Spoofed mail is not instructed to be blocked."
+        ],
+        "hasReporting": true
+      },
+      "spf": {
+        "status": "warn",
+        "allMechanism": "~all",
+        "lookupCount": 7,
+        "warnings": [
+          "SPF uses softfail (~all). That is useful during rollout but weaker for enforcement."
+        ]
+      },
+      "dkim": {
+        "status": "detected",
+        "detectedSelectors": ["selector1", "google"],
+        "warnings": []
+      },
+      "mx": {
+        "status": "detected",
+        "records": ["aspmx.l.google.com", "alt1.aspmx.l.google.com"]
+      }
+    }
+  }
+}

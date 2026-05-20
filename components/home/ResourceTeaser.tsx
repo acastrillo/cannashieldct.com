@@ -9,19 +9,28 @@ import { Input } from '@/components/ui/input'
 
 const posts = [
   {
-    tag: 'Breach Analysis',
-    title: 'The 2025 STIIIZY Breach: What Cannabis Operators Need to Know Now',
-    excerpt: 'What the exposed records reveal about vendor risk and customer trust.',
+    tag: 'Supply Chain',
+    title:
+      'The supply chain does not end at your loading dock. It stretches into every line of code.',
+    excerpt:
+      'Why trusted digital infrastructure can become an operational risk for dispensaries and grows.',
+    href: '/blog/the-supply-chain-doesn-t-end-at-your-loading-dock-it-stretches-into-ev-20260331132754',
   },
   {
-    tag: 'Compliance Watch',
-    title: 'Illinois Is the Only State Mandating MFA for Cannabis — Is Yours Next?',
-    excerpt: 'Why one state rule is a signal for the rest of the industry.',
+    tag: 'Threat Intel',
+    title:
+      'The highest walls still have shadows when state-sponsored attackers break through.',
+    excerpt:
+      'What federal breach signals mean for operators who assume cannabis is too small to target.',
+    href: '/blog/the-highest-walls-still-have-shadows-when-news-broke-that-state-sponso-20260330133559',
   },
   {
-    tag: 'BEC Defense',
-    title: 'BEC in Cannabis: How MariMed Lost $650K and What Stops It',
-    excerpt: 'The finance controls that stop a spoofed vendor from becoming a wire loss.',
+    tag: 'Mobile Risk',
+    title:
+      'The modern cannabis empire is run from an iPhone at 2 AM.',
+    excerpt:
+      'How mobile access, remote decisions, and always-on tools can threaten license-critical systems.',
+    href: '/blog/the-modern-cannabis-empire-isn-t-run-from-a-boardroom-it-s-run-from-an-20260328181454',
   },
 ]
 
@@ -67,7 +76,7 @@ export function ResourceTeaser() {
               {post.excerpt}
             </p>
             <Link
-              href="/blog"
+              href={post.href}
               className="focus-ring mt-7 inline-flex rounded-sm text-sm font-semibold text-brand-accent transition-colors hover:text-brand-accent-hover"
             >
               Read →
@@ -103,7 +112,7 @@ export function ResourceTeaser() {
             <Button type="submit">Subscribe</Button>
             {error ? (
               <p className="text-sm text-brand-primary lg:col-span-3">
-                Try again or email alex@cannashieldct.com.
+                Try again or email Alejo@cannashieldct.com.
               </p>
             ) : null}
           </form>

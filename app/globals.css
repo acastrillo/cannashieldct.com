@@ -64,6 +64,68 @@
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-background;
   }
+
+  .blog-article-content {
+    @apply text-base leading-relaxed text-brand-primary/90 sm:text-lg;
+  }
+
+  .blog-article-content > * + * {
+    margin-top: 1.25rem;
+  }
+
+  .blog-article-content h2,
+  .blog-article-content h3 {
+    @apply font-serif font-semibold leading-headline text-brand-primary;
+  }
+
+  .blog-article-content h2 {
+    @apply mt-12 text-3xl sm:text-4xl;
+  }
+
+  .blog-article-content h3 {
+    @apply mt-10 text-2xl sm:text-3xl;
+  }
+
+  .blog-article-content p {
+    @apply text-brand-primary/90;
+  }
+
+  .blog-article-content .lead {
+    @apply text-xl leading-relaxed text-brand-primary sm:text-2xl;
+  }
+
+  .blog-article-content a {
+    @apply text-brand-accent underline decoration-brand-accent/40 underline-offset-4 transition-colors hover:text-brand-accent-hover;
+  }
+
+  .blog-article-content ul,
+  .blog-article-content ol {
+    @apply ml-6 space-y-3 text-brand-primary/90;
+  }
+
+  .blog-article-content ul {
+    @apply list-disc;
+  }
+
+  .blog-article-content ol {
+    @apply list-decimal;
+  }
+
+  .blog-article-content blockquote {
+    @apply border-l-4 border-brand-accent bg-brand-surface px-5 py-4 text-brand-primary;
+  }
+
+  .blog-article-content .highlight-box {
+    @apply rounded-lg border border-brand-accent/40 bg-brand-surface p-5 text-brand-primary;
+  }
+
+  .blog-article-content hr {
+    @apply my-10 border-brand-border;
+  }
+
+  .blog-article-content img {
+    @apply rounded-lg border border-brand-border;
+  }
 }
 
 .marquee-track {

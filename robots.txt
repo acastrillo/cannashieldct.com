@@ -1,0 +1,36 @@
+User-agent: *
+Allow: /
+Disallow: /blogadmin/
+Disallow: /blog/template.html
+
+User-agent: GPTBot
+Allow: /
+Disallow: /blogadmin/
+Disallow: /blog/template.html
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /blogadmin/
+Disallow: /blog/template.html
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /blogadmin/
+Disallow: /blog/template.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /blogadmin/
+Disallow: /blog/template.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /blogadmin/
+Disallow: /blog/template.html
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /blogadmin/
+Disallow: /blog/template.html
+
+Sitemap: https://cannashieldct.com/sitemap.xml

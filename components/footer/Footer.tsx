@@ -28,7 +28,7 @@ const footerColumns = [
     title: 'Company',
     links: [
       { label: 'About', href: '/#why-cannashield' },
-      { label: 'Contact', href: 'mailto:alex@cannashieldct.com' },
+      { label: 'Contact', href: 'mailto:Alejo@cannashieldct.com' },
       { label: 'Book a Call', href: calendlyUrl },
     ],
   },
@@ -81,7 +81,7 @@ export function Footer() {
       </div>
       <div className="border-t border-brand-border py-5">
         <div className="container text-xs leading-relaxed text-brand-secondary">
-          © 2025 CannaShield LLC. All rights reserved. | CannaShield is a
+          © 2026 CannaShield LLC. All rights reserved. | CannaShield is a
           Connecticut LLC. Not a law firm. Information provided is not legal
           advice.
         </div>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free email security scorecard for cannabis businesses. Check DMARC, SPF, and DKIM exposure before attackers spoof your domain.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://cannashieldct.com/cyber-check/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CannaShield">
+  <meta property="og:title" content="Free Email Security Scorecard for Cannabis Businesses | CannaShield">
+  <meta property="og:description" content="Check whether attackers can spoof your cannabis business domain by reviewing DMARC, SPF, and DKIM signals.">
+  <meta property="og:url" content="https://cannashieldct.com/cyber-check/">
+  <meta property="og:image" content="https://cannashieldct.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Email Security Scorecard for Cannabis Businesses | CannaShield">
+  <meta name="twitter:description" content="Check DMARC, SPF, and DKIM exposure before attackers spoof your domain.">
+  <meta name="twitter:image" content="https://cannashieldct.com/og-image.png">
+  <title>Free Email Security Scorecard for Cannabis Businesses | CannaShield</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://cannashieldct.com/cyber-check/#scorecard",
+          "name": "CannaShield Email Security Scorecard",
+          "url": "https://cannashieldct.com/cyber-check/",
+          "applicationCategory": "SecurityApplication",
+          "operatingSystem": "Web",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "DMARC check",
+            "SPF check",
+            "DKIM signal review",
+            "Domain spoofing risk summary"
+          ],
+          "provider": { "@id": "https://cannashieldct.com/#organization" },
+          "audience": {
+            "@type": "BusinessAudience",
+            "name": "Cannabis businesses"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://cannashieldct.com/cyber-check/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What does the Email Security Scorecard check?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It checks DMARC, SPF, DKIM, and domain spoofing signals for a business domain."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is the scorecard free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. CannaShield provides the email security scorecard as a free initial check for business domains."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+</head>
+<body class="scorecard-page">
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <section class="scorecard-hero">
+      <div class="scorecard-shell">
+        <div class="scorecard-hero-copy">
+          <p class="scorecard-kicker">Free CannaShield tool</p>
+          <h1>Email Security Scorecard</h1>
+          <p class="scorecard-lede">
+            See whether attackers can spoof your cannabis business domain, abuse vendor trust, or slip fake invoices into the inbox.
+          </p>
+          <div class="scorecard-hero-actions">
+            <a href="#scorecard-form-panel" class="cta-button main-cta">Run the scorecard</a>
+            <a href="../contact.html" class="cta-button scorecard-secondary-link">Talk to CannaShield</a>
+          </div>
+        </div>
+
+        <div class="scorecard-preview" aria-label="Email security scorecard preview">
+          <div class="scorecard-preview-top">
+            <span>Sample signal</span>
+            <strong>DMARC</strong>
+          </div>
+          <div class="scorecard-meter">
+            <span style="width: 42%;"></span>
+          </div>
+          <div class="scorecard-preview-row">
+            <span>Policy</span>
+            <strong>p=none</strong>
+          </div>
+          <div class="scorecard-preview-row">
+            <span>SPF</span>
+            <strong>Needs review</strong>
+          </div>
+          <div class="scorecard-preview-row">
+            <span>DKIM</span>
+            <strong>Selector unknown</strong>
+          </div>
+          <div class="scorecard-preview-callout">
+            Spoof scenario: direct impersonation may still reach inboxes.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scorecard-shell scorecard-grid-section" id="scorecard-form-panel">
+      <div class="scorecard-form-panel">
+        <p class="scorecard-kicker">90 second check</p>
+        <h2>Get your email security score</h2>
+        <p>
+          Enter your domain and business email. You will see a summary here, and CannaShield will send the full report from alejo@cannashieldct.com.
+        </p>
+
+        <form id="scorecard-form" class="scorecard-form">
+          <div class="scorecard-field-grid">
+            <div class="form-group">
+              <label for="domain">Business domain</label>
+              <input type="text" id="domain" name="domain" placeholder="example.com" autocomplete="url" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Work email</label>
+              <input type="text" inputmode="email" id="email" name="email" placeholder="name@example.com" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="scorecard-field-grid">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Alex Castro" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="CannaShield" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="role">Role</label>
+            <input type="text" id="role" name="role" placeholder="Owner, operator, compliance, finance, IT">
+          </div>
+
+          <label class="scorecard-consent">
+            <input type="checkbox" id="consent" name="consent" required>
+            <span>I agree to receive the scorecard report and practical follow-up from CannaShield.</span>
+          </label>
+
+          <div id="turnstile-widget" class="scorecard-turnstile"></div>
+          <p id="turnstile-note" class="scorecard-note" hidden>Turnstile is ready for production once the site key is added.</p>
+
+          <button type="submit" id="scorecard-submit" class="cta-button main-cta">Run scorecard</button>
+          <div id="scorecard-status" class="scorecard-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <aside class="scorecard-info-panel">
+        <h2>What the scorecard checks</h2>
+        <div class="scorecard-check-list">
+          <div>
+            <span>01</span>
+            <strong>DMARC enforcement</strong>
+            <p>Whether receivers are told to monitor, quarantine, or reject spoofed mail.</p>
+          </div>
+          <div>
+            <span>02</span>
+            <strong>SPF authorization</strong>
+            <p>Whether approved senders are defined cleanly without permissive or broken records.</p>
+          </div>
+          <div>
+            <span>03</span>
+            <strong>DKIM signal</strong>
+            <p>Whether common signing selectors are visible, with a note when the selector needs confirmation.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="scorecard-result" class="scorecard-shell scorecard-result" hidden>
+      <div class="scorecard-result-header">
+        <div>
+          <p class="scorecard-kicker">Scorecard result</p>
+          <h2 id="result-domain">Domain</h2>
+        </div>
+        <div class="scorecard-score">
+          <span id="result-score">--</span>
+          <strong id="result-tier">Pending</strong>
+        </div>
+      </div>
+
+      <div class="scorecard-result-grid">
+        <div class="scorecard-result-card">
+          <span>DMARC</span>
+          <strong id="result-dmarc">--</strong>
+          <p id="result-dmarc-note">Waiting for scan.</p>
+        </div>
+        <div class="scorecard-result-card">
+          <span>SPF</span>
+          <strong id="result-spf">--</strong>
+          <p id="result-spf-note">Waiting for scan.</p>
+        </div>
+        <div class="scorecard-result-card">
+          <span>DKIM</span>
+          <strong id="result-dkim">--</strong>
+          <p id="result-dkim-note">Waiting for scan.</p>
+        </div>
+      </div>
+
+      <div class="scorecard-spoof">
+        <span>Spoof scenario</span>
+        <strong id="result-spoof">--</strong>
+        <p id="result-spoof-detail">Waiting for scan.</p>
+      </div>
+
+      <div class="scorecard-next">
+        <h3>Priority fixes</h3>
+        <ol id="result-recommendations"></ol>
+      </div>
+    </section>
+
+    <section class="scorecard-shell scorecard-faq" aria-label="Email security scorecard FAQ">
+      <h2>Scorecard FAQ</h2>
+      <details>
+        <summary>What does the Email Security Scorecard check?</summary>
+        <p>It checks DMARC, SPF, DKIM, and domain spoofing signals for a business domain.</p>
+      </details>
+      <details>
+        <summary>Is the scorecard free?</summary>
+        <p>Yes. CannaShield provides the email security scorecard as a free initial check for business domains.</p>
+      </details>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    window.CANNASHIELD_SCORECARD = {
+      apiEndpoint: location.hostname === "localhost" || location.hostname === "127.0.0.1"
+        ? "http://localhost:8787/api/scorecard/submit"
+        : "/api/scorecard/submit",
+      turnstileSiteKey: "0x4AAAAAADOwGi7QBbrMsNCJ"
+    };
+  </script>
+  <script src="scorecard.js"></script>
+</body>
+</html>
