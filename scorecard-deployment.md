@@ -38,9 +38,12 @@ TURNSTILE_SECRET_KEY=0x...
 N8N_SCORECARD_WEBHOOK_URL=https://automations.cannashieldct.com/webhook/...
 NOTION_API_KEY=secret_xxx
 NOTION_SCORECARD_DATABASE_ID=f87849ddc46f4a6ea5967bbc733b2cf9
+SCORECARD_REPORT_ENGINE=lambda
+# Optional: require this token on /api/scorecard/report exports.
+SCORECARD_REPORT_TOKEN=...
 ```
 
-`N8N_SCORECARD_WEBHOOK_URL` is where PDF generation, email delivery, and nurture can happen.
+Current PDF generation is Lambda-based through `/api/scorecard/report`. Future state should move orchestration to n8n: `N8N_SCORECARD_WEBHOOK_URL` is where PDF generation, email delivery, and nurture can happen once that workflow owns the handoff.
 
 ## Frontend Config
 
@@ -54,6 +57,7 @@ The frontend posts to `/api/scorecard/submit` in production and `http://localhos
 npm run check
 npm run scorecard:scan -- cannashieldct.com
 npm run scorecard:local-api
+node scorecard-pdf/render-scorecard-report.js scorecard-pdf/sample-data.json
 python3 -m http.server 8080
 ```
 
@@ -78,4 +82,14 @@ aws cloudfront create-invalidation --distribution-id E17JB9R3BQU7VD --paths "/cy
 
 ## API Deployment Shape
 
-Create a Lambda from `scorecard-api-lambda.js` with handler `scorecard-api-lambda.handler`, runtime `nodejs22.x`, and a Function URL. Add a CloudFront cache behavior for `/api/scorecard/*` that mirrors the existing `/api/blogadmin/*` behavior: all methods, caching disabled, origin request policy that forwards headers/body, HTTPS only to the Lambda URL origin.
+Create a Lambda deployment package that includes `scorecard-api-lambda.js`, `scorecard-pdf/`, `package.json`, `package-lock.json`, and production `node_modules` so `puppeteer-core` and `@sparticuz/chromium` are available for PDF export. Use handler `scorecard-api-lambda.handler`, runtime `nodejs22.x`, and a Function URL.
+
+Add a CloudFront cache behavior for `/api/scorecard/*` that mirrors the existing `/api/blogadmin/*` behavior: all methods, caching disabled, origin request policy that forwards headers/body, HTTPS only to the Lambda URL origin.
+
+Report export routes:
+
+```text
+GET /api/scorecard/report?domain=example.com&format=pdf
+GET /api/scorecard/report?domain=example.com&format=html
+POST /api/scorecard/report
+```

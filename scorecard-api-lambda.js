@@ -1,6 +1,7 @@
 "use strict";
 
 const dns = require("dns").promises;
+const fs = require("fs");
 
 const NOTION_API_KEY = String(process.env.NOTION_API_KEY || "").trim();
 const NOTION_DATABASE_ID = String(
@@ -10,6 +11,8 @@ const N8N_WEBHOOK_URL = String(process.env.N8N_SCORECARD_WEBHOOK_URL || "").trim
 const TURNSTILE_SECRET_KEY = String(process.env.TURNSTILE_SECRET_KEY || "").trim();
 const REQUIRE_TURNSTILE = String(process.env.REQUIRE_TURNSTILE || "false").toLowerCase() === "true";
 const REPORT_FROM_EMAIL = String(process.env.REPORT_FROM_EMAIL || "alejo@cannashieldct.com").trim();
+const SCORECARD_REPORT_ENGINE = String(process.env.SCORECARD_REPORT_ENGINE || "lambda").trim().toLowerCase();
+const SCORECARD_REPORT_TOKEN = String(process.env.SCORECARD_REPORT_TOKEN || "").trim();
 
 const DKIM_SELECTORS = [
   "google",
@@ -47,11 +50,51 @@ function jsonResponse(statusCode, payload) {
   };
 }
 
+function htmlResponse(statusCode, html) {
+  return {
+    statusCode,
+    headers: {
+      "content-type": "text/html; charset=utf-8",
+      "access-control-allow-origin": "*",
+      "access-control-allow-methods": "OPTIONS,POST,GET",
+      "access-control-allow-headers": "content-type,x-scorecard-report-token",
+      "cache-control": "no-store",
+    },
+    body: html,
+  };
+}
+
+function binaryResponse(statusCode, buffer, contentType, filename) {
+  return {
+    statusCode,
+    headers: {
+      "content-type": contentType,
+      "content-disposition": `inline; filename="${filename}"`,
+      "access-control-allow-origin": "*",
+      "access-control-allow-methods": "OPTIONS,POST,GET",
+      "access-control-allow-headers": "content-type,x-scorecard-report-token",
+      "cache-control": "no-store",
+    },
+    isBase64Encoded: true,
+    body: Buffer.from(buffer).toString("base64"),
+  };
+}
+
 function parseEventBody(event) {
   if (!event || !event.body) return {};
   const raw = event.isBase64Encoded ? Buffer.from(event.body, "base64").toString("utf8") : event.body;
   if (!String(raw).trim()) return {};
   return JSON.parse(raw);
+}
+
+function getQueryParams(event) {
+  const params = new URLSearchParams(event && event.rawQueryString ? event.rawQueryString : "");
+  if (!params.size && event && event.queryStringParameters) {
+    for (const [key, value] of Object.entries(event.queryStringParameters)) {
+      if (value !== undefined && value !== null) params.set(key, String(value));
+    }
+  }
+  return params;
 }
 
 function normalizeDomain(value) {
@@ -78,6 +121,14 @@ function isValidDomain(domain) {
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || "").trim());
+}
+
+function slugify(value) {
+  return String(value || "scorecard")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80) || "scorecard";
 }
 
 function flattenTxt(records) {
@@ -595,6 +646,142 @@ function publicAnalysis(analysis) {
   };
 }
 
+function getReportTemplate() {
+  return require("./scorecard-pdf/render-scorecard-report");
+}
+
+function buildReportPayload(lead, analysis) {
+  return {
+    lead: lead || {},
+    analysis: analysis && analysis.checks ? analysis : publicAnalysis(analysis),
+  };
+}
+
+function buildReportHtml(lead, analysis) {
+  const { buildHtml } = getReportTemplate();
+  return buildHtml(buildReportPayload(lead, analysis));
+}
+
+function findLocalChrome() {
+  const candidates = [
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    process.env.CHROME_PATH,
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/Applications/Chromium.app/Contents/MacOS/Chromium",
+    "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+  ].filter(Boolean);
+
+  return candidates.find((candidate) => fs.existsSync(candidate)) || "";
+}
+
+async function getPuppeteerLaunchOptions() {
+  const puppeteer = require("puppeteer-core");
+  const localChrome = findLocalChrome();
+
+  if (localChrome) {
+    return {
+      puppeteer,
+      options: {
+        executablePath: localChrome,
+        headless: true,
+        args: ["--disable-gpu", "--no-sandbox", "--disable-setuid-sandbox"],
+      },
+    };
+  }
+
+  const chromium = require("@sparticuz/chromium");
+  return {
+    puppeteer,
+    options: {
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    },
+  };
+}
+
+async function renderReportPdf(lead, analysis) {
+  const html = buildReportHtml(lead, analysis);
+  const { puppeteer, options } = await getPuppeteerLaunchOptions();
+  let browser;
+
+  try {
+    browser = await puppeteer.launch(options);
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: "domcontentloaded", timeout: 10000 });
+    return Buffer.from(
+      await page.pdf({
+        format: "Letter",
+        printBackground: true,
+        preferCSSPageSize: true,
+        margin: { top: "0", right: "0", bottom: "0", left: "0" },
+      })
+    );
+  } finally {
+    if (browser) await browser.close();
+  }
+}
+
+function reportAccessAllowed(event, body, query) {
+  if (!SCORECARD_REPORT_TOKEN) return true;
+  const headerToken =
+    event && event.headers
+      ? event.headers["x-scorecard-report-token"] || event.headers["X-Scorecard-Report-Token"]
+      : "";
+  return [headerToken, body && body.reportToken, query && query.get("token")]
+    .filter(Boolean)
+    .some((value) => String(value) === SCORECARD_REPORT_TOKEN);
+}
+
+async function handleReport(event) {
+  const query = getQueryParams(event);
+  const method = event && event.requestContext && event.requestContext.http
+    ? event.requestContext.http.method
+    : event.httpMethod;
+  const body = method === "POST" ? parseEventBody(event) : {};
+
+  if (!reportAccessAllowed(event, body, query)) {
+    return jsonResponse(403, { ok: false, error: "Report export is not authorized." });
+  }
+
+  const requestedFormat = String(body.format || query.get("format") || "pdf").toLowerCase();
+  const format = requestedFormat === "html" ? "html" : "pdf";
+  const lead = {
+    name: plainText(body.lead?.name || body.name || query.get("name"), 200),
+    email: plainText(body.lead?.email || body.email || query.get("email"), 200),
+    company: plainText(body.lead?.company || body.company || query.get("company"), 200),
+    role: plainText(body.lead?.role || body.role || query.get("role"), 200),
+  };
+
+  const domain = normalizeDomain(
+    body.analysis?.domain || body.domain || body.lead?.domain || query.get("domain") || lead.email
+  );
+  if (!body.analysis && !isValidDomain(domain)) {
+    return jsonResponse(400, { ok: false, error: "Enter a valid business domain for report export." });
+  }
+
+  const analysis = body.analysis || (await analyzeDomain(domain));
+  const reportDomain = normalizeDomain(analysis.domain || domain);
+  const filename = `${slugify(reportDomain)}-email-security-scorecard.${format}`;
+
+  if (format === "html") {
+    return htmlResponse(200, buildReportHtml(lead, analysis));
+  }
+
+  try {
+    const pdf = await renderReportPdf(lead, analysis);
+    return binaryResponse(200, pdf, "application/pdf", filename);
+  } catch (err) {
+    console.error("PDF report render failed", err);
+    return jsonResponse(500, {
+      ok: false,
+      error: "The scorecard PDF could not be rendered.",
+      detail: err instanceof Error ? err.message : String(err),
+    });
+  }
+}
+
 async function handleSubmit(event) {
   const body = parseEventBody(event);
   const domain = normalizeDomain(body.domain || body.email);
@@ -638,7 +825,13 @@ async function handleSubmit(event) {
       notion,
       n8n,
       reportFromEmail: REPORT_FROM_EMAIL,
-      pdf: n8n.sent ? "queued" : "pending",
+      pdf: SCORECARD_REPORT_ENGINE === "n8n" && n8n.sent ? "queued" : "lambda-ready",
+      report: {
+        engine: SCORECARD_REPORT_ENGINE,
+        htmlPath: `/api/scorecard/report?domain=${encodeURIComponent(domain)}&format=html`,
+        pdfPath: `/api/scorecard/report?domain=${encodeURIComponent(domain)}&format=pdf`,
+        futureEngine: "n8n",
+      },
     },
   });
 }
@@ -656,9 +849,14 @@ async function handler(event) {
       service: "cannashield-email-security-scorecard",
       notionConfigured: Boolean(NOTION_API_KEY && NOTION_DATABASE_ID),
       n8nConfigured: Boolean(N8N_WEBHOOK_URL),
+      reportEngine: SCORECARD_REPORT_ENGINE,
+      reportTokenRequired: Boolean(SCORECARD_REPORT_TOKEN),
       turnstileRequired: REQUIRE_TURNSTILE,
       turnstileConfigured: Boolean(TURNSTILE_SECRET_KEY),
     });
+  }
+  if ((method === "GET" || method === "POST") && /\/api\/scorecard\/report$|\/report$/.test(path)) {
+    return handleReport(event);
   }
   if (method === "POST" && /\/api\/scorecard\/submit$|\/submit$|\/$/.test(path)) {
     return handleSubmit(event);
@@ -689,4 +887,6 @@ module.exports = {
   analyzeDomain,
   normalizeDomain,
   publicAnalysis,
+  buildReportHtml,
+  renderReportPdf,
 };

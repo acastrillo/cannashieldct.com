@@ -1,7 +1,7 @@
 # Email Security Scorecard PDF Template
 
 One-page CannaShield PDF report template for the Email Security Scorecard funnel.
-It is designed for HTML-to-PDF rendering in Chrome, n8n, or any renderer that preserves print CSS.
+It is designed for HTML-to-PDF rendering in Chrome, Lambda Chromium, n8n, or any renderer that preserves print CSS.
 
 ## Render locally
 
@@ -65,3 +65,19 @@ The input JSON mirrors the Lambda public scorecard response:
 ```
 
 The template also tolerates the fuller internal Lambda analysis object if the renderer receives that instead.
+
+## Lambda export
+
+The scorecard Lambda exposes a report route for the current production path:
+
+```text
+GET /api/scorecard/report?domain=example.com&format=pdf
+GET /api/scorecard/report?domain=example.com&format=html
+POST /api/scorecard/report
+```
+
+`POST /api/scorecard/report` accepts either `{ "domain": "example.com" }` or the full `{ "lead", "analysis" }` payload. `format` can be `pdf` or `html`.
+
+Set `SCORECARD_REPORT_TOKEN` in Lambda if the export route should require `x-scorecard-report-token` or `?token=...`.
+
+Current engine: Lambda. Future engine: n8n can call the same HTML template or consume the Lambda `html` report route before sending the prospect email sequence. Prospect follow-up identity should use `alejo@cannashieldct.com`.

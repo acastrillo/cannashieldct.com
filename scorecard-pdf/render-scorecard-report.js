@@ -655,6 +655,11 @@ function buildHtml(payload) {
       max-width: 5.65in;
     }
 
+    .fine-print a {
+      color: ${BRAND.accent};
+      text-decoration: none;
+    }
+
     .cta {
       color: ${BRAND.background};
       background: ${BRAND.accent};
@@ -752,6 +757,7 @@ function buildHtml(payload) {
         <p class="fine-print">
           <strong>Scope:</strong> Public DNS and email-authentication signals only. This scorecard is not a full penetration test,
           legal opinion, or guarantee of mailbox filtering outcomes.
+          Questions: <a href="mailto:alejo@cannashieldct.com">alejo@cannashieldct.com</a>.
         </p>
         <a class="cta" href="https://calendly.com/cannashieldct">Book remediation review</a>
       </footer>
