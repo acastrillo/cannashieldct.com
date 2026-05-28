@@ -22,7 +22,7 @@ const nextConfig = {
       { source: '/pricing.html', destination: '/#service-catalog', permanent: true },
       { source: '/resources.html', destination: '/blog', permanent: true },
       { source: '/about.html', destination: '/#why-cannashield', permanent: true },
-      { source: '/contact.html', destination: '/', permanent: true },
+      { source: '/contact.html', destination: '/contact', permanent: true },
       {
         source: '/free-cannashieldct-cybersec-assessment.html',
         destination: '/cyber-check',

@@ -13,6 +13,7 @@ import { PartnerChannels } from '@/components/home/PartnerChannels'
 import { ResourceTeaser } from '@/components/home/ResourceTeaser'
 import { ServiceCatalogPreview } from '@/components/home/ServiceCatalogPreview'
 import { ThreePillars } from '@/components/home/ThreePillars'
+import { getBlogPosts } from '@/lib/blog'
 import { homePageJsonLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
@@ -20,6 +21,15 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
+  const latestPosts = getBlogPosts()
+    .slice(0, 3)
+    .map((post) => ({
+      tag: post.category,
+      title: post.title,
+      excerpt: post.description,
+      href: post.url,
+    }))
+
   return (
     <>
       <JsonLd id="homepage-jsonld" data={homePageJsonLd()} />
@@ -32,7 +42,7 @@ export default function HomePage() {
       <FounderAuthority />
       <PartnerChannels />
       <IndustriesStrip />
-      <ResourceTeaser />
+      <ResourceTeaser posts={latestPosts} />
       <HomeFAQ />
       <FinalCTA />
     </>

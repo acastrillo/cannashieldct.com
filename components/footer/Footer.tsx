@@ -1,6 +1,9 @@
 import Link from 'next/link'
 
 import { calendlyUrl } from '@/lib/constants'
+import { publicContactEmail, publicPhone } from '@/lib/seo'
+
+const phoneDisplay = '(203) 443-1473'
 
 const footerColumns = [
   {
@@ -28,7 +31,7 @@ const footerColumns = [
     title: 'Company',
     links: [
       { label: 'About', href: '/#why-cannashield' },
-      { label: 'Contact', href: 'mailto:Alejo@cannashieldct.com' },
+      { label: 'Contact', href: '/contact' },
       { label: 'Book a Call', href: calendlyUrl },
     ],
   },
@@ -48,14 +51,36 @@ export function Footer() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-brand-secondary">
             Cannabis cybersecurity. Built for operators.
           </p>
-          <div className="mt-6 flex flex-col gap-2 text-sm text-brand-secondary">
+          <address className="mt-6 flex flex-col gap-2 text-sm not-italic text-brand-secondary">
+            <span>Connecticut, USA</span>
+            <a
+              className="focus-ring w-fit rounded-sm transition-colors hover:text-brand-accent"
+              href={`tel:${publicPhone}`}
+            >
+              {phoneDisplay}
+            </a>
+            <a
+              className="focus-ring w-fit rounded-sm transition-colors hover:text-brand-accent"
+              href={`mailto:${publicContactEmail}`}
+            >
+              {publicContactEmail}
+            </a>
+          </address>
+          <div className="mt-5 flex flex-col gap-2 text-sm text-brand-secondary">
             <a
               className="focus-ring w-fit rounded-sm transition-colors hover:text-brand-accent"
               href="https://linkedin.com/company/cannashieldct"
+              rel="noopener"
             >
               LinkedIn
             </a>
-            <span>Instagram: @cannashieldct</span>
+            <a
+              className="focus-ring w-fit rounded-sm transition-colors hover:text-brand-accent"
+              href="https://instagram.com/cannashieldct"
+              rel="noopener"
+            >
+              Instagram
+            </a>
           </div>
         </div>
 

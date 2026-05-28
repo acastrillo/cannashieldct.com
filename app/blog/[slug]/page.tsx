@@ -9,7 +9,7 @@ import {
   getBlogPost,
   getBlogPosts,
 } from '@/lib/blog'
-import { absoluteUrl } from '@/lib/seo'
+import { absoluteUrl, founderName } from '@/lib/seo'
 
 type BlogPostPageProps = {
   params: Promise<{
@@ -117,6 +117,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.description}
           </p>
           <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-brand-secondary">
+            <span>
+              By <span className="text-brand-primary">{founderName}</span>
+            </span>
             <time dateTime={post.publishedDate}>
               {formatBlogDate(post.publishedDate)}
             </time>
@@ -137,7 +140,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 
-        <div className="mx-auto mt-14 max-w-3xl rounded-lg border border-brand-border bg-brand-surface p-6">
+        <div className="mx-auto mt-12 max-w-3xl rounded-lg border border-brand-border bg-brand-surface/60 p-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
+            About the author
+          </p>
+          <p className="mt-3 text-base font-semibold text-brand-primary">
+            {founderName}
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-brand-secondary">
+            Founder of CannaShield. Working cyber incident response analyst and
+            vCISO for licensed cannabis operators. Writes on cannabis breach
+            analysis, GRC, cyber insurance readiness, and email-spoofing risk.
+          </p>
+          <a
+            href="https://linkedin.com/company/cannashieldct"
+            rel="noopener"
+            className="focus-ring mt-3 inline-flex rounded-sm text-sm font-semibold text-brand-accent transition-colors hover:text-brand-accent-hover"
+          >
+            CannaShield on LinkedIn →
+          </a>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-3xl rounded-lg border border-brand-border bg-brand-surface p-6">
           <h2 className="text-2xl font-semibold text-brand-primary">
             Make the risk concrete.
           </h2>

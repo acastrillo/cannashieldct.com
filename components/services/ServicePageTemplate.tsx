@@ -4,7 +4,7 @@ import { FinalCTA } from '@/components/home/FinalCTA'
 import { FadeIn } from '@/components/motion/FadeIn'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { servicePages, skus } from '@/lib/constants'
-import { serviceJsonLd } from '@/lib/seo'
+import { serviceBreadcrumbJsonLd, serviceJsonLd } from '@/lib/seo'
 import type { ServiceSlug } from '@/lib/types'
 
 import { HowItWorks } from './HowItWorks'
@@ -22,7 +22,10 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
 
   return (
     <>
-      <JsonLd id={`${slug}-service-jsonld`} data={serviceJsonLd(slug)} />
+      <JsonLd
+        id={`${slug}-service-jsonld`}
+        data={[...serviceJsonLd(slug), serviceBreadcrumbJsonLd(slug)]}
+      />
       <ServiceHero label={page.label} headline={page.headline} pain={page.pain} />
 
       <FadeIn as="section" className="section-shell">
