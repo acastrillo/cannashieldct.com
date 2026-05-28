@@ -10,6 +10,7 @@ const routes = [
   { path: '/services/insurance-qualification', priority: 0.85 },
   { path: '/services/downtime-prevention', priority: 0.85 },
   { path: '/partners', priority: 0.75 },
+  { path: '/contact', priority: 0.7 },
   { path: '/blog', priority: 0.75 },
 ]
 

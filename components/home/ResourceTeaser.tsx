@@ -7,34 +7,18 @@ import { FadeIn } from '@/components/motion/FadeIn'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
-const posts = [
-  {
-    tag: 'Supply Chain',
-    title:
-      'The supply chain does not end at your loading dock. It stretches into every line of code.',
-    excerpt:
-      'Why trusted digital infrastructure can become an operational risk for dispensaries and grows.',
-    href: '/blog/the-supply-chain-doesn-t-end-at-your-loading-dock-it-stretches-into-ev-20260331132754',
-  },
-  {
-    tag: 'Threat Intel',
-    title:
-      'The highest walls still have shadows when state-sponsored attackers break through.',
-    excerpt:
-      'What federal breach signals mean for operators who assume cannabis is too small to target.',
-    href: '/blog/the-highest-walls-still-have-shadows-when-news-broke-that-state-sponso-20260330133559',
-  },
-  {
-    tag: 'Mobile Risk',
-    title:
-      'The modern cannabis empire is run from an iPhone at 2 AM.',
-    excerpt:
-      'How mobile access, remote decisions, and always-on tools can threaten license-critical systems.',
-    href: '/blog/the-modern-cannabis-empire-isn-t-run-from-a-boardroom-it-s-run-from-an-20260328181454',
-  },
-]
+export type ResourceTeaserPost = {
+  tag: string
+  title: string
+  excerpt: string
+  href: string
+}
 
-export function ResourceTeaser() {
+type ResourceTeaserProps = {
+  posts: ResourceTeaserPost[]
+}
+
+export function ResourceTeaser({ posts }: ResourceTeaserProps) {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)

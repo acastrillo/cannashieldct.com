@@ -26,6 +26,11 @@ export const organizationJsonLd = {
     name: founderName,
     jobTitle: 'Founder and cybersecurity consultant',
   },
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'CT',
+    addressCountry: 'US',
+  },
   areaServed: [
     { '@type': 'AdministrativeArea', name: 'Connecticut' },
     { '@type': 'Country', name: 'United States' },
@@ -182,6 +187,21 @@ export function serviceJsonLd(slug: ServiceSlug) {
     },
     faqJsonLd(url, page.faqs),
   ]
+}
+
+export function serviceBreadcrumbJsonLd(slug: ServiceSlug) {
+  const page = servicePages[slug]
+  const url = absoluteUrl(`/services/${slug}`)
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `${url}#breadcrumbs`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: absoluteUrl('/#service-catalog') },
+      { '@type': 'ListItem', position: 3, name: page.label, item: url },
+    ],
+  }
 }
 
 export function scorecardJsonLd() {
