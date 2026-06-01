@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { JsonLd } from '@/components/seo/JsonLd'
@@ -68,13 +69,17 @@ export default function BlogPage() {
           <article className="mt-12 grid overflow-hidden rounded-lg border border-brand-border bg-brand-surface lg:grid-cols-[0.92fr_1.08fr]">
             <Link
               href={featuredPost.url}
-              className="focus-ring block bg-brand-background"
+              className="focus-ring relative block min-h-72 bg-brand-background"
               aria-label={`Read ${featuredPost.title}`}
             >
-              <img
+              <Image
                 src={featuredPost.image}
                 alt={featuredPost.imageAlt}
-                className="h-full min-h-72 w-full object-cover"
+                width={1200}
+                height={800}
+                priority
+                sizes="(min-width: 1024px) 55vw, 100vw"
+                className="h-full w-full object-cover"
               />
             </Link>
             <div className="p-6 sm:p-8 lg:p-10">
