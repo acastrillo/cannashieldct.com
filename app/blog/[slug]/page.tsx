@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -128,9 +129,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         <div className="mt-10 overflow-hidden rounded-lg border border-brand-border bg-brand-surface">
-          <img
+          <Image
             src={post.image}
             alt={post.imageAlt}
+            width={1600}
+            height={900}
+            priority
+            sizes="(min-width: 1024px) 960px, 100vw"
             className="aspect-[16/9] w-full object-cover"
           />
         </div>
