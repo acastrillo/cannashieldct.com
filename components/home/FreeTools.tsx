@@ -98,16 +98,44 @@ export function FreeTools() {
           </Button>
         </article>
 
-        <WaitlistToolCard
-          title="Attack Surface Snapshot"
-          description="See what Shodan, Censys, and breach databases know about your business right now."
-          tool="attack-surface"
-        />
-        <WaitlistToolCard
-          title="Cannabis Compliance Quick-Check"
-          description="State-by-state gap analysis against your current cyber posture — CT, NY, MA, IL, CA."
-          tool="compliance-check"
-        />
+        <article className="rounded-lg border border-brand-border bg-brand-surface p-6">
+          <div className="mb-5 inline-flex rounded-full border border-brand-accent/40 px-3 py-1 text-xs font-semibold text-brand-accent">
+            LIVE
+          </div>
+          <h3 className="text-2xl font-semibold text-brand-primary">
+            Attack Surface Snapshot
+          </h3>
+          <p className="mt-4 text-base leading-relaxed text-brand-secondary">
+            Enter your domain. Get a scored report on DNS hygiene, TLS certificate health,
+            missing security headers, and your hosting fingerprint — what attackers see before
+            they knock.
+          </p>
+          <p className="mt-5 text-sm text-brand-secondary">
+            Free · 60 seconds · No account needed
+          </p>
+          <Button asChild className="mt-6 w-full">
+            <Link href="/attack-surface">Scan your domain →</Link>
+          </Button>
+        </article>
+
+        <article className="rounded-lg border border-brand-border bg-brand-surface p-6">
+          <div className="mb-5 inline-flex rounded-full border border-brand-accent/40 px-3 py-1 text-xs font-semibold text-brand-accent">
+            LIVE
+          </div>
+          <h3 className="text-2xl font-semibold text-brand-primary">
+            Cannabis Compliance Quick-Check
+          </h3>
+          <p className="mt-4 text-base leading-relaxed text-brand-secondary">
+            State-by-state gap analysis against your current cyber posture — CT, NY, MA, IL,
+            CA. Know which controls your state expects before your next license renewal.
+          </p>
+          <p className="mt-5 text-sm text-brand-secondary">
+            Free · 60 seconds · No account needed
+          </p>
+          <Button asChild className="mt-6 w-full">
+            <Link href="/compliance-check">Check your compliance →</Link>
+          </Button>
+        </article>
       </div>
     </FadeIn>
   )

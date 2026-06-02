@@ -28,6 +28,8 @@ CannaShield helps cannabis businesses reduce cyber risk, protect license-critica
 
 - [Homepage](https://cannashieldct.com/): Company overview and primary conversion path.
 - [Email Security Scorecard](https://cannashieldct.com/cyber-check): Free DMARC, SPF, DKIM, MX, and domain spoofing scorecard for business domains.
+- [Attack Surface Snapshot](https://cannashieldct.com/attack-surface): Free DNS hygiene, TLS posture, HTTP security headers, and hosting fingerprint scan for cannabis business domains.
+- [Cannabis Compliance Quick-Check](https://cannashieldct.com/compliance-check): Free state-by-state cannabis cyber compliance gap analysis for CT, NY, MA, IL, and CA operators.
 - [License Protection](https://cannashieldct.com/services/license-protection): Written information security programs, vendor risk, and audit-ready evidence.
 - [Cyber Insurance Qualification](https://cannashieldct.com/services/insurance-qualification): MFA/EDR evidence, renewal defense, and broker-facing documentation.
 - [Downtime Prevention](https://cannashieldct.com/services/downtime-prevention): Incident response retainers, BEC defense, and ransomware resilience audits.

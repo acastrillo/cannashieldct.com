@@ -184,6 +184,94 @@ export function serviceJsonLd(slug: ServiceSlug) {
   ]
 }
 
+export function attackSurfaceJsonLd() {
+  const url = absoluteUrl('/attack-surface')
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      '@id': `${url}#attack-surface`,
+      name: 'CannaShield Attack Surface Snapshot',
+      url,
+      applicationCategory: 'SecurityApplication',
+      operatingSystem: 'Web',
+      provider: { '@id': absoluteUrl('/#organization') },
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      featureList: [
+        'DNS hygiene check (NS, CAA, dangling CNAMEs)',
+        'TLS certificate validity and expiry',
+        'HTTP security headers audit',
+        'Hosting and tech fingerprint',
+        'Scored risk report with prioritized recommendations',
+      ],
+      audience: {
+        '@type': 'BusinessAudience',
+        name: 'Cannabis businesses',
+      },
+    },
+    faqJsonLd(url, [
+      {
+        question: 'What does the Attack Surface Snapshot check?',
+        answer:
+          'It checks DNS hygiene (NS records, CAA presence, dangling CNAMEs on 10 common subdomains), TLS posture (certificate validity, expiry, protocol), HTTP security headers (HSTS, CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy), and the hosting fingerprint for a business domain.',
+      },
+      {
+        question: 'Is the Attack Surface Snapshot free?',
+        answer:
+          'Yes. CannaShield provides the Attack Surface Snapshot as a free initial check for cannabis business domains using only publicly-available DNS and HTTP data.',
+      },
+    ]),
+  ]
+}
+
+export function complianceCheckJsonLd() {
+  const url = absoluteUrl('/compliance-check')
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      '@id': `${url}#compliance-check`,
+      name: 'CannaShield Cannabis Compliance Quick-Check',
+      url,
+      applicationCategory: 'SecurityApplication',
+      operatingSystem: 'Web',
+      provider: { '@id': absoluteUrl('/#organization') },
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      featureList: [
+        'State-specific cannabis cyber compliance scoring',
+        'Control gap analysis (CT, NY, MA, IL, CA)',
+        'Per-control pass/gap badges',
+        'Weighted readiness score',
+        'State-specific regulatory notes',
+      ],
+      audience: {
+        '@type': 'BusinessAudience',
+        name: 'Licensed cannabis operators',
+      },
+    },
+    faqJsonLd(url, [
+      {
+        question: 'What does the Cannabis Compliance Quick-Check assess?',
+        answer:
+          'It maps eight critical security controls (MFA on email, MFA on POS, EDR, written ISP, vendor risk register, IR plan, security training, encrypted backups) against each state\'s cannabis regulations and data-security statutes for CT, NY, MA, IL, and CA.',
+      },
+      {
+        question: 'Is the Cannabis Compliance Quick-Check free?',
+        answer:
+          'Yes. CannaShield provides the Compliance Quick-Check as a free initial gap analysis for cannabis operators. It is not a legal assessment and does not replace qualified counsel.',
+      },
+    ]),
+  ]
+}
+
 export function scorecardJsonLd() {
   const url = absoluteUrl('/cyber-check')
   return [
