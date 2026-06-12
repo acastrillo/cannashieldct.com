@@ -8,7 +8,7 @@ export function ServiceCatalogPreview() {
   return (
     <FadeIn as="section" id="service-catalog" className="section-shell">
       <p className="section-label">WHAT WE DELIVER</p>
-      <h2 className="section-heading">Eight services. Priced to move.</h2>
+      <h2 className="section-heading">Nine services. Priced to move.</h2>
       <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {skus.map((sku) => (
           <SkuCard key={sku.code} sku={sku} compact />

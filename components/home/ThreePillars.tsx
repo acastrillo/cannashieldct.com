@@ -25,8 +25,11 @@ export function ThreePillars() {
               <p className="mt-5 text-base italic leading-relaxed text-brand-secondary">
                 {pillar.pain}
               </p>
-              <p className="mt-5 flex-1 text-base leading-relaxed text-brand-primary/90">
+              <p className="mt-5 text-base leading-relaxed text-brand-primary/90">
                 {pillar.solution}
+              </p>
+              <p className="mt-5 flex-1 text-sm font-semibold text-brand-accent">
+                {pillar.priceAnchor}
               </p>
               <Link
                 href={pillar.href}

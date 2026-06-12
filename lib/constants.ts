@@ -13,6 +13,7 @@ export const pillars = [
       'Your MSP handles IT. Nobody owns the written ISP, vendor risk, or audit-ready evidence your regulator wants at renewal.',
     solution:
       'We deliver NIST CSF 2.0-mapped security programs built for cannabis operators — designed to hold up when your regulator, investor, or acquirer asks for proof.',
+    priceAnchor: 'From $1,800/mo',
     cta: 'Explore License Protection →',
   },
   {
@@ -23,6 +24,7 @@ export const pillars = [
       "Premiums went up 40%. Your carrier wants MFA attestation, an IR plan, and EDR proof — or they're non-renewing you.",
     solution:
       'We prepare the documentation, close the gaps, and sit on the call with your broker so you pass underwriting and stop overpaying.',
+    priceAnchor: 'From $1,800/yr',
     cta: 'Explore Insurance Qualification →',
   },
   {
@@ -33,6 +35,7 @@ export const pillars = [
       'POS goes down and you lose $30,000 a day. STIIIZY scared your board. Someone almost wired $200K to a fake vendor.',
     solution:
       "Incident response retainers, ransomware resilience audits, and BEC defense sprints — so when it hits the industry, it doesn't shut you down.",
+    priceAnchor: 'From $1,200/mo',
     cta: 'Explore Downtime Prevention →',
   },
 ] satisfies Pillar[]
@@ -129,7 +132,7 @@ export const skus = [
   {
     code: 'DP-1',
     name: 'Incident Response Retainer',
-    price: '$1,200/mo',
+    price: '$1,200/mo + $275/hr',
     delivery: 'Ongoing',
     trigger: 'You want IR muscle before the weekend call.',
     pillar: 'downtime-prevention',
@@ -149,6 +152,14 @@ export const skus = [
     delivery: '3 weeks',
     trigger: 'Your POS, backups, and recovery plan need proof.',
     pillar: 'downtime-prevention',
+  },
+  {
+    code: 'TOF-1',
+    name: 'Cannabis Cyber Starter Assessment',
+    price: '$750',
+    delivery: '1 week',
+    trigger: 'You need a written snapshot of your exposure before committing to a program.',
+    pillar: 'license-protection',
   },
 ] satisfies Sku[]
 

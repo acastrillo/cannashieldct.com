@@ -20,6 +20,7 @@ export type Pillar = {
   icon: LucideIcon
   pain: string
   solution: string
+  priceAnchor: string
   cta: string
 }
 
