@@ -6,6 +6,8 @@ import { siteUrl } from '@/lib/seo'
 const routes = [
   { path: '/', priority: 1 },
   { path: '/cyber-check', priority: 0.95 },
+  { path: '/cyber-check/attack-surface', priority: 0.9 },
+  { path: '/compliance-check', priority: 0.9 },
   { path: '/services/license-protection', priority: 0.9 },
   { path: '/services/insurance-qualification', priority: 0.85 },
   { path: '/services/downtime-prevention', priority: 0.85 },
