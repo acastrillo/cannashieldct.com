@@ -8,10 +8,13 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && node --check blogadmin-server.js && node --check blogadmin-api-lambda.js && node --check scorecard-api-lambda.js && node --check scorecard-local-server.js",
+    "check": "npm run typecheck && node --check blogadmin-server.js && node --check blogadmin-api-lambda.js && node --check scorecard-api-lambda.js && node --check scorecard-local-server.js && node --check attack-surface-api-lambda.js && node --check attack-surface-local-server.js",
     "blogadmin:local": "node blogadmin-server.js",
     "scorecard:scan": "node scorecard-api-lambda.js",
-    "scorecard:local-api": "node scorecard-local-server.js"
+    "scorecard:local-api": "node scorecard-local-server.js",
+    "snapshot:scan": "node attack-surface-api-lambda.js",
+    "snapshot:local-api": "node attack-surface-local-server.js",
+    "snapshot:pdf": "node attack-surface-pdf/render-attack-surface-report.js attack-surface-pdf/sample-data.json"
   },
   "engines": {
     "node": ">=18"

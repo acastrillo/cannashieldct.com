@@ -1,0 +1,106 @@
+{
+  "lead": {
+    "name": "Alex Castro",
+    "email": "alex@example-dispensary.com",
+    "company": "Example Dispensary Co."
+  },
+  "scan": {
+    "domain": "example-dispensary.com",
+    "scannedAt": "2026-06-13T14:30:00.000Z",
+    "score": 85,
+    "tier": "High",
+    "scoring": {
+      "score": 85,
+      "breakdown": [
+        { "reason": "Exposed RDP port (3389)", "points": 30 },
+        { "reason": "Domain found in 1 known data breach", "points": 25 },
+        { "reason": "No DMARC record found", "points": 20 },
+        { "reason": "HSTS header missing", "points": 10 }
+      ]
+    },
+    "recommendations": [
+      "Close RDP (port 3389) from the public internet. Require VPN or Azure Bastion for all remote administration — exposed RDP is the leading ransomware delivery vector.",
+      "Rotate passwords for all accounts associated with this domain immediately. Check your cannabis POS admin credentials, banking portals, and payroll systems for unauthorized access.",
+      "Publish a DMARC record at _dmarc.example-dispensary.com. Start with p=none and aggregate reporting (rua=), then move to p=quarantine then p=reject over 30–60 days.",
+      "Enable HSTS (Strict-Transport-Security: max-age=31536000; includeSubDomains) on your web server or CDN to prevent protocol downgrade attacks.",
+      "Audit employee device security and cannabis-specific touchpoints: POS system segmentation, METRC API credential rotation, dispensary Wi-Fi isolation."
+    ],
+    "recon": {
+      "shodan": {
+        "status": "ok",
+        "ip": "104.21.45.12",
+        "openPorts": [80, 443, 3389, 8080],
+        "highRiskPorts": [
+          { "port": 3389, "service": "RDP", "highPenalty": true }
+        ],
+        "notableServices": ["RDP (3389)"],
+        "vulns": [],
+        "hostnames": ["example-dispensary.com"]
+      },
+      "certs": {
+        "status": "ok",
+        "subdomains": [
+          "www.example-dispensary.com",
+          "admin.example-dispensary.com",
+          "api.example-dispensary.com",
+          "dev.example-dispensary.com",
+          "staging.example-dispensary.com",
+          "mail.example-dispensary.com",
+          "pos.example-dispensary.com"
+        ],
+        "count": 7
+      },
+      "hibp": {
+        "status": "ok",
+        "breaches": [
+          {
+            "name": "ExampleBreach",
+            "title": "Example Data Breach",
+            "domain": "example-dispensary.com",
+            "breachDate": "2023-08-15",
+            "pwnCount": 4820,
+            "dataClasses": ["Email addresses", "Passwords", "Phone numbers"],
+            "isVerified": true
+          }
+        ],
+        "count": 1
+      },
+      "dns": {
+        "status": "ok",
+        "spf": {
+          "present": true,
+          "status": "warn",
+          "allMechanism": "~all",
+          "record": "v=spf1 include:_spf.google.com ~all"
+        },
+        "dmarc": {
+          "present": false,
+          "policy": "missing"
+        },
+        "dkim": {
+          "detected": true,
+          "selector": "google"
+        },
+        "mx": {
+          "present": true,
+          "records": ["aspmx.l.google.com", "alt1.aspmx.l.google.com"]
+        }
+      },
+      "headers": {
+        "status": "ok",
+        "statusCode": 200,
+        "checks": [
+          { "name": "HSTS", "header": "strict-transport-security", "present": false, "value": null, "risk": "high" },
+          { "name": "X-Frame-Options", "header": "x-frame-options", "present": true, "value": "SAMEORIGIN", "risk": "medium" },
+          { "name": "X-Content-Type-Options", "header": "x-content-type-options", "present": true, "value": "nosniff", "risk": "medium" },
+          { "name": "Content-Security-Policy", "header": "content-security-policy", "present": false, "value": null, "risk": "high" },
+          { "name": "Referrer-Policy", "header": "referrer-policy", "present": false, "value": null, "risk": "low" },
+          { "name": "Permissions-Policy", "header": "permissions-policy", "present": false, "value": null, "risk": "low" }
+        ],
+        "missing": ["HSTS", "Content-Security-Policy", "Referrer-Policy", "Permissions-Policy"],
+        "missingCount": 4,
+        "hasHsts": false
+      }
+    }
+  }
+}
