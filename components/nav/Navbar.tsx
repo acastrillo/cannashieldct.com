@@ -41,14 +41,16 @@ export function Navbar() {
   }, [open])
 
   return (
-    <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-colors duration-300',
-        scrolled
-          ? 'border-b border-brand-border bg-brand-surface/95 backdrop-blur'
-          : 'border-b border-transparent bg-transparent',
-      )}
-    >
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        aria-hidden="true"
+        className={cn(
+          'pointer-events-none absolute inset-x-0 top-0 -z-10 transition-all duration-300',
+          scrolled
+            ? 'bottom-0 border-b border-brand-border bg-brand-surface/85 backdrop-blur-md'
+            : '-bottom-8 bg-gradient-to-b from-brand-background/85 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_bottom,black,black_55%,transparent)]',
+        )}
+      />
       <nav
         className="container flex h-20 items-center justify-between"
         aria-label="Primary navigation"
