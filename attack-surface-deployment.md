@@ -2,7 +2,19 @@
 
 ## Overview
 
-Lead magnet #2. A passive, non-intrusive recon tool that checks five data sources for a submitted domain and returns a risk-scored JSON response. The frontend lives at `/cyber-check/attack-surface/`, the backend is a Lambda Function URL behind CloudFront.
+Lead magnet #2. A passive, non-intrusive recon tool that checks five data sources for a submitted domain and returns a risk-scored JSON response.
+
+**Current architecture (as of 2026-06-13):** The live tool runs entirely inside the
+Next.js app — the page is `app/cyber-check/attack-surface/page.tsx` and the scan
+executes server-side in `app/api/attack-surface/submit/route.ts`, which calls the
+shared engine `lib/attack-surface-scan.js` (native `dns` + `fetch`, no Lambda
+required). **The scan is already live; no deployment step is needed for it.**
+
+This Lambda (`attack-surface-api-lambda.js`) is **optional and not yet deployed**.
+It reuses the same `lib/attack-surface-scan.js` engine and layers on the pieces the
+Next route intentionally leaves out: the branded **PDF report** (puppeteer +
+`@sparticuz/chromium`) and **Notion / n8n lead capture**. Deploy it only when you
+want the emailed PDF report. Deploying requires AWS credentials (`aws login`).
 
 ## Data Sources
 
@@ -60,9 +72,12 @@ HIBP_API_KEY=<optional — enables HIBP lookup; skipped gracefully if missing>
 
 ```sh
 # Build the zip
+# NOTE: attack-surface-api-lambda.js requires ./lib/attack-surface-scan.js
+# (the shared scan engine), so the lib file MUST be included in the package.
 zip -r attack-surface-lambda.zip \
   attack-surface-api-lambda.js \
   attack-surface-local-server.js \
+  lib/attack-surface-scan.js \
   attack-surface-pdf/ \
   package.json \
   package-lock.json \
@@ -95,37 +110,23 @@ aws lambda create-function-url-config \
 
 Copy the resulting URL (e.g. `https://xxxxxxxx.lambda-url.us-east-1.on.aws/`) and add as a CloudFront origin.
 
-## CloudFront Cache Behavior
+## Wiring the PDF report into the Next app
 
-Add a behavior for `/api/attack-surface/*` matching the existing `/api/scorecard/*` pattern:
+⚠️ Do **not** add a blanket CloudFront behavior for `/api/attack-surface/*` — the
+Next app already owns `/api/attack-surface/submit` (the live scan). Instead, mirror
+the scorecard pattern: add a thin Next route `app/api/attack-surface/report/route.ts`
+that proxies to the Lambda Function URL (read from an env var, e.g.
+`ATTACK_SURFACE_LAMBDA_URL`), exactly like `app/api/scorecard/submit/route.ts`
+proxies to `SCORECARD_LAMBDA_URL`. Then add an "email me the PDF" affordance to
+`AttackSurfaceForm`. No CloudFront behavior change is required with this approach.
 
-- Origin: the Lambda Function URL
-- Allowed HTTP methods: GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE
-- Cache policy: CachingDisabled
-- Origin request policy: AllViewerExceptHostHeader
-- Viewer protocol: HTTPS only
+## Frontend
 
-## Static File Upload
-
-```sh
-aws s3 cp cyber-check/attack-surface/index.html \
-  s3://cannashieldct.com/cyber-check/attack-surface/index.html \
-  --content-type "text/html; charset=utf-8" \
-  --cache-control "no-cache"
-
-aws s3 cp cyber-check/attack-surface/attack-surface.js \
-  s3://cannashieldct.com/cyber-check/attack-surface/attack-surface.js \
-  --content-type "application/javascript; charset=utf-8" \
-  --cache-control "no-cache"
-
-aws s3 cp styles.css s3://cannashieldct.com/styles.css \
-  --content-type "text/css; charset=utf-8" \
-  --cache-control "no-cache"
-
-aws cloudfront create-invalidation \
-  --distribution-id E17JB9R3BQU7VD \
-  --paths "/cyber-check/attack-surface/*" "/styles.css"
-```
+No static upload needed. The frontend is a Next.js route
+(`app/cyber-check/attack-surface/page.tsx` + `components/AttackSurfaceForm.tsx`)
+deployed with the rest of the app via Amplify on push to `main`. The earlier
+static `cyber-check/attack-surface/{index.html,attack-surface.js}` files were
+removed when the tool moved into the Next app.
 
 ## Notion Lead Database
 
@@ -202,7 +203,6 @@ POST /api/attack-surface/report          → body: { scan: {...}, lead: {...}, f
 npm run snapshot:scan -- cannashieldct.com     # CLI scan, JSON to stdout
 npm run snapshot:local-api                     # API on http://localhost:8788
 npm run snapshot:pdf                           # render sample PDF to attack-surface-pdf/dist/
-python3 -m http.server 8080                    # serve static files
 
 # Test the API
 curl -s -X POST http://localhost:8788/api/attack-surface/submit \
