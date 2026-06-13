@@ -1,5 +1,6 @@
 .agent/
-.claude/
+.claude/*
+!.claude/commands/
 .shared/
 .vscode/
 node_modules/
@@ -11,3 +12,6 @@ node_modules/
 .DS_Store
 dist/
 build/
+
+# CannaShield client deliverables — may contain PII / client control gaps, keep out of git
+outputs/
