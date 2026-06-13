@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section className="relative isolate overflow-hidden border-b border-brand-border bg-brand-background pt-28 sm:pt-32">
       <div
-        className="absolute inset-0 -z-20 bg-cover bg-[58%_center] opacity-25"
+        className="absolute inset-0 -z-20 bg-cover bg-[58%_center] opacity-[0.12] sm:opacity-25"
         style={{ backgroundImage: "url('/hero-risk-map.png')" }}
         aria-hidden="true"
       />
@@ -28,7 +28,11 @@ export function Hero() {
             operators call when their MSP isn&apos;t enough.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="w-full sm:w-auto">
+            <Button
+              asChild
+              size="lg"
+              className="h-auto min-h-12 w-full whitespace-normal py-3 text-center leading-snug sm:w-auto"
+            >
               <Link href="/cyber-check">
                 See what attackers already know about your business →
               </Link>
