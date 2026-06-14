@@ -2,9 +2,7 @@ import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import { calendlyUrl } from '@/lib/constants'
-
-const ticker =
-  'STIIIZY — 420,000 records  ·  MariMed — $650K wired  ·  Trulieve — dark web  ·  MJ Freeway — 14-state outage  ·  Aurora Cannabis — breach disclosed  ·  Ontario Cannabis Store — customer data leaked  ·'
+import { tickerString as ticker } from '@/data/news-ticker'
 
 export function Hero() {
   return (
