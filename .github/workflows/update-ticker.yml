@@ -1,0 +1,107 @@
+name: Weekly news ticker update
+
+on:
+  schedule:
+    # Every Sunday at 18:00 UTC (2 PM ET / 1 PM CT)
+    - cron: '0 18 * * 0'
+  workflow_dispatch: {}   # allow manual trigger from GitHub UI
+
+jobs:
+  update-ticker:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate this week's headlines via Claude
+        id: headlines
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          WEEK_OF=$(date -u +%Y-%m-%d)
+          RESPONSE=$(node -e "
+          const https = require('https');
+          const body = JSON.stringify({
+            model: 'claude-sonnet-4-6',
+            max_tokens: 512,
+            messages: [{
+              role: 'user',
+              content: \`Today is ${WEEK_OF}. Search your knowledge for the top 6 cannabis-industry cybersecurity news stories from the past 7 days (data breaches, ransomware, regulatory actions, fraud, POS attacks). If there are fewer than 6 real stories this week, fill remaining slots with the most recent notable incidents you know of.
+
+Return ONLY a JSON array of strings, no markdown, no explanation. Each string must be under 60 characters in the format: 'Operator/Org — brief impact'. Example: [\"STIIIZY — 420,000 records leaked\",\"MariMed — \$650K wired to attackers\"]\`
+            }]
+          });
+          const options = {
+            hostname: 'api.anthropic.com',
+            path: '/v1/messages',
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': process.env.ANTHROPIC_API_KEY,
+              'anthropic-version': '2023-06-01',
+              'Content-Length': Buffer.byteLength(body)
+            }
+          };
+          const req = https.request(options, (res) => {
+            let data = '';
+            res.on('data', (chunk) => data += chunk);
+            res.on('end', () => {
+              const parsed = JSON.parse(data);
+              const text = parsed.content[0].text.trim();
+              process.stdout.write(text);
+            });
+          });
+          req.on('error', (e) => { process.stderr.write(e.message); process.exit(1); });
+          req.write(body);
+          req.end();
+          ")
+          echo "headlines=$RESPONSE" >> "$GITHUB_OUTPUT"
+          echo "week_of=$WEEK_OF" >> "$GITHUB_OUTPUT"
+
+      - name: Write updated data file
+        env:
+          HEADLINES: ${{ steps.headlines.outputs.headlines }}
+          WEEK_OF: ${{ steps.headlines.outputs.week_of }}
+        run: |
+          node -e "
+          const fs = require('fs');
+          const headlines = JSON.parse(process.env.HEADLINES);
+          const weekOf = process.env.WEEK_OF;
+          const lines = headlines.map(h => \`    '\${h.replace(/'/g, \"'\\\\''\")},\`).join('\n');
+          const content = \`// Top cannabis-industry cybersecurity headlines for the news ticker.
+          // Updated weekly via .github/workflows/update-ticker.yml — edit this file to change what scrolls.
+          // Format: short label — brief impact ·  (trailing space+dot keeps spacing between dupes)
+          // Last updated: \${weekOf}
+          export const tickerHeadlines: string[] =
+            [
+          \${lines}
+            ]
+
+          // Rendered as a single space-separated marquee string with · separators
+          export const tickerString = tickerHeadlines.join('  ·  ') + '  ·'
+          \`.replace(/^          /gm, '');
+          fs.writeFileSync('data/news-ticker.ts', content);
+          console.log('Wrote data/news-ticker.ts');
+          "
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automated/ticker-${{ steps.headlines.outputs.week_of }}
+          commit-message: "chore: update news ticker headlines for week of ${{ steps.headlines.outputs.week_of }}"
+          title: "Weekly ticker update — ${{ steps.headlines.outputs.week_of }}"
+          body: |
+            Automated weekly update of `data/news-ticker.ts`.
+
+            **Review before merging** — verify each headline is accurate and links to a real incident.
+            Merging triggers a Vercel redeploy automatically.
+          labels: content
+          delete-branch: true
