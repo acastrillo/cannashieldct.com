@@ -16,14 +16,14 @@ export function Hero() {
       <div className="container pb-8 lg:pb-10">
         <div className="max-w-[1220px]">
           <h1 className="max-w-[1220px] text-balance font-serif text-[38px] font-semibold leading-headline text-brand-primary min-[420px]:text-[42px] sm:text-6xl lg:text-[68px]">
-            Cannabis cybersecurity isn&apos;t an IT problem. It&apos;s a
-            license problem.
+            After a breach, regulators audit your compliance program &mdash; not
+            your firewall.
           </h1>
           <p className="support-copy mt-7 max-w-2xl">
-            STIIIZY: 420,000 customer records leaked. MariMed: $650,000 wired
-            to attackers. Trulieve&apos;s customer data is on a dark web leak
-            site right now. CannaShield is the vCISO and GRC partner cannabis
-            operators call when their MSP isn&apos;t enough.
+            CannaShield gives cannabis dispensaries, cultivators, and MSOs in
+            CT, NY, MA, NJ, and IL the vCISO services, GRC frameworks, and
+            cybersecurity assessments to stay licensed when attackers come
+            calling.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button
