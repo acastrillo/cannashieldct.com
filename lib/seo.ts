@@ -31,10 +31,7 @@ export const organizationJsonLd = {
     addressRegion: 'CT',
     addressCountry: 'US',
   },
-  areaServed: [
-    { '@type': 'AdministrativeArea', name: 'Connecticut' },
-    { '@type': 'Country', name: 'United States' },
-  ],
+  areaServed: [{ '@type': 'AdministrativeArea', name: 'Connecticut' }],
   sameAs: [
     'https://linkedin.com/company/cannashieldct',
     'https://instagram.com/cannashieldct',
@@ -82,7 +79,7 @@ export const homeFaqs = [
   {
     question: 'Who does CannaShield serve?',
     answer:
-      'CannaShield serves licensed cannabis dispensaries, cultivators, processors, manufacturers, MSOs, and ancillary cannabis operators.',
+      'CannaShield serves licensed Connecticut cannabis dispensaries, cultivators, processors, manufacturers, MSOs, and ancillary operators.',
   },
   {
     question: 'Does CannaShield replace an MSP?',
@@ -159,10 +156,7 @@ export function serviceJsonLd(slug: ServiceSlug) {
       description: page.pain,
       provider: { '@id': absoluteUrl('/#organization') },
       url,
-      areaServed: [
-        { '@type': 'AdministrativeArea', name: 'Connecticut' },
-        { '@type': 'Country', name: 'United States' },
-      ],
+      areaServed: [{ '@type': 'AdministrativeArea', name: 'Connecticut' }],
       audience: {
         '@type': 'BusinessAudience',
         name: page.operatorTypes.join(', '),
@@ -311,11 +305,11 @@ export function complianceCheckJsonLd() {
         priceCurrency: 'USD',
       },
       featureList: [
-        'State-specific cannabis cyber compliance scoring',
-        'Control gap analysis (CT, NY, MA, IL, CA)',
+        'Connecticut cannabis security-readiness scoring',
+        'Connecticut-focused control gap analysis',
         'Per-control pass/gap badges',
         'Weighted readiness score',
-        'State-specific regulatory notes',
+        'Connecticut legal-context notes',
       ],
       audience: {
         '@type': 'BusinessAudience',
@@ -326,7 +320,7 @@ export function complianceCheckJsonLd() {
       {
         question: 'What does the Cannabis Compliance Quick-Check assess?',
         answer:
-          "It maps eight critical security controls (MFA on email, MFA on POS, EDR, written ISP, vendor risk register, IR plan, security training, encrypted backups) against each state's cannabis regulations and data-security statutes for CT, NY, MA, IL, and CA.",
+          'It reviews eight security controls—MFA on email, MFA on POS, endpoint protection, a written security program, vendor risk, incident response, training, and tested encrypted backups—through a Connecticut-focused readiness lens. It is not a legal determination.',
       },
       {
         question: 'Is the Cannabis Compliance Quick-Check free?',

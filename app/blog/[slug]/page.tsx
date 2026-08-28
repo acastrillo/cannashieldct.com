@@ -7,6 +7,7 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import {
   blogPostJsonLd,
   formatBlogDate,
+  getAllBlogPosts,
   getBlogPost,
   getBlogPosts,
 } from '@/lib/blog'
@@ -21,7 +22,7 @@ type BlogPostPageProps = {
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  return getBlogPosts().map((post) => ({
+  return getAllBlogPosts().map((post) => ({
     slug: post.slug,
   }))
 }
@@ -60,6 +61,9 @@ export async function generateMetadata({
       description: post.description,
       images: [post.image],
     },
+    robots: post.archived
+      ? { index: false, follow: true }
+      : { index: true, follow: true },
   }
 }
 
@@ -100,7 +104,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <JsonLd id="blog-post-jsonld" data={[blogPostJsonLd(post), breadcrumbJsonLd]} />
+      {!post.archived ? (
+        <JsonLd id="blog-post-jsonld" data={[blogPostJsonLd(post), breadcrumbJsonLd]} />
+      ) : null}
       <article className="section-shell max-w-5xl pt-32 sm:pt-40">
         <Link
           href="/blog"
@@ -110,6 +116,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </Link>
 
         <header className="mt-10">
+          {post.archived ? (
+            <p className="mb-6 rounded-md border border-brand-border bg-brand-surface p-4 text-sm leading-relaxed text-brand-secondary">
+              Archived briefing. This page remains available for reference, but it is no
+              longer part of CannaShield&apos;s reviewed public resource library.
+            </p>
+          ) : null}
           <p className="section-label">{post.category}</p>
           <h1 className="max-w-4xl font-serif text-[40px] font-semibold leading-headline text-brand-primary sm:text-6xl">
             {post.title}
@@ -125,6 +137,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {formatBlogDate(post.publishedDate)}
             </time>
             <span>{post.readTime}</span>
+            {post.reviewedDate ? (
+              <span>Fact-checked {formatBlogDate(post.reviewedDate)}</span>
+            ) : null}
           </div>
         </header>
 
@@ -144,6 +159,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           className="blog-article-content mx-auto mt-12 max-w-3xl"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
+
+        {post.sources.length ? (
+          <section className="mx-auto mt-10 max-w-3xl rounded-lg border border-brand-border bg-brand-surface p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
+              Primary sources
+            </p>
+            <ul className="mt-4 grid gap-3">
+              {post.sources.map((source) => (
+                <li key={source.url}>
+                  <a
+                    href={source.url}
+                    rel="noopener noreferrer"
+                    className="focus-ring rounded-sm text-sm font-semibold text-brand-accent transition-colors hover:text-brand-accent-hover"
+                  >
+                    {source.label} — {source.publisher} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         <div className="mx-auto mt-12 max-w-3xl rounded-lg border border-brand-border bg-brand-surface/60 p-6">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
@@ -184,7 +220,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </article>
 
-      <section className="section-shell pt-0">
+      {!post.archived ? <section className="section-shell pt-0">
         <div className="mx-auto max-w-5xl">
           <p className="section-label">MORE INTEL</p>
           <h2 className="max-w-3xl font-serif text-3xl font-semibold leading-headline text-brand-primary sm:text-4xl">
@@ -214,7 +250,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ))}
           </div>
         </div>
-      </section>
+      </section> : null}
     </>
   )
 }

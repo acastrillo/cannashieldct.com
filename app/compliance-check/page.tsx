@@ -6,14 +6,14 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { complianceCheckJsonLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Free Cannabis Compliance Quick-Check — CT, NY, MA, IL, CA',
+  title: 'Free Connecticut Cannabis Security Readiness Check',
   description:
-    'Free cannabis cyber compliance gap analysis. See which security controls your state expects, get a readiness score, and identify critical gaps before your next license renewal or insurance underwriting.',
+    'Free Connecticut cannabis security-readiness check. Review eight practical controls and identify gaps before license renewal, insurance underwriting, or counsel review.',
   alternates: { canonical: '/compliance-check' },
   openGraph: {
     title: 'Free Cannabis Compliance Quick-Check | CannaShield',
     description:
-      'State-by-state gap analysis against your current cyber posture — CT, NY, MA, IL, CA. Know your gaps before renewal.',
+      'A Connecticut-focused review of practical security controls for licensed cannabis operators.',
     url: '/compliance-check',
   },
 }
@@ -27,21 +27,21 @@ export default function ComplianceCheckPage() {
           <div>
             <p className="section-label">FREE COMPLIANCE QUICK-CHECK</p>
             <h1 className="font-serif text-[42px] font-semibold leading-headline text-brand-primary sm:text-6xl">
-              Cannabis Compliance Gap Analysis
+              Connecticut Cannabis Security Readiness
             </h1>
             <p className="support-copy mt-6 max-w-2xl">
-              Select your state and operator type, tell us which security controls you have
-              today, and get a readiness score mapped against your state&apos;s cannabis
-              cybersecurity expectations. Takes 60 seconds.
+              Tell us your Connecticut operator type and which security controls you have
+              today. You&apos;ll receive a practical readiness score grounded in Connecticut
+              data-protection obligations and established security guidance. Takes 60 seconds.
             </p>
             <div className="mt-8 grid gap-3 text-sm leading-relaxed text-brand-secondary sm:grid-cols-2">
               <div className="rounded-lg border border-brand-border bg-brand-surface p-4">
-                Covers Connecticut, New York, Massachusetts, Illinois, and California —
-                mapped to each state&apos;s cannabis regulations and data-security statutes.
+                Built for Connecticut dispensaries, cultivators, processors,
+                manufacturers, MSOs, and ancillary cannabis businesses.
               </div>
               <div className="rounded-lg border border-brand-border bg-brand-surface p-4">
-                Illinois is the strictest: CRTA and PIPA explicitly require MFA and
-                encryption. Your gaps here will surface at license renewal.
+                Separates Connecticut legal obligations from recommended safeguards.
+                This is security-readiness guidance, not legal advice.
               </div>
             </div>
           </div>
@@ -65,11 +65,10 @@ export default function ComplianceCheckPage() {
               What does the compliance check assess?
             </summary>
             <p className="mt-4 text-base leading-relaxed text-brand-secondary">
-              It maps eight critical security controls against each state&apos;s cannabis
-              regulations and data-security statutes — MFA on email, MFA on POS, EDR on
-              endpoints, written ISP, vendor risk register, incident response plan, security
-              training, and encrypted backups. Each control is weighted by criticality and
-              state-specific legal requirements.
+              It reviews eight practical controls: MFA on email and POS, endpoint
+              protection, a written security program, vendor risk, incident response,
+              training, and tested encrypted backups. Weighting reflects operational risk,
+              not a claim that every control is expressly mandated by Connecticut cannabis rules.
             </p>
           </details>
           <details className="rounded-lg border border-brand-border bg-brand-surface p-5">
@@ -84,14 +83,13 @@ export default function ComplianceCheckPage() {
           </details>
           <details className="rounded-lg border border-brand-border bg-brand-surface p-5">
             <summary className="cursor-pointer text-lg font-semibold text-brand-primary">
-              Why is Illinois stricter than other states?
+              Which Connecticut laws inform this check?
             </summary>
             <p className="mt-4 text-base leading-relaxed text-brand-secondary">
-              The Illinois Cannabis Regulation and Tax Act (CRTA) and Personal Information
-              Protection Act (PIPA) explicitly require licensees to implement multi-factor
-              authentication for system access and encryption of all personal and financial
-              data. These are among the most specific cybersecurity mandates in state cannabis
-              law as of mid-2026.
+              Connecticut General Statutes § 42-471 requires organizations that possess
+              another person&apos;s personal information to safeguard it from misuse. Section
+              36a-701b establishes breach-notification duties, and the CTDPA adds obligations
+              for covered controllers. Applicability depends on your data and business model.
             </p>
           </details>
           <details className="rounded-lg border border-brand-border bg-brand-surface p-5">
@@ -99,12 +97,55 @@ export default function ComplianceCheckPage() {
               What happens after the check?
             </summary>
             <p className="mt-4 text-base leading-relaxed text-brand-secondary">
-              Your results include a pass/gap badge per control and a state-specific note.
+              Your results include a pass/gap badge per control and a Connecticut-specific note.
               Critical gaps link to CannaShield&apos;s License Protection service, which builds
-              the written ISP, vendor register, and IR plan your state expects — documented
-              and audit-ready before your next renewal.
+              a written security program, vendor register, and incident response plan —
+              documented for renewal, insurance, and counsel review.
             </p>
           </details>
+        </div>
+        <div className="mt-8 rounded-lg border border-brand-border bg-brand-surface p-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
+            Official Connecticut sources
+          </p>
+          <ul className="mt-4 grid gap-3 text-sm font-semibold text-brand-accent">
+            <li>
+              <a
+                href="https://www.cga.ct.gov/current/pub/chap_743dd.htm"
+                rel="noopener noreferrer"
+                className="focus-ring rounded-sm hover:text-brand-accent-hover"
+              >
+                Conn. Gen. Stat. § 42-471 — safeguarding personal information ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.cga.ct.gov/current/pub/chap_669.htm#sec_36a-701b"
+                rel="noopener noreferrer"
+                className="focus-ring rounded-sm hover:text-brand-accent-hover"
+              >
+                Conn. Gen. Stat. § 36a-701b — breach notification ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://portal.ct.gov/ag/sections/privacy/the-connecticut-data-privacy-act"
+                rel="noopener noreferrer"
+                className="focus-ring rounded-sm hover:text-brand-accent-hover"
+              >
+                Connecticut Attorney General — CTDPA guidance ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://portal.ct.gov/cannabis/knowledge-base/articles/policies-and-procedures"
+                rel="noopener noreferrer"
+                className="focus-ring rounded-sm hover:text-brand-accent-hover"
+              >
+                Connecticut DCP — cannabis policies and procedures ↗
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
     </>

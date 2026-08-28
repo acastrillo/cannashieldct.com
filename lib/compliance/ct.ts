@@ -4,7 +4,7 @@ const ct: StateRuleset = {
   state: 'CT',
   fullName: 'Connecticut',
   statuteNote:
-    "Connecticut's Department of Consumer Protection cannabis regulations, the Connecticut Data Privacy Act (CTDPA), and general breach notification law (Conn. Gen. Stat. § 36a-701b) collectively require licensed operators to implement reasonable security practices and maintain written security programs for personal data. This assessment reflects commonly expected controls — it is not legal advice. Consult qualified counsel regarding your specific DCP licensing obligations.",
+    'Connecticut General Statutes § 42-471 requires any person possessing another person\'s personal information to safeguard it from misuse. Section 36a-701b establishes breach-notification duties, and the CTDPA adds privacy and security obligations for covered controllers. Connecticut cannabis rules focus heavily on physical security and inventory control; this score therefore combines legal context with recommended cyber safeguards. It is not legal advice.',
   controls: [
     {
       id: 'mfa-email',
@@ -20,7 +20,7 @@ const ct: StateRuleset = {
       weight: 15,
       criticalGap: false,
       gapNote:
-        'POS compromise can trigger reporting obligations and license risk. Multi-factor access is increasingly expected by Connecticut DCP during audits.',
+        'Compromised POS credentials can expose payment, customer, or operational data. MFA is a recommended safeguard; this check does not represent it as an express Connecticut cannabis mandate.',
     },
     {
       id: 'edr-endpoints',
@@ -28,7 +28,7 @@ const ct: StateRuleset = {
       weight: 12,
       criticalGap: false,
       gapNote:
-        'Endpoint detection is a standard expectation under Connecticut reasonable-security frameworks and most cyber insurance applications.',
+        'Managed endpoint protection helps detect malware and unauthorized activity. It is a recommended safeguard and a common insurance-control question, not an express Connecticut cannabis mandate.',
     },
     {
       id: 'written-isp',
@@ -36,7 +36,7 @@ const ct: StateRuleset = {
       weight: 12,
       criticalGap: true,
       gapNote:
-        'The CTDPA and DCP cannabis regulations expect documented security programs. This gap frequently surfaces during DCP audits and insurance underwriting.',
+        'A written security program turns safeguards, ownership, and evidence into a repeatable operating process. It supports reasonable-security and insurance reviews, but applicability and legal sufficiency require counsel.',
     },
     {
       id: 'vendor-risk',
@@ -44,7 +44,7 @@ const ct: StateRuleset = {
       weight: 10,
       criticalGap: false,
       gapNote:
-        'Connecticut DCP increasingly reviews third-party security in cannabis audits. Document your METRC, POS, and compliance vendors.',
+        'Document the vendors that handle regulated, personal, financial, and operational data. Vendor review is recommended risk management; this check does not claim DCP expressly requires a vendor register.',
     },
     {
       id: 'ir-plan',
@@ -52,7 +52,7 @@ const ct: StateRuleset = {
       weight: 10,
       criticalGap: false,
       gapNote:
-        "Connecticut's breach notification statute requires prompt response. A documented IR plan is the baseline for meeting that obligation.",
+        'Connecticut § 36a-701b creates breach-notification duties when covered personal information is involved. A documented response plan helps an operator investigate and coordinate notice, but counsel should determine actual obligations and deadlines.',
     },
     {
       id: 'security-training',
@@ -60,7 +60,7 @@ const ct: StateRuleset = {
       weight: 8,
       criticalGap: false,
       gapNote:
-        'Social engineering targets budtenders and admin staff alike. Annual training demonstrates reasonable care under Connecticut law.',
+        'Role-based training reduces phishing and payment-fraud risk. It is a recommended safeguard, not an express Connecticut cannabis mandate.',
     },
     {
       id: 'encrypted-backups',
@@ -68,7 +68,7 @@ const ct: StateRuleset = {
       weight: 18,
       criticalGap: false,
       gapNote:
-        'Encryption of personal and financial data is expected under the CTDPA. Untested backups are a ransomware liability that DCP and insurers both scrutinize.',
+        'Tested, protected backups support ransomware recovery. Encryption can also affect the analysis of a breach under § 36a-701b, but this control is presented as recommended resilience—not a blanket DCP requirement.',
     },
   ],
 }

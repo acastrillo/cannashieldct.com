@@ -1,6 +1,11 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
+import {
+  BLOG_EDITORIAL,
+  renderEditorialContent,
+  type EditorialSource,
+} from '@/lib/blog-editorial'
 import { absoluteUrl, founderName } from '@/lib/seo'
 
 const blogDirectory = path.join(process.cwd(), 'blog')
@@ -22,6 +27,9 @@ export type BlogPost = {
   modifiedDate: string
   readTime: string
   contentHtml: string
+  archived: boolean
+  reviewedDate?: string
+  sources: EditorialSource[]
 }
 
 function decodeHtml(value: string) {
@@ -260,6 +268,7 @@ function parseBlogPost(sourceFile: string): BlogPost {
   const html = fs.readFileSync(sourcePath, 'utf8')
   const schema = extractArticleSchema(html)
   const slug = sourceFile.replace(/\.html$/i, '')
+  const editorial = BLOG_EDITORIAL[slug]
   const rawTitle =
     (typeof schema?.headline === 'string' ? schema.headline : '') ||
     extractMeta(html, 'og:title') ||
@@ -286,19 +295,24 @@ function parseBlogPost(sourceFile: string): BlogPost {
     legacyUrl: `/blog/${sourceFile}`,
     url: `/blog/${slug}`,
     canonicalUrl: absoluteUrl(`/blog/${slug}`),
-    title,
-    description,
+    title: editorial?.title ?? title,
+    description: editorial?.description ?? description,
     image: assetPathFromImage(rawImage),
-    imageAlt: extractAttribute(imageTag, 'alt') || title,
-    category: getCategory(html),
+    imageAlt: editorial?.title ?? (extractAttribute(imageTag, 'alt') || title),
+    category: editorial?.category ?? getCategory(html),
     publishedDate,
-    modifiedDate,
+    modifiedDate: editorial?.reviewedDate ?? modifiedDate,
     readTime: getReadTime(html),
-    contentHtml: cleanArticleContent(contentSource, title),
+    contentHtml: editorial
+      ? renderEditorialContent(editorial)
+      : cleanArticleContent(contentSource, title),
+    archived: !editorial,
+    reviewedDate: editorial?.reviewedDate,
+    sources: editorial?.sources ?? [],
   }
 }
 
-export function getBlogPosts() {
+export function getAllBlogPosts() {
   if (!fs.existsSync(blogDirectory)) return []
 
   return fs
@@ -311,8 +325,12 @@ export function getBlogPosts() {
     })
 }
 
+export function getBlogPosts() {
+  return getAllBlogPosts().filter((post) => !post.archived)
+}
+
 export function getBlogPost(slug: string) {
-  return getBlogPosts().find((post) => post.slug === slug)
+  return getAllBlogPosts().find((post) => post.slug === slug)
 }
 
 export function formatBlogDate(date: string) {

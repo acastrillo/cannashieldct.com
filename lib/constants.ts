@@ -186,12 +186,12 @@ export const servicePages = {
       {
         question: 'Which states have cyber requirements for cannabis operators?',
         answer:
-          'Illinois is the strictest — mandating MFA and encryption by rule. Connecticut, New York, Massachusetts, and California all have data security statutes that apply to cannabis operators via their data handling. We audit against your specific state(s).',
+          'CannaShield currently serves Connecticut operators only. We map Connecticut data-protection and breach-notification obligations to practical security controls, then separate legal requirements from recommended safeguards. Counsel should confirm how each obligation applies to your business.',
       },
       {
         question: 'How long does LP-2 take?',
         answer:
-          'Three weeks for a single state. Up to four and a half weeks for three states. You receive a written findings report, a gap remediation roadmap, and a control evidence binder formatted for your regulator.',
+          'Three weeks for a Connecticut engagement. You receive a written findings report, a prioritized remediation roadmap, and a control evidence binder prepared for renewal, insurance, investor, and counsel review.',
       },
       {
         question: "What's included in the Schedule III Readiness Assessment (LP-3)?",

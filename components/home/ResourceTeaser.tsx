@@ -43,7 +43,7 @@ export function ResourceTeaser({ posts }: ResourceTeaserProps) {
   return (
     <FadeIn as="section" id="resources" className="section-shell">
       <p className="section-label">RESOURCES</p>
-      <h2 className="section-heading">Cannabis cyber intel, decoded.</h2>
+      <h2 className="section-heading">Reviewed guidance for Connecticut operators.</h2>
       <div className="mt-12 grid gap-5 lg:grid-cols-3">
         {posts.map((post) => (
           <article

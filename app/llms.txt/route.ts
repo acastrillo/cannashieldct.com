@@ -7,7 +7,7 @@ Brand names: CannaShield, CannaShield CT
 Primary contact: Alejo@cannashieldct.com
 Phone: +1-203-443-1473
 Audience: cannabis dispensaries, cultivators, manufacturers, processors, MSOs, and ancillary cannabis operators.
-Service area: Connecticut-based and remote-friendly support for cannabis operators beyond Connecticut.
+Service area: Licensed cannabis operators in Connecticut.
 
 ## What CannaShield Does
 

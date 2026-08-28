@@ -1,19 +1,11 @@
-import ca from './ca'
 import ct from './ct'
-import il from './il'
-import ma from './ma'
-import ny from './ny'
 
 export type { ControlId, ControlRule, StateRuleset } from './types'
 
-export { ca, ct, il, ma, ny }
+export { ct }
 
 export const STATE_RULESETS: Record<string, import('./types').StateRuleset> = {
   CT: ct,
-  NY: ny,
-  MA: ma,
-  IL: il,
-  CA: ca,
 }
 
 export const OPERATOR_TYPES = [

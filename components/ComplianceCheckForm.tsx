@@ -31,15 +31,10 @@ declare global {
   }
 }
 
-const SUPPORTED_STATES = ['CT', 'NY', 'MA', 'IL', 'CA'] as const
-type SupportedState = (typeof SUPPORTED_STATES)[number]
+type SupportedState = 'CT'
 
 const STATE_LABELS: Record<SupportedState, string> = {
   CT: 'Connecticut',
-  NY: 'New York',
-  MA: 'Massachusetts',
-  IL: 'Illinois',
-  CA: 'California',
 }
 
 const CONTROL_LABELS: Record<ControlId, string> = {
@@ -68,7 +63,7 @@ const selectClass =
 export function ComplianceCheckForm() {
   const turnstileRef = useRef<HTMLDivElement | null>(null)
   const turnstileWidgetId = useRef<string | null>(null)
-  const [state, setState] = useState<SupportedState | ''>('')
+  const state: SupportedState = 'CT'
   const [operatorType, setOperatorType] = useState('')
   const [controls, setControls] = useState<ControlId[]>([])
   const [email, setEmail] = useState('')
@@ -109,7 +104,6 @@ export function ComplianceCheckForm() {
     e.preventDefault()
     setError('')
 
-    if (!state) { setError('Select your state.'); return }
     if (!operatorType) { setError('Select your operator type.'); return }
     if (turnstileSiteKey && !turnstileToken) {
       setError('Complete the verification check, then submit.')
@@ -150,7 +144,7 @@ export function ComplianceCheckForm() {
         <div className="grid gap-5">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-accent">
-              Compliance check complete
+              Security readiness check complete
             </p>
             <p className="mt-2 text-lg font-semibold text-brand-primary">
               {STATE_LABELS[result.state as SupportedState] ?? result.state} {result.operatorType} scored {result.score}/100.
@@ -193,7 +187,7 @@ export function ComplianceCheckForm() {
 
           <div className="rounded-md border border-brand-border bg-brand-background p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-brand-secondary">
-              State-specific note
+              Connecticut legal context
             </p>
             <p className="mt-2 text-sm leading-relaxed text-brand-secondary">
               {result.statuteNote}
@@ -207,8 +201,8 @@ export function ComplianceCheckForm() {
               </p>
               <p className="mt-2 text-sm leading-relaxed text-brand-secondary">
                 CannaShield&apos;s License Protection service builds the written security program,
-                vendor risk register, and IR plan your state expects — documented and
-                audit-ready.
+                vendor risk register, and IR plan your operation needs — documented and
+                ready for renewal, insurance, and counsel review.
               </p>
               <Button asChild size="sm" className="mt-4">
                 <Link href="/services/license-protection">
@@ -219,7 +213,7 @@ export function ComplianceCheckForm() {
           ) : null}
 
           <div className="text-xs leading-relaxed text-brand-secondary opacity-70">
-            Controls present: {present.length}/{result.controlResults.length}. Score reflects weighted control coverage — not a legal determination. Consult qualified counsel for your state&apos;s specific requirements.
+            Controls present: {present.length}/{result.controlResults.length}. Score reflects weighted security-readiness coverage — not a legal determination. Consult qualified Connecticut counsel for your specific obligations.
           </div>
 
           <Button
@@ -258,22 +252,14 @@ export function ComplianceCheckForm() {
                 htmlFor="compliance-state"
                 className="mb-2 block text-sm font-semibold text-brand-primary"
               >
-                State
+                Jurisdiction
               </label>
-              <select
+              <div
                 id="compliance-state"
-                required
-                value={state}
-                onChange={(e) => setState(e.target.value as SupportedState | '')}
-                className={selectClass}
+                className={`${selectClass} items-center`}
               >
-                <option value="">Select state…</option>
-                {SUPPORTED_STATES.map((s) => (
-                  <option key={s} value={s}>
-                    {STATE_LABELS[s]}
-                  </option>
-                ))}
-              </select>
+                Connecticut
+              </div>
             </div>
             <div>
               <label
@@ -341,7 +327,7 @@ export function ComplianceCheckForm() {
           {turnstileSiteKey ? <div ref={turnstileRef} className="min-h-[65px]" /> : null}
 
           <Button type="submit" size="lg" disabled={loading}>
-            {loading ? 'Checking compliance...' : 'Run the compliance check →'}
+            {loading ? 'Checking readiness...' : 'Run the readiness check →'}
           </Button>
           {error ? (
             <p className="text-sm text-brand-primary">

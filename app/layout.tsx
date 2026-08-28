@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: '%s | CannaShield',
   },
   description:
-    'Cybersecurity, GRC, vCISO, and email security scorecards for cannabis dispensaries, cultivators, and licensed operators in Connecticut and beyond.',
+    'Cybersecurity, GRC, vCISO, and email security scorecards for licensed cannabis dispensaries, cultivators, processors, and operators in Connecticut.',
   keywords: [
     'cannabis cybersecurity',
     'Connecticut dispensary compliance',

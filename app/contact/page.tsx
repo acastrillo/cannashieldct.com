@@ -10,7 +10,7 @@ const phoneDisplay = '(203) 443-1473'
 export const metadata: Metadata = {
   title: 'Contact CannaShield | Cannabis Cybersecurity Support',
   description:
-    'Get in touch with CannaShield for cannabis cybersecurity, vCISO, GRC, cyber insurance readiness, and incident response support. Connecticut-based, remote-friendly.',
+    'Get in touch with CannaShield for Connecticut cannabis cybersecurity, vCISO, GRC, cyber insurance readiness, and incident response support.',
   alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact CannaShield | Cannabis Cybersecurity Support',
@@ -38,8 +38,8 @@ export default function ContactPage() {
         <p className="section-label">CONTACT</p>
         <h1 className="section-heading">Talk to CannaShield.</h1>
         <p className="support-copy mt-6 max-w-2xl">
-          Cannabis-specific cybersecurity, GRC, and vCISO support. Connecticut-based,
-          remote-friendly for operators across the United States. The fastest way to
+          Cannabis-specific cybersecurity, GRC, and vCISO support for Connecticut
+          operators. The fastest way to
           start is the free Email Security Scorecard or a 30-minute call.
         </p>
 
@@ -95,8 +95,8 @@ export default function ContactPage() {
               Where we work
             </h2>
             <p className="mt-4 text-base leading-relaxed text-brand-secondary">
-              CannaShield is based in Connecticut and supports licensed cannabis
-              operators across the United States — dispensaries, cultivators,
+              CannaShield is based in Connecticut and supports licensed Connecticut
+              cannabis operators — dispensaries, cultivators,
               processors, manufacturers, MSOs, and ancillary cannabis businesses.
             </p>
           </div>

@@ -7,14 +7,14 @@ import { formatBlogDate, getBlogPosts } from '@/lib/blog'
 import { absoluteUrl } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Cannabis Cybersecurity Blog',
+  title: 'Connecticut Cannabis Security Resource Library',
   description:
-    'Cannabis cyber intel, breach analysis, compliance notes, and operator-ready security guidance from CannaShield.',
+    'Fact-checked cybersecurity guidance for Connecticut cannabis operators, covering ransomware recovery, email fraud, vendor risk, identity, and operational technology.',
   alternates: { canonical: '/blog' },
   openGraph: {
-    title: 'Cannabis Cybersecurity Blog | CannaShield',
+    title: 'Connecticut Cannabis Security Resource Library | CannaShield',
     description:
-      'Cannabis cyber intel, breach analysis, compliance notes, and operator-ready security guidance from CannaShield.',
+      'Fact-checked, primary-source-backed cybersecurity guidance for Connecticut cannabis operators.',
     url: '/blog',
   },
 }
@@ -27,9 +27,9 @@ export default function BlogPage() {
     '@type': 'Blog',
     '@id': `${absoluteUrl('/blog')}#blog`,
     url: absoluteUrl('/blog'),
-    name: 'CannaShield Cannabis Cybersecurity Blog',
+    name: 'CannaShield Connecticut Cannabis Security Resource Library',
     description:
-      'Cannabis cyber intel, breach analysis, compliance notes, and operator-ready security guidance.',
+      'Fact-checked cybersecurity guidance for Connecticut cannabis operators.',
     publisher: { '@id': absoluteUrl('/#organization') },
     inLanguage: 'en-US',
     blogPost: posts.slice(0, 25).map((post) => ({
@@ -58,11 +58,15 @@ export default function BlogPage() {
       <JsonLd id="blog-jsonld" data={[blogJsonLd, itemListJsonLd]} />
       <section className="section-shell pt-32 sm:pt-40">
         <p className="section-label">RESOURCES</p>
-        <h1 className="section-heading">Cannabis cyber intel, decoded.</h1>
+        <h1 className="section-heading">Connecticut cannabis security, made practical.</h1>
         <p className="support-copy mt-6 max-w-2xl">
-          Breach analysis, compliance watch notes, and security guidance for
-          cannabis operators who need plain-English risk signals before a cyber
-          event turns into downtime, insurance trouble, or license exposure.
+          A curated, fact-checked library for operators who need practical guidance on
+          ransomware recovery, email fraud, vendor risk, identity, endpoints, and the
+          connected systems that keep the business open.
+        </p>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-secondary">
+          Articles link to the primary government or vendor sources used in review.
+          Recommended safeguards are clearly separated from legal requirements.
         </p>
 
         {featuredPost ? (
@@ -84,7 +88,7 @@ export default function BlogPage() {
             </Link>
             <div className="p-6 sm:p-8 lg:p-10">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-accent">
-                Latest / {featuredPost.category}
+                Featured / {featuredPost.category}
               </p>
               <h2 className="mt-5 font-serif text-3xl font-semibold leading-headline text-brand-primary sm:text-4xl">
                 <Link
@@ -104,7 +108,7 @@ export default function BlogPage() {
                 href={featuredPost.url}
                 className="focus-ring mt-7 inline-flex rounded-sm text-sm font-semibold text-brand-accent transition-colors hover:text-brand-accent-hover"
               >
-                Read latest briefing →
+                Read reviewed briefing →
               </Link>
             </div>
           </article>

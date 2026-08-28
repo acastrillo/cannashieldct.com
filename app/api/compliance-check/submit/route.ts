@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
 
   if (!STATE_RULESETS[state]) {
     return NextResponse.json(
-      { ok: false, error: 'Select a supported state (CT, NY, MA, IL, CA).' },
+      { ok: false, error: 'This assessment currently supports Connecticut operators only.' },
       { status: 400 },
     )
   }

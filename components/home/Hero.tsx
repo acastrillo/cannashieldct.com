@@ -20,10 +20,10 @@ export function Hero() {
             your firewall.
           </h1>
           <p className="support-copy mt-7 max-w-2xl">
-            CannaShield gives cannabis dispensaries, cultivators, and MSOs in
-            CT, NY, MA, NJ, and IL the vCISO services, GRC frameworks, and
-            cybersecurity assessments to stay licensed when attackers come
-            calling.
+            CannaShield gives Connecticut cannabis dispensaries, cultivators,
+            processors, and MSOs the vCISO services, GRC frameworks, and
+            cybersecurity assessments to protect operations, strengthen
+            insurance readiness, and produce defensible control evidence.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button

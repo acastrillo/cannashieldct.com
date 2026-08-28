@@ -31,7 +31,7 @@ const tools: ToolCard[] = [
   {
     title: 'Cannabis Compliance Quick-Check',
     description:
-      'State-by-state gap analysis against your current cyber posture — CT, NY, MA, IL, CA. Know your gaps before renewal or insurance underwriting.',
+      'A Connecticut-focused security-readiness check for cannabis operators. See where your controls need work before renewal, insurance underwriting, or counsel review.',
     meta: 'Free · 60 seconds · No account needed',
     href: '/compliance-check',
     cta: 'Check your compliance →',
