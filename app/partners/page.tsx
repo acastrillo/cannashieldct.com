@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     description:
       'Referral and delivery channels for MSPs, insurance brokers, and law firms serving cannabis operators.',
     url: '/partners',
+    images: ['/og-image.png'],
   },
 }
 

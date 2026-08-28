@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     description:
       'Incident response retainers, BEC defense, and ransomware resilience audits for cannabis POS, email, and recovery risk.',
     url: '/services/downtime-prevention',
+    images: ['/og-image.png'],
   },
 }
 

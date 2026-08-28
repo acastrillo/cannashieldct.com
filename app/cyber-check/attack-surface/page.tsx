@@ -6,7 +6,7 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { attackSurfaceJsonLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Free Attack Surface Snapshot — See What Attackers See',
+  title: 'Free Cannabis Attack Surface Snapshot',
   description:
     'Free passive attack-surface scan for cannabis operators. Check open ports, exposed subdomains, breach history, email spoofing, and security headers — see what attackers already know about your domain.',
   alternates: { canonical: '/cyber-check/attack-surface' },
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     description:
       'See what Shodan, certificate logs, and breach databases already know about your business — in 60 seconds, no account needed.',
     url: '/cyber-check/attack-surface',
+    images: ['/og-image.png'],
   },
 }
 

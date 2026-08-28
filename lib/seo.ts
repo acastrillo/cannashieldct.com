@@ -17,7 +17,7 @@ export const organizationJsonLd = {
   name: 'CannaShield',
   alternateName: 'CannaShield CT',
   url: absoluteUrl('/'),
-  logo: absoluteUrl('/og-image.png'),
+  logo: absoluteUrl('/icon.png'),
   image: absoluteUrl('/og-image.png'),
   email: publicContactEmail,
   telephone: publicPhone,
@@ -66,6 +66,7 @@ export const websiteJsonLd = {
   '@id': absoluteUrl('/#website'),
   url: absoluteUrl('/'),
   name: 'CannaShield',
+  alternateName: 'CannaShield CT',
   publisher: { '@id': absoluteUrl('/#organization') },
   inLanguage: 'en-US',
 }
@@ -116,9 +117,9 @@ export function homePageJsonLd() {
       '@type': 'WebPage',
       '@id': absoluteUrl('/#webpage'),
       url: absoluteUrl('/'),
-      name: 'CannaShield | Cannabis Cybersecurity, GRC & Email Security',
+      name: 'Connecticut Cannabis Cybersecurity & Compliance | CannaShield',
       description:
-        'Cannabis cybersecurity, virtual CISO, GRC, cyber insurance readiness, incident response, and email security support for licensed cannabis operators.',
+        'Connecticut cannabis cybersecurity, virtual CISO, GRC, cyber insurance readiness, incident response, and email security support for licensed operators.',
       isPartOf: { '@id': absoluteUrl('/#website') },
       about: { '@id': absoluteUrl('/#organization') },
       primaryImageOfPage: absoluteUrl('/og-image.png'),

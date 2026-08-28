@@ -4,18 +4,19 @@ import Link from 'next/link'
 
 import { JsonLd } from '@/components/seo/JsonLd'
 import { formatBlogDate, getBlogPosts } from '@/lib/blog'
-import { absoluteUrl } from '@/lib/seo'
+import { absoluteUrl, founderName } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Connecticut Cannabis Security Resource Library',
+  title: 'Connecticut Cannabis Cybersecurity Blog',
   description:
     'Fact-checked cybersecurity guidance for Connecticut cannabis operators, covering ransomware recovery, email fraud, vendor risk, identity, and operational technology.',
   alternates: { canonical: '/blog' },
   openGraph: {
-    title: 'Connecticut Cannabis Security Resource Library | CannaShield',
+    title: 'Connecticut Cannabis Cybersecurity Blog | CannaShield',
     description:
       'Fact-checked, primary-source-backed cybersecurity guidance for Connecticut cannabis operators.',
     url: '/blog',
+    images: ['/og-image.png'],
   },
 }
 
@@ -27,7 +28,7 @@ export default function BlogPage() {
     '@type': 'Blog',
     '@id': `${absoluteUrl('/blog')}#blog`,
     url: absoluteUrl('/blog'),
-    name: 'CannaShield Connecticut Cannabis Security Resource Library',
+    name: 'CannaShield Connecticut Cannabis Cybersecurity Blog',
     description:
       'Fact-checked cybersecurity guidance for Connecticut cannabis operators.',
     publisher: { '@id': absoluteUrl('/#organization') },
@@ -35,9 +36,13 @@ export default function BlogPage() {
     blogPost: posts.slice(0, 25).map((post) => ({
       '@type': 'BlogPosting',
       headline: post.title,
+      description: post.description,
       url: post.canonicalUrl,
       datePublished: post.publishedDate,
+      dateModified: post.modifiedDate,
       image: absoluteUrl(post.image),
+      author: { '@type': 'Person', name: founderName },
+      publisher: { '@id': absoluteUrl('/#organization') },
     })),
   }
   const itemListJsonLd = {
@@ -52,12 +57,34 @@ export default function BlogPage() {
       name: post.title,
     })),
   }
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `${absoluteUrl('/blog')}#breadcrumbs`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: absoluteUrl('/'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: absoluteUrl('/blog'),
+      },
+    ],
+  }
 
   return (
     <>
-      <JsonLd id="blog-jsonld" data={[blogJsonLd, itemListJsonLd]} />
+      <JsonLd
+        id="blog-jsonld"
+        data={[blogJsonLd, itemListJsonLd, breadcrumbJsonLd]}
+      />
       <section className="section-shell pt-32 sm:pt-40">
-        <p className="section-label">RESOURCES</p>
+        <p className="section-label">BLOG</p>
         <h1 className="section-heading">Connecticut cannabis security, made practical.</h1>
         <p className="support-copy mt-6 max-w-2xl">
           A curated, fact-checked library for operators who need practical guidance on

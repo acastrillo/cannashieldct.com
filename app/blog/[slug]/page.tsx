@@ -43,6 +43,8 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
+    authors: [{ name: founderName }],
+    category: post.category,
     alternates: {
       canonical: post.url,
     },
@@ -53,6 +55,8 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: post.publishedDate,
       modifiedTime: post.modifiedDate,
+      authors: [founderName],
+      section: post.category,
       images: [{ url: post.image }],
     },
     twitter: {

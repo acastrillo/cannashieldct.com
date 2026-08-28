@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     description:
       'Cyber insurance readiness documentation, MFA and EDR evidence, renewal defense, and broker-facing technical support for cannabis operators.',
     url: '/services/insurance-qualification',
+    images: ['/og-image.png'],
   },
 }
 

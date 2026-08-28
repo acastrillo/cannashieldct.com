@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://cannashieldct.com'),
   applicationName: 'CannaShield',
   title: {
-    default: 'CannaShield | Cannabis Cybersecurity, GRC & Email Security',
+    default: 'Connecticut Cannabis Cybersecurity & Compliance | CannaShield',
     template: '%s | CannaShield',
   },
   description:
-    'Cybersecurity, GRC, vCISO, and email security scorecards for licensed cannabis dispensaries, cultivators, processors, and operators in Connecticut.',
+    'Connecticut cannabis cybersecurity, vCISO, GRC, cyber insurance readiness, and incident-response support for dispensaries, cultivators, and processors.',
   keywords: [
     'cannabis cybersecurity',
     'Connecticut dispensary compliance',
@@ -46,21 +46,24 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'CannaShield | Cannabis Cybersecurity, GRC & Email Security',
+    title: 'Connecticut Cannabis Cybersecurity & Compliance | CannaShield',
     description:
       'Connecticut-based cybersecurity and GRC support for cannabis operators, with a free email security scorecard for DMARC, SPF, and DKIM exposure.',
     url: 'https://cannashieldct.com',
     siteName: 'CannaShield',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'CannaShield — Connecticut cannabis cybersecurity and compliance',
+      },
+    ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CannaShield | Cannabis Cybersecurity, GRC & Email Security',
-    description:
-      'Cybersecurity, GRC, vCISO, and email security scorecards for cannabis operators.',
-    images: ['/og-image.png'],
   },
   robots: {
     index: true,

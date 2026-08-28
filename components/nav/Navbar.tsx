@@ -17,7 +17,7 @@ import { cn } from '@/lib/utils'
 
 const navLinks = [
   { label: 'Free Tools', href: '/#free-tools' },
-  { label: 'Resources', href: '/blog' },
+  { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/#why-cannashield' },
 ]
 
@@ -45,7 +45,7 @@ export function Navbar() {
       <div
         aria-hidden="true"
         className={cn(
-          'pointer-events-none absolute inset-x-0 top-0 -z-10 transition-all duration-300',
+          'pointer-events-none absolute inset-x-0 top-0 -z-10 transition-[bottom,background-color,border-color] duration-300',
           scrolled
             ? 'bottom-0 border-b border-brand-border bg-brand-surface/85 backdrop-blur-md'
             : '-bottom-8 bg-gradient-to-b from-brand-background/85 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_bottom,black,black_55%,transparent)]',

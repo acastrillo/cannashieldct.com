@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     description:
       'Check DMARC, SPF, DKIM, MX, and spoofing exposure before attackers impersonate your domain.',
     url: '/cyber-check',
+    images: ['/og-image.png'],
   },
 }
 

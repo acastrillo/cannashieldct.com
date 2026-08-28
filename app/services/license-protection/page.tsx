@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     description:
       'NIST CSF 2.0-mapped security programs, written ISPs, vendor risk, and audit-ready evidence for cannabis operators.',
     url: '/services/license-protection',
+    images: ['/og-image.png'],
   },
 }
 

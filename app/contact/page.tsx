@@ -8,7 +8,7 @@ import { absoluteUrl, publicContactEmail, publicPhone } from '@/lib/seo'
 const phoneDisplay = '(203) 443-1473'
 
 export const metadata: Metadata = {
-  title: 'Contact CannaShield | Cannabis Cybersecurity Support',
+  title: 'Contact Our Cannabis Cybersecurity Team',
   description:
     'Get in touch with CannaShield for Connecticut cannabis cybersecurity, vCISO, GRC, cyber insurance readiness, and incident response support.',
   alternates: { canonical: '/contact' },
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     description:
       'Connecticut-based cybersecurity and GRC support for licensed cannabis operators. Book a call, email us, or run the free Email Security Scorecard.',
     url: '/contact',
+    images: ['/og-image.png'],
   },
 }
 

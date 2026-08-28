@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     description:
       'A Connecticut-focused review of practical security controls for licensed cannabis operators.',
     url: '/compliance-check',
+    images: ['/og-image.png'],
   },
 }
 
