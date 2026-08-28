@@ -22,7 +22,7 @@ export function FounderAuthority() {
                 Founder
               </p>
               <p className="mt-3 font-serif text-3xl font-semibold leading-tight text-brand-primary sm:text-4xl">
-                Alex Castro
+                Alex Castrillo
               </p>
               <p className="mt-2 text-sm text-brand-secondary">
                 Cyber incident response analyst &middot; vCISO for cannabis operators
@@ -45,7 +45,7 @@ export function FounderAuthority() {
           </h2>
           <div className="mt-7 space-y-5 text-base leading-relaxed text-brand-secondary sm:text-lg">
             <p>
-              Alex Castro is a working cyber incident response analyst in New
+              Alex Castrillo is a working cyber incident response analyst in New
               York City. He&apos;s spent years inside breaches like the ones
               that hit STIIIZY and Trulieve — watching how attackers move, what
               defenders miss, and why most cannabis operators don&apos;t realize

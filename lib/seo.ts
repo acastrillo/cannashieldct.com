@@ -4,7 +4,7 @@ import type { ServiceSlug } from '@/lib/types'
 export const siteUrl = 'https://cannashieldct.com'
 export const publicContactEmail = 'Alejo@cannashieldct.com'
 export const publicPhone = '+1-203-443-1473'
-export const founderName = 'Alex Castro'
+export const founderName = 'Alex Castrillo'
 
 export function absoluteUrl(path = '/') {
   return new URL(path, siteUrl).toString()
