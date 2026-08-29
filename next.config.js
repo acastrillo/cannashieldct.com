@@ -20,7 +20,11 @@ const nextConfig = {
       { source: '/blog_from_s3.html', destination: '/blog', permanent: true },
       { source: '/solutions.html', destination: '/#service-catalog', permanent: true },
       { source: '/pricing.html', destination: '/#service-catalog', permanent: true },
-      { source: '/resources.html', destination: '/blog', permanent: true },
+      {
+        source: '/resources.html',
+        destination: '/resources/connecticut-cannabis-cybersecurity-requirements',
+        permanent: true,
+      },
       { source: '/about.html', destination: '/#why-cannashield', permanent: true },
       { source: '/contact.html', destination: '/contact', permanent: true },
       {

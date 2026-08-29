@@ -17,6 +17,10 @@ import { cn } from '@/lib/utils'
 
 const navLinks = [
   { label: 'Free Tools', href: '/#free-tools' },
+  {
+    label: 'Resources',
+    href: '/resources/connecticut-cannabis-cybersecurity-requirements',
+  },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/#why-cannashield' },
 ]

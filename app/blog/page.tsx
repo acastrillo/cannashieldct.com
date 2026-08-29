@@ -96,6 +96,27 @@ export default function BlogPage() {
           Recommended safeguards are clearly separated from legal requirements.
         </p>
 
+        <aside className="mt-10 grid gap-5 rounded-lg border border-brand-accent/40 bg-brand-surface p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-accent">
+              Evergreen CT reference
+            </p>
+            <h2 className="mt-4 font-serif text-2xl font-semibold leading-headline text-brand-primary sm:text-3xl">
+              Start with Connecticut&apos;s cyber requirements.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-brand-secondary">
+              See the DCP incident clocks, tracking-system controls, privacy rules, and
+              audit evidence in one plain-English guide.
+            </p>
+          </div>
+          <Link
+            href="/resources/connecticut-cannabis-cybersecurity-requirements"
+            className="focus-ring inline-flex min-h-11 items-center justify-center rounded-md border border-brand-border px-5 py-3 text-sm font-semibold text-brand-accent transition-colors hover:border-brand-accent"
+          >
+            Open the CT guide →
+          </Link>
+        </aside>
+
         {featuredPost ? (
           <article className="mt-12 grid overflow-hidden rounded-lg border border-brand-border bg-brand-surface lg:grid-cols-[0.92fr_1.08fr]">
             <Link

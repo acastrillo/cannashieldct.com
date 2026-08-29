@@ -22,6 +22,10 @@ const footerColumns = [
   {
     title: 'Resources',
     links: [
+      {
+        label: 'CT Cyber Requirements',
+        href: '/resources/connecticut-cannabis-cybersecurity-requirements',
+      },
       { label: 'Blog', href: '/blog' },
       { label: 'Cannabis Cyber Brief', href: '/#resources' },
       { label: 'Partner Program', href: '/partners' },

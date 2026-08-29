@@ -62,6 +62,25 @@ export function ResourceTeaser({ posts }: ResourceTeaserProps) {
           <Link href="/blog">Explore the Blog →</Link>
         </Button>
       </div>
+      <article className="mt-10 grid gap-6 rounded-xl border border-brand-accent/40 bg-brand-surface p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
+            Start here / 2026 operator guide
+          </p>
+          <h3 className="mt-4 max-w-3xl font-serif text-3xl font-semibold leading-headline text-brand-primary sm:text-4xl">
+            Connecticut cannabis cybersecurity requirements, without the legal fog.
+          </h3>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-brand-secondary sm:text-base">
+            The DCP reporting clocks, tracking-system controls, privacy rules, and
+            evidence your team should have ready before an incident or inspection.
+          </p>
+        </div>
+        <Button asChild className="w-full shrink-0 sm:w-auto">
+          <Link href="/resources/connecticut-cannabis-cybersecurity-requirements">
+            Read the CT guide →
+          </Link>
+        </Button>
+      </article>
       <div className="mt-12 grid gap-5 lg:grid-cols-3">
         {posts.map((post) => (
           <article

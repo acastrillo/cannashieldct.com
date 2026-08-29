@@ -14,12 +14,16 @@ const routes = [
   { path: '/partners', priority: 0.75 },
   { path: '/contact', priority: 0.7 },
   { path: '/blog', priority: 0.75 },
+  {
+    path: '/resources/connecticut-cannabis-cybersecurity-requirements',
+    priority: 0.9,
+  },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const coreRoutes = routes.map((route) => ({
     url: `${siteUrl}${route.path}`,
-    lastModified: new Date('2026-08-28'),
+    lastModified: new Date('2026-08-29'),
     changeFrequency: route.path === '/' ? ('weekly' as const) : ('monthly' as const),
     priority: route.priority,
   }))
