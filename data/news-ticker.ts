@@ -3,9 +3,8 @@
 // Format: short label — brief impact ·  (trailing space+dot keeps spacing between dupes)
 export const tickerHeadlines: string[] =
   [
-    'STIIIZY — 420,000 records leaked',
-    'MariMed — $650K wired to attackers',
-    'Trulieve — customer data on dark web',
+    'STIIIZY — 380,000 people notified',
+    'MariMed — $646K wired to attackers',
     'MJ Freeway — 14-state outage',
     'Aurora Cannabis — breach disclosed to regulators',
     'Ontario Cannabis Store — customer data leaked',

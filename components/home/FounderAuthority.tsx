@@ -46,8 +46,8 @@ export function FounderAuthority() {
           <div className="mt-7 space-y-5 text-base leading-relaxed text-brand-secondary sm:text-lg">
             <p>
               Alex Castrillo is a working cyber incident response analyst in New
-              York City. He&apos;s spent years inside breaches like the ones
-              that hit STIIIZY and Trulieve — watching how attackers move, what
+              York City. He&apos;s spent years inside breaches like the one
+              that hit STIIIZY — watching how attackers move, what
               defenders miss, and why most cannabis operators don&apos;t realize
               they&apos;re targets until it&apos;s too late.
             </p>

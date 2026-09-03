@@ -42,8 +42,8 @@ export default function AttackSurfacePage() {
                 transparency logs, the public breach directory, DNS, and HTTP headers.
               </div>
               <div className="rounded-lg border border-brand-border bg-brand-surface p-4">
-                Built for cannabis operators: the same exposures behind the STIIIZY,
-                Trulieve, and MariMed incidents start with what&apos;s public.
+                Built for cannabis operators: the same exposures behind the STIIIZY
+                and MariMed incidents start with what&apos;s public.
               </div>
             </div>
           </div>

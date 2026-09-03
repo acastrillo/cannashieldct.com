@@ -23,7 +23,7 @@ export const pillars = [
     pain:
       "Premiums went up 40%. Your carrier wants MFA attestation, an IR plan, and EDR proof — or they're non-renewing you.",
     solution:
-      'We prepare the documentation, close the gaps, and sit on the call with your broker so you pass underwriting and stop overpaying.',
+      'We prepare the documentation, close the gaps, and sit on the call with your broker so you walk into underwriting with the evidence your carrier is asking for.',
     priceAnchor: 'From $1,800/yr',
     cta: 'Explore Insurance Qualification →',
   },
@@ -44,25 +44,18 @@ export const breaches = [
   {
     company: 'STIIIZY',
     date: 'January 2025',
-    impact: '420,000 customer records leaked',
+    impact: '380,000 people notified',
     rootCause: 'Third-party POS vendor breach',
     note: 'Patient data, purchase history, ID scans — all exposed.',
-    counter: { value: 420000, label: 'customer records leaked' },
+    counter: { value: 380000, label: 'people notified' },
   },
   {
     company: 'MariMed',
     date: '2024',
-    impact: '$650,000 wired to attackers',
+    impact: '$646,000 wired to attackers',
     rootCause: 'Business Email Compromise (BEC)',
     note: 'A spoofed vendor email. One wire transfer. Gone.',
-    counter: { prefix: '$', value: 650000, label: 'wired to attackers' },
-  },
-  {
-    company: 'Trulieve',
-    date: '2025',
-    impact: 'Customer data on dark web leak site',
-    rootCause: 'Ransomware — data exfiltrated before encryption',
-    note: 'Active leak site. Customer PII available for purchase.',
+    counter: { prefix: '$', value: 646000, label: 'wired to attackers' },
   },
   {
     company: 'MJ Freeway',
@@ -242,7 +235,7 @@ export const servicePages = {
     headline:
       "When ransomware hits your POS, you lose $30,000 a day. We make sure it doesn't.",
     pain:
-      "The cannabis industry is a fat target. Cash-heavy, banking-constrained, PHI-rich, and running POS systems that weren't designed for enterprise security. STIIIZY. Trulieve. MJ Freeway. The pattern is consistent — and the MSP wasn't enough.",
+      "The cannabis industry is cash-heavy, banking-constrained, PHI-rich, and running POS systems that weren't designed for enterprise security. STIIIZY. MJ Freeway. The pattern is consistent — and the MSP wasn't enough.",
     painDetails: [
       'POS, METRC workflows, and email payments all create operational choke points.',
       'Ransomware crews steal data before encryption, turning recovery into a privacy event.',
@@ -259,7 +252,7 @@ export const servicePages = {
       {
         question: 'What is BEC and why does it hit cannabis operators hard?',
         answer:
-          'Business Email Compromise — attackers impersonate a vendor or executive over email and trick your finance team into wiring money. MariMed lost $650,000 in a single BEC incident. Cannabis operators are targets because they move large cash-equivalent transactions and often lack the internal controls to catch it.',
+          'Business Email Compromise — attackers impersonate a vendor or executive over email and trick your finance team into wiring money. MariMed lost $646,000 in a single BEC incident. Cannabis operators are targets because they move large cash-equivalent transactions and often lack the internal controls to catch it.',
       },
       {
         question: 'How long does a Ransomware Resilience Audit take?',
