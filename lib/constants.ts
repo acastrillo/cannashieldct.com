@@ -1,6 +1,6 @@
 import { FileCheck, ShieldAlert, ShieldCheck } from 'lucide-react'
 
-import type { Breach, Pillar, ServicePage, Sku } from '@/lib/types'
+import type { Breach, FreeTool, Pillar, ServicePage, Sku } from '@/lib/types'
 
 export const calendlyUrl = 'https://calendly.com/cannashieldct'
 
@@ -39,6 +39,33 @@ export const pillars = [
     cta: 'Explore Downtime Prevention →',
   },
 ] satisfies Pillar[]
+
+export const freeTools = [
+  {
+    title: 'Email Security Scorecard',
+    description:
+      'Enter your domain. Get a report on your DMARC, SPF, and DKIM configuration — and whether attackers can impersonate your brand in 60 seconds.',
+    meta: 'Free · 90 seconds · No account needed',
+    href: '/cyber-check',
+    cta: 'Check your domain →',
+  },
+  {
+    title: 'Attack Surface Snapshot',
+    description:
+      'See what Shodan, certificate logs, and breach databases already know about your business — open ports, exposed subdomains, breach history, and spoofing risk.',
+    meta: 'Free · 60 seconds · Passive recon only',
+    href: '/cyber-check/attack-surface',
+    cta: 'Run the snapshot →',
+  },
+  {
+    title: 'Cannabis Compliance Quick-Check',
+    description:
+      'A Connecticut-focused security-readiness check for cannabis operators. See where your controls need work before renewal, insurance underwriting, or counsel review.',
+    meta: 'Free · 60 seconds · No account needed',
+    href: '/compliance-check',
+    cta: 'Check your compliance →',
+  },
+] satisfies FreeTool[]
 
 export const breaches = [
   {

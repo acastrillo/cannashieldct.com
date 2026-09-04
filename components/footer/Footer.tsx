@@ -17,6 +17,14 @@ const footerColumns = [
       { label: 'Downtime Prevention', href: '/services/downtime-prevention' },
       { label: 'Service Catalog', href: '/#service-catalog' },
       { label: 'Free Cyber Check', href: '/cyber-check' },
+      {
+        label: 'Attack Surface Snapshot',
+        href: '/cyber-check/attack-surface',
+      },
+      {
+        label: 'Cannabis Compliance Quick-Check',
+        href: '/compliance-check',
+      },
     ],
   },
   {
@@ -109,10 +117,18 @@ export function Footer() {
         ))}
       </div>
       <div className="border-t border-brand-border py-5">
-        <div className="container text-xs leading-relaxed text-brand-secondary">
-          © 2026 CannaShield LLC. All rights reserved. | CannaShield is a
-          Connecticut LLC. Not a law firm. Information provided is not legal
-          advice.
+        <div className="container flex flex-col gap-3 text-xs leading-relaxed text-brand-secondary sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © 2026 CannaShield LLC. All rights reserved. | CannaShield is a
+            Connecticut LLC. Not a law firm. Information provided is not
+            legal advice.
+          </p>
+          <Link
+            href="/site-map"
+            className="focus-ring w-fit rounded-sm transition-colors hover:text-brand-accent"
+          >
+            Site Map
+          </Link>
         </div>
       </div>
     </footer>

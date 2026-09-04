@@ -2,41 +2,7 @@ import Link from 'next/link'
 
 import { FadeIn } from '@/components/motion/FadeIn'
 import { Button } from '@/components/ui/button'
-
-type ToolCard = {
-  title: string
-  description: string
-  meta: string
-  href: string
-  cta: string
-}
-
-const tools: ToolCard[] = [
-  {
-    title: 'Email Security Scorecard',
-    description:
-      'Enter your domain. Get a report on your DMARC, SPF, and DKIM configuration — and whether attackers can impersonate your brand in 60 seconds.',
-    meta: 'Free · 90 seconds · No account needed',
-    href: '/cyber-check',
-    cta: 'Check your domain →',
-  },
-  {
-    title: 'Attack Surface Snapshot',
-    description:
-      'See what Shodan, certificate logs, and breach databases already know about your business — open ports, exposed subdomains, breach history, and spoofing risk.',
-    meta: 'Free · 60 seconds · Passive recon only',
-    href: '/cyber-check/attack-surface',
-    cta: 'Run the snapshot →',
-  },
-  {
-    title: 'Cannabis Compliance Quick-Check',
-    description:
-      'A Connecticut-focused security-readiness check for cannabis operators. See where your controls need work before renewal, insurance underwriting, or counsel review.',
-    meta: 'Free · 60 seconds · No account needed',
-    href: '/compliance-check',
-    cta: 'Check your compliance →',
-  },
-]
+import { freeTools } from '@/lib/constants'
 
 export function FreeTools() {
   return (
@@ -46,7 +12,7 @@ export function FreeTools() {
         Find out what&apos;s exposed before attackers do.
       </h2>
       <div className="mt-12 grid gap-5 lg:grid-cols-3">
-        {tools.map((tool) => (
+        {freeTools.map((tool) => (
           <article
             key={tool.title}
             className="flex h-full flex-col rounded-lg border border-brand-border bg-brand-surface p-6"
