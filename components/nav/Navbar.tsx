@@ -12,16 +12,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { calendlyUrl, pillars } from '@/lib/constants'
+import { calendlyUrl, freeTools, pillars } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { label: 'Free Tools', href: '/#free-tools' },
   {
     label: 'Resources',
     href: '/resources/connecticut-cannabis-cybersecurity-requirements',
   },
   { label: 'Blog', href: '/blog' },
+  { label: 'Partners', href: '/partners' },
+  { label: 'Contact', href: '/contact' },
   { label: 'About', href: '/#why-cannashield' },
 ]
 
@@ -79,6 +80,18 @@ export function Navbar() {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="focus-ring rounded-sm text-sm font-medium text-brand-secondary transition-colors hover:text-brand-accent">
+              Free Tools
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="center">
+              {freeTools.map((tool) => (
+                <DropdownMenuItem key={tool.href} asChild>
+                  <Link href={tool.href}>{tool.title}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -128,6 +141,19 @@ export function Navbar() {
                   className="focus-ring rounded-md border border-brand-border bg-brand-surface px-4 py-4 text-lg font-semibold text-brand-primary"
                 >
                   {pillar.title}
+                </Link>
+              ))}
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-brand-accent">
+                Free Tools
+              </p>
+              {freeTools.map((tool) => (
+                <Link
+                  key={tool.href}
+                  href={tool.href}
+                  onClick={() => setOpen(false)}
+                  className="focus-ring rounded-md border border-brand-border bg-brand-surface px-4 py-4 text-lg font-semibold text-brand-primary"
+                >
+                  {tool.title}
                 </Link>
               ))}
               <div className="mt-5 flex flex-col gap-3">

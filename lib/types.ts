@@ -24,6 +24,14 @@ export type Pillar = {
   cta: string
 }
 
+export type FreeTool = {
+  title: string
+  description: string
+  meta: string
+  href: string
+  cta: string
+}
+
 export type Breach = {
   company: string
   date: string
