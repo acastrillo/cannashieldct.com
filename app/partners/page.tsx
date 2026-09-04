@@ -22,15 +22,15 @@ export const metadata: Metadata = {
 const partners = [
   {
     title: 'For MSPs',
-    copy: 'You handle IT. We handle GRC. No competition, no overlap — just stickier clients and 10% recurring revenue share on referrals.',
+    copy: "You handle IT. We handle GRC. No competition, no overlap — just stickier clients and 10% of first-year recurring revenue on referred retainers, plus $500 per fixed-fee project.",
   },
   {
     title: 'For Insurance Brokers',
-    copy: 'Your insureds pass underwriting. Fewer claims. CannaShield listed as your preferred remediation vendor.',
+    copy: "Your insureds present stronger, clearer evidence for underwriting — we don't promise coverage or premium outcomes. CannaShield is listed as your preferred remediation vendor.",
   },
   {
     title: 'For Law Firms',
-    copy: 'Pre-incident hygiene and a technical partner who can work under privilege when something goes wrong.',
+    copy: 'Pre-incident hygiene and technical incident-response preparation that outside counsel can structure under privilege.',
   },
 ]
 
@@ -75,9 +75,16 @@ export default function PartnersPage() {
             </article>
           ))}
         </div>
-        <Button asChild size="lg" className="mt-10 w-full sm:w-auto">
-          <a href={calendlyUrl}>Book a partner call</a>
-        </Button>
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <Button asChild size="lg" className="w-full sm:w-auto">
+            <a href={calendlyUrl}>Book a partner call</a>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+            <a href="/cannashield-partner-brief.pdf" target="_blank" rel="noopener noreferrer">
+              Download the Partner Brief (PDF)
+            </a>
+          </Button>
+        </div>
       </section>
     </>
   )

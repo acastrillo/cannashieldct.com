@@ -5,15 +5,15 @@ import { FadeIn } from '@/components/motion/FadeIn'
 const channels = [
   {
     title: 'FOR MSPs',
-    copy: 'You handle IT. We handle GRC. No competition, no overlap — just stickier clients and 10% recurring revenue share on referrals.',
+    copy: "You handle IT. We handle GRC. No competition, no overlap — just stickier clients and 10% of first-year recurring revenue on referred retainers, plus $500 per fixed-fee project.",
   },
   {
     title: 'FOR INSURANCE BROKERS',
-    copy: 'Your insureds pass underwriting. Fewer claims. CannaShield listed as your preferred remediation vendor.',
+    copy: "Your insureds present stronger, clearer evidence for underwriting — we don't promise coverage or premium outcomes. CannaShield is listed as your preferred remediation vendor.",
   },
   {
     title: 'FOR LAW FIRMS',
-    copy: 'Pre-incident hygiene and a technical partner who can work under privilege when something goes wrong.',
+    copy: 'Pre-incident hygiene and technical incident-response preparation that outside counsel can structure under privilege.',
   },
 ]
 

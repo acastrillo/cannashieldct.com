@@ -35,7 +35,7 @@ jobs:
               role: 'user',
               content: \`Today is ${WEEK_OF}. Search your knowledge for the top 6 cannabis-industry cybersecurity news stories from the past 7 days (data breaches, ransomware, regulatory actions, fraud, POS attacks). If there are fewer than 6 real stories this week, fill remaining slots with the most recent notable incidents you know of.
 
-Return ONLY a JSON array of strings, no markdown, no explanation. Each string must be under 60 characters in the format: 'Operator/Org — brief impact'. Example: [\"STIIIZY — 420,000 records leaked\",\"MariMed — \$650K wired to attackers\"]\`
+Return ONLY a JSON array of strings, no markdown, no explanation. Each string must be under 60 characters in the format: 'Operator/Org — brief impact'. Example: [\"STIIIZY — 380,000 people notified\",\"MariMed — \$646K wired to attackers\"]. Do not cite Trulieve in any incident or ransomware context unless you can name a primary source confirming it — as of the last fact-check, no primary source confirms a Trulieve ransomware incident.\`
             }]
           });
           const options = {
