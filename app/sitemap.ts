@@ -18,6 +18,7 @@ const routes = [
     path: '/resources/connecticut-cannabis-cybersecurity-requirements',
     priority: 0.9,
   },
+  { path: '/site-map', priority: 0.3 },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
