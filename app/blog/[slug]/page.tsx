@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 
 import { JsonLd } from '@/components/seo/JsonLd'
 import {
+  blogPostFaqJsonLd,
   blogPostJsonLd,
   formatBlogDate,
   getAllBlogPosts,
@@ -77,6 +78,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   if (!post) notFound()
 
+  const faqJsonLd = blogPostFaqJsonLd(post)
   const relatedPosts = getBlogPosts()
     .filter((candidate) => candidate.slug !== post.slug)
     .slice(0, 3)
@@ -109,7 +111,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <>
       {!post.archived ? (
-        <JsonLd id="blog-post-jsonld" data={[blogPostJsonLd(post), breadcrumbJsonLd]} />
+        <JsonLd
+          id="blog-post-jsonld"
+          data={
+            faqJsonLd
+              ? [blogPostJsonLd(post), breadcrumbJsonLd, faqJsonLd]
+              : [blogPostJsonLd(post), breadcrumbJsonLd]
+          }
+        />
       ) : null}
       <article className="section-shell max-w-5xl pt-32 sm:pt-40">
         <Link

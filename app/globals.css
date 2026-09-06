@@ -120,6 +120,10 @@
     @apply rounded-lg border border-brand-accent/40 bg-brand-surface p-5 text-brand-primary;
   }
 
+  .blog-article-content .highlight-box > * + * {
+    @apply mt-3;
+  }
+
   .blog-article-content hr {
     @apply my-10 border-brand-border;
   }

@@ -78,7 +78,7 @@ export const breaches = [
   },
   {
     company: 'MariMed',
-    date: '2024',
+    date: '2023',
     impact: '$646,000 wired to attackers',
     rootCause: 'Business Email Compromise (BEC)',
     note: 'A spoofed vendor email. One wire transfer. Gone.',

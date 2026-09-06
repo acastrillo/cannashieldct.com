@@ -6,6 +6,13 @@ import {
   renderEditorialContent,
   type EditorialSource,
 } from '@/lib/blog-editorial'
+import {
+  FAQ_POSTS,
+  faqAnswerText,
+  renderFaqContent,
+  type FaqItem,
+  type FaqPost,
+} from '@/lib/blog-faq'
 import { absoluteUrl, founderName } from '@/lib/seo'
 
 const blogDirectory = path.join(process.cwd(), 'blog')
@@ -30,6 +37,7 @@ export type BlogPost = {
   archived: boolean
   reviewedDate?: string
   sources: EditorialSource[]
+  faqs?: FaqItem[]
 }
 
 function decodeHtml(value: string) {
@@ -312,17 +320,41 @@ function parseBlogPost(sourceFile: string): BlogPost {
   }
 }
 
-export function getAllBlogPosts() {
-  if (!fs.existsSync(blogDirectory)) return []
+function faqPostToBlogPost(post: FaqPost): BlogPost {
+  return {
+    slug: post.slug,
+    sourceFile: '',
+    legacyUrl: `/blog/${post.slug}`,
+    url: `/blog/${post.slug}`,
+    canonicalUrl: absoluteUrl(`/blog/${post.slug}`),
+    title: post.title,
+    description: post.description,
+    image: post.image,
+    imageAlt: post.imageAlt,
+    category: post.category,
+    publishedDate: post.publishedDate,
+    modifiedDate: post.reviewedDate,
+    readTime: post.readTime,
+    contentHtml: renderFaqContent(post),
+    archived: false,
+    reviewedDate: post.reviewedDate,
+    sources: post.sources,
+    faqs: post.faqs,
+  }
+}
 
-  return fs
-    .readdirSync(blogDirectory)
-    .filter((file) => file.endsWith('.html') && file !== 'template.html')
-    .map(parseBlogPost)
-    .sort((a, b) => {
-      const dateCompare = b.publishedDate.localeCompare(a.publishedDate)
-      return dateCompare || a.title.localeCompare(b.title)
-    })
+export function getAllBlogPosts() {
+  const filePosts = fs.existsSync(blogDirectory)
+    ? fs
+        .readdirSync(blogDirectory)
+        .filter((file) => file.endsWith('.html') && file !== 'template.html')
+        .map(parseBlogPost)
+    : []
+
+  return [...FAQ_POSTS.map(faqPostToBlogPost), ...filePosts].sort((a, b) => {
+    const dateCompare = b.publishedDate.localeCompare(a.publishedDate)
+    return dateCompare || a.title.localeCompare(b.title)
+  })
 }
 
 export function getBlogPosts() {
@@ -340,6 +372,24 @@ export function formatBlogDate(date: string) {
     year: 'numeric',
     timeZone: 'UTC',
   }).format(new Date(date))
+}
+
+export function blogPostFaqJsonLd(post: BlogPost) {
+  if (!post.faqs?.length) return null
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${post.canonicalUrl}#faq`,
+    mainEntity: post.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faqAnswerText(faq.answer),
+      },
+    })),
+  }
 }
 
 export function blogPostJsonLd(post: BlogPost) {
