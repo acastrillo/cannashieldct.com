@@ -252,7 +252,7 @@ export const FAQ_POSTS: FaqPost[] = [
     image: '/blog-assets/faq-how-cannabis-businesses-protect-customer-data.png',
     imageAlt: 'CannaShield answer page: how cannabis businesses protect customer data',
     answer:
-      'The single highest-leverage move is collecting and keeping less. A dispensary that scans an ID to verify age and retains only the verification result has a far smaller problem than one storing ID images for years. After that: control who can reach the data, encrypt it, put MFA on every system that holds it, and know exactly which vendors have a copy.',
+      'The single most effective move is collecting and keeping less. A dispensary that scans an ID to verify age and retains only the verification result has a far smaller problem than one storing ID images for years. After that: control who can reach the data, encrypt it, put MFA on every system that holds it, and know exactly which vendors have a copy.',
     takeaways: [
       'Cannabis retail data is unusually toxic — government ID, date of birth, medical status, and purchase history in a single record.',
       'The STIIIZY notice is the reference case: roughly 380,000 people notified, and the compromise ran through a point-of-sale vendor.',

@@ -52,7 +52,7 @@ export function BreachWall() {
           ))}
         </div>
         <p className="mx-auto mt-14 max-w-3xl text-center font-serif text-4xl font-semibold leading-headline text-brand-primary sm:text-5xl">
-          Your MSP isn&apos;t watching for this. We are.
+          Your MSP owns the systems. Someone still has to own the decisions.
         </p>
       </div>
     </FadeIn>
