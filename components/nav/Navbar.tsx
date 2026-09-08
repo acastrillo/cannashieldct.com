@@ -23,7 +23,7 @@ const navLinks = [
   { label: 'Blog', href: '/blog' },
   { label: 'Partners', href: '/partners' },
   { label: 'Contact', href: '/contact' },
-  { label: 'About', href: '/#why-cannashield' },
+  { label: 'About', href: '/about' },
 ]
 
 export function Navbar() {

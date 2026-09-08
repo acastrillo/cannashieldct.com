@@ -42,7 +42,7 @@ const footerColumns = [
   {
     title: 'Company',
     links: [
-      { label: 'About', href: '/#why-cannashield' },
+      { label: 'About', href: '/about' },
       { label: 'Contact', href: '/contact' },
       { label: 'Book a Call', href: calendlyUrl },
     ],

@@ -78,7 +78,7 @@ export const breaches = [
   },
   {
     company: 'MariMed',
-    date: '2023',
+    date: 'Disclosed November 2023',
     impact: '$646,000 wired to attackers',
     rootCause: 'Business Email Compromise (BEC)',
     note: 'A spoofed vendor email. One wire transfer. Gone.',
@@ -86,11 +86,10 @@ export const breaches = [
   },
   {
     company: 'MJ Freeway',
-    date: '2018 (industry reference)',
-    impact: '14-state operational outage',
-    rootCause: 'Ransomware destroyed seed-to-sale tracking',
-    note: "Dispensaries couldn't legally sell for days.",
-    counter: { value: 14, suffix: '-state', label: 'operational outage' },
+    date: 'Industry reference',
+    impact: 'Statewide seed-to-sale outage in Pennsylvania',
+    rootCause: 'Software update failure at the tracking-system vendor — no attacker involved',
+    note: "Dispensaries turned away patients and closed early. Downtime doesn't require a breach.",
   },
   {
     company: 'Aurora Cannabis',
