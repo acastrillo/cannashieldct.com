@@ -18,6 +18,7 @@ const nextConfig = {
       { source: '/index.html', destination: '/', permanent: true },
       { source: '/blog.html', destination: '/blog', permanent: true },
       { source: '/blog_from_s3.html', destination: '/blog', permanent: true },
+      { source: '/services', destination: '/#service-catalog', permanent: false },
       { source: '/solutions.html', destination: '/#service-catalog', permanent: true },
       { source: '/pricing.html', destination: '/#service-catalog', permanent: true },
       {
