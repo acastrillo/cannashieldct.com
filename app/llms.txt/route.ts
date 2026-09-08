@@ -31,6 +31,7 @@ CannaShield helps cannabis businesses reduce cyber risk, protect license-critica
 - [License Protection](https://cannashieldct.com/services/license-protection): Written information security programs, vendor risk, and audit-ready evidence.
 - [Cyber Insurance Qualification](https://cannashieldct.com/services/insurance-qualification): MFA/EDR evidence, renewal defense, and broker-facing documentation.
 - [Downtime Prevention](https://cannashieldct.com/services/downtime-prevention): Incident response retainers, BEC defense, and ransomware resilience audits.
+- [For Dispensaries](https://cannashieldct.com/for-dispensaries): Answers "what cybersecurity risks do cannabis dispensaries face?" — six recurring exposure points (POS and payments, customer and patient data, seed-to-sale integrations, email and identity, vendor and remote-access sprawl, and Connecticut's reporting duty), each with what breaks, who owns it, and the evidence to keep.
 - [Partner Program](https://cannashieldct.com/partners): MSP, insurance broker, and law firm referral channels.
 - [Connecticut Cannabis Cybersecurity Requirements](https://cannashieldct.com/resources/connecticut-cannabis-cybersecurity-requirements): Primary-source-backed guide to DCP reporting clocks, tracking-system access, record integrity, breach notice, CTDPA, and practical audit evidence.
 - [Blog](https://cannashieldct.com/blog): Cannabis cyber threat intelligence and operator guidance.
