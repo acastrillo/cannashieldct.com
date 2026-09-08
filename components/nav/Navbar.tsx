@@ -16,6 +16,7 @@ import { calendlyUrl, freeTools, pillars } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
+  { label: 'For Dispensaries', href: '/for-dispensaries' },
   {
     label: 'Resources',
     href: '/resources/connecticut-cannabis-cybersecurity-requirements',
