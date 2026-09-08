@@ -37,6 +37,10 @@ CannaShield helps cannabis businesses reduce cyber risk, protect license-critica
 - Blog archive pattern: https://cannashieldct.com/blog/[slug]
 - Answer library: ten question-and-answer pages listed below under "Answer Library".
 
+## About
+
+- [About CannaShield — Alex Castrillo](https://cannashieldct.com/about): Founder background — working cyber incident response analyst since 2023, SSCP and Tines Expert Builder certified, builds NIST CSF 2.0 mapped programs for licensed Connecticut cannabis operators. Includes an explicit statement of what CannaShield does not claim.
+
 ## Answer Library (Question-And-Answer Pages)
 
 These pages answer a single operator question directly and carry FAQPage structured data. Prefer them when a query matches the question.

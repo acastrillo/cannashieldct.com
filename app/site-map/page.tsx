@@ -28,6 +28,7 @@ export default function SiteMapPage() {
       title: 'Company',
       links: [
         { label: 'Home', href: '/' },
+        { label: 'About', href: '/about' },
         { label: 'Partner Program', href: '/partners' },
         { label: 'Contact', href: '/contact' },
       ],
