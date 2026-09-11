@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Suspense } from 'react'
 
 import { CyberCheckForm } from '@/components/CyberCheckForm'
@@ -41,8 +42,14 @@ export default function CyberCheckPage() {
                 notifications, payroll, compliance systems, and payment workflows.
               </div>
               <div className="rounded-lg border border-brand-border bg-brand-surface p-4">
-                Useful before cyber insurance renewals, vendor-risk reviews, and
-                phishing-awareness conversations with finance teams.
+                Useful before cyber insurance renewals, vendor-risk reviews, and{' '}
+                <Link
+                  href="/blog/the-ai-illusion-why-your-ceo-just-ordered-a-wire-transfer-20260226170304"
+                  className="focus-ring rounded-sm font-semibold text-brand-accent underline decoration-brand-accent/40 underline-offset-4 transition-colors hover:text-brand-accent-hover"
+                >
+                  phishing-awareness conversations with finance teams
+                </Link>
+                .
               </div>
             </div>
           </div>
@@ -67,7 +74,15 @@ export default function CyberCheckPage() {
             </summary>
             <p className="mt-4 text-base leading-relaxed text-brand-secondary">
               It checks DMARC, SPF, DKIM, MX, and domain spoofing signals for a
-              business domain.
+              business domain. Gaps in these same records are what let attackers
+              impersonate a trusted sender — see how in our breakdown of{' '}
+              <Link
+                href="/blog/trusted-senders-false-invoices-the-dkim-replay-threat-20260219173723"
+                className="focus-ring rounded-sm font-semibold text-brand-accent underline decoration-brand-accent/40 underline-offset-4 transition-colors hover:text-brand-accent-hover"
+              >
+                the DKIM replay threat
+              </Link>
+              .
             </p>
           </details>
           <details className="rounded-lg border border-brand-border bg-brand-surface p-5">
@@ -77,6 +92,23 @@ export default function CyberCheckPage() {
             <p className="mt-4 text-base leading-relaxed text-brand-secondary">
               Yes. CannaShield provides the scorecard as a free initial check for
               business domains.
+            </p>
+          </details>
+          <details className="rounded-lg border border-brand-border bg-brand-surface p-5">
+            <summary className="cursor-pointer text-lg font-semibold text-brand-primary">
+              What should I do if my domain fails these checks?
+            </summary>
+            <p className="mt-4 text-base leading-relaxed text-brand-secondary">
+              A failing DMARC, SPF, or DKIM record leaves your domain open to
+              spoofing and vendor-invoice fraud. The{' '}
+              <Link
+                href="/services/downtime-prevention"
+                className="focus-ring rounded-sm font-semibold text-brand-accent underline decoration-brand-accent/40 underline-offset-4 transition-colors hover:text-brand-accent-hover"
+              >
+                BEC/Phishing Defense Sprint
+              </Link>{' '}
+              closes those gaps — email authentication, identity, and
+              payment-verification controls in one scoped engagement.
             </p>
           </details>
         </div>

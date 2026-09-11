@@ -31,6 +31,7 @@ const footerColumns = [
     title: 'Resources',
     links: [
       { label: 'For Dispensaries', href: '/for-dispensaries' },
+      { label: 'For Cultivators', href: '/for-cultivators' },
       {
         label: 'CT Cyber Requirements',
         href: '/resources/connecticut-cannabis-cybersecurity-requirements',
