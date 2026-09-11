@@ -30,6 +30,7 @@ export default function SiteMapPage() {
         { label: 'Home', href: '/' },
         { label: 'About', href: '/about' },
         { label: 'For Dispensaries', href: '/for-dispensaries' },
+        { label: 'For Cultivators', href: '/for-cultivators' },
         { label: 'Partner Program', href: '/partners' },
         { label: 'Contact', href: '/contact' },
       ],

@@ -17,6 +17,7 @@ import { cn } from '@/lib/utils'
 
 const navLinks = [
   { label: 'For Dispensaries', href: '/for-dispensaries' },
+  { label: 'For Cultivators', href: '/for-cultivators' },
   {
     label: 'Resources',
     href: '/resources/connecticut-cannabis-cybersecurity-requirements',
