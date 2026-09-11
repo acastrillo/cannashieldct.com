@@ -46,6 +46,11 @@ export type Breach = {
   }
 }
 
+export type OperatorType = {
+  label: string
+  href?: string
+}
+
 export type ServicePage = {
   slug: ServiceSlug
   label: string
@@ -53,7 +58,11 @@ export type ServicePage = {
   pain: string
   painDetails: string[]
   skus: string[]
-  operatorTypes: string[]
+  operatorTypes: OperatorType[]
+  relatedReading: {
+    label: string
+    href: string
+  }
   faqs: {
     question: string
     answer: string

@@ -4,6 +4,11 @@ export type EditorialSource = {
   url: string
 }
 
+export type EditorialRelatedLink = {
+  label: string
+  href: string
+}
+
 export type EditorialPost = {
   title: string
   description: string
@@ -14,6 +19,15 @@ export type EditorialPost = {
   relevance: string
   actions: string[]
   sources: EditorialSource[]
+  related: EditorialRelatedLink[]
+}
+
+function escapeHtmlAttribute(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
 }
 
 const reviewedDate = '2026-08-28'
@@ -49,6 +63,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://www.cisa.gov/stopransomware/ransomware-guide',
       },
     ],
+    related: [
+      { label: 'Downtime Prevention: ransomware resilience audits and IR retainers', href: '/services/downtime-prevention' },
+      { label: 'A backup is only useful if the recovery path is protected', href: '/blog/your-safety-net-just-became-a-trap-dell-s-zero-day-and-your-recovery-p-20260224012947' },
+    ],
   },
   'the-invisible-breach-when-cloud-worms-target-your-supply-chain': {
     title: 'Your Cloud Vendors Are Part of Your Security Boundary',
@@ -80,6 +98,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://www.cisa.gov/sites/default/files/2023-12/ESF_SECURING_THE_SOFTWARE_SUPPLY_CHAIN_CUSTOMER.pdf',
       },
     ],
+    related: [
+      { label: 'License Protection: vendor risk registers and audit-ready evidence', href: '/services/license-protection' },
+      { label: 'A practical software supply-chain checklist for operators', href: '/blog/the-trojan-horse-in-your-tech-stack-why-supply-chain-security-matters-20260218170851' },
+    ],
   },
   'the-trojan-horse-in-your-slack-channel-when-remote-it-is-a-state-sponsored-attac': {
     title: 'Remote IT Hiring Needs Identity Verification, Not Just Interviews',
@@ -105,6 +127,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         publisher: 'FBI',
         url: 'https://www.fbi.gov/investigate/cyber/alerts/2025/north-korean-it-worker-threats-to-u-s-businesses',
       },
+    ],
+    related: [
+      { label: 'License Protection: identity verification and vendor governance', href: '/services/license-protection' },
+      { label: 'Treat technical hiring as a privileged-access decision', href: '/blog/the-trojan-horse-in-your-inbox-when-hiring-talent-costs-you-the-licens-20260218140346' },
     ],
   },
   'the-hidden-vector-when-your-marketing-team-becomes-a-security-risk-20260212031800': {
@@ -132,6 +158,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://helpx.adobe.com/security/products/creative-cloud/apsb26-77.html',
       },
     ],
+    related: [
+      { label: 'Downtime Prevention: endpoint hygiene and ransomware resilience', href: '/services/downtime-prevention' },
+      { label: 'Browser patching is an operations control', href: '/blog/chrome-zero-day-when-your-browser-becomes-a-liability-20260219003253' },
+    ],
   },
   'zerodayrat-when-your-pocket-device-becomes-an-insider-threat-20260218003317': {
     title: 'Secure the Phones That Can Approve Business-Critical Actions',
@@ -157,6 +187,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         publisher: 'CISA',
         url: 'https://www.cisa.gov/sites/default/files/2024-12/guidance-mobile-communications-best-practices.pdf',
       },
+    ],
+    related: [
+      { label: 'Downtime Prevention: payment and identity controls that stop BEC', href: '/services/downtime-prevention' },
+      { label: 'A familiar voice is not payment authorization', href: '/blog/the-ai-illusion-why-your-ceo-just-ordered-a-wire-transfer-20260226170304' },
     ],
   },
   'chrome-zero-day-when-your-browser-becomes-a-liability-20260219003253': {
@@ -184,6 +218,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://chromereleases.googleblog.com/2026/02/extended-stable-updates-for-desktop_13.html',
       },
     ],
+    related: [
+      { label: 'Downtime Prevention: managed endpoints and patch discipline', href: '/services/downtime-prevention' },
+      { label: 'Secure the phones that can approve business-critical actions', href: '/blog/zerodayrat-when-your-pocket-device-becomes-an-insider-threat-20260218003317' },
+    ],
   },
   'the-trojan-horse-in-your-inbox-when-hiring-talent-costs-you-the-licens-20260218140346': {
     title: 'Treat Technical Hiring as a Privileged-Access Decision',
@@ -209,6 +247,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         publisher: 'FBI',
         url: 'https://www.fbi.gov/investigate/cyber/alerts/2025/north-korean-it-worker-threats-to-u-s-businesses',
       },
+    ],
+    related: [
+      { label: 'License Protection: separation of duties and access governance', href: '/services/license-protection' },
+      { label: 'Remote IT hiring needs identity verification, not just interviews', href: '/blog/the-trojan-horse-in-your-slack-channel-when-remote-it-is-a-state-sponsored-attac' },
     ],
   },
   'the-trojan-horse-in-your-tech-stack-why-supply-chain-security-matters-20260218170851': {
@@ -236,6 +278,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://www.cisa.gov/sites/default/files/2023-12/ESF_SECURING_THE_SOFTWARE_SUPPLY_CHAIN_CUSTOMER.pdf',
       },
     ],
+    related: [
+      { label: 'License Protection: vendor risk registers and evidence tracking', href: '/services/license-protection' },
+      { label: 'Your cloud vendors are part of your security boundary', href: '/blog/the-invisible-breach-when-cloud-worms-target-your-supply-chain' },
+    ],
   },
   'the-clickfix-trap-when-a-quick-fix-kills-your-compliance-20260219181527': {
     title: 'ClickFix Turns “Troubleshooting” Into Code Execution',
@@ -261,6 +307,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         publisher: 'CISA and partners',
         url: 'https://www.cisa.gov/sites/default/files/2025-07/aa25-203a-stopransomware-interlock-072225.pdf',
       },
+    ],
+    related: [
+      { label: 'Downtime Prevention: ransomware resilience audits', href: '/services/downtime-prevention' },
+      { label: 'A backup is only useful if the recovery path is protected', href: '/blog/your-safety-net-just-became-a-trap-dell-s-zero-day-and-your-recovery-p-20260224012947' },
     ],
   },
   'trusted-senders-false-invoices-the-dkim-replay-threat-20260219173723': {
@@ -293,6 +343,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://www.fbi.gov/how-we-can-help-you/common-frauds-and-scams/business-email-compromise',
       },
     ],
+    related: [
+      { label: 'Downtime Prevention: BEC/Phishing Defense Sprint', href: '/services/downtime-prevention' },
+      { label: 'A familiar voice is not payment authorization', href: '/blog/the-ai-illusion-why-your-ceo-just-ordered-a-wire-transfer-20260226170304' },
+    ],
   },
   'the-cash-trap-why-atm-jackpotting-is-the-new-physical-threat-to-dispen-20260221215452': {
     title: 'ATM Jackpotting Is Both a Physical and Cyber Risk',
@@ -318,6 +372,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         publisher: 'FBI',
         url: 'https://www.fbi.gov/file-repository/increase-in-malware-enabled-atm-jackpotting-incidents-across-united-states-021926.pdf',
       },
+    ],
+    related: [
+      { label: 'What cybersecurity risks do dispensaries face?', href: '/for-dispensaries' },
+      { label: 'Downtime Prevention: vendor risk and operational continuity', href: '/services/downtime-prevention' },
     ],
   },
   'the-device-in-your-pocket-is-the-biggest-threat-to-your-grow-20260222193030': {
@@ -345,6 +403,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://www.cisa.gov/sites/default/files/2024-12/guidance-mobile-communications-best-practices.pdf',
       },
     ],
+    related: [
+      { label: 'What cybersecurity risks do cannabis cultivators face?', href: '/for-cultivators' },
+      { label: 'Downtime Prevention: payment and access controls', href: '/services/downtime-prevention' },
+    ],
   },
   'the-invisible-open-door-why-your-smart-grow-is-your-biggest-liability-20260223184330': {
     title: 'Keep Grow Technology Separate From Everyday Business Traffic',
@@ -370,6 +432,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         publisher: 'NIST',
         url: 'https://www.nist.gov/publications/securing-small-business-and-home-internet-things-iot-devices-mitigating-network-based',
       },
+    ],
+    related: [
+      { label: 'What cybersecurity risks do cannabis cultivators face?', href: '/for-cultivators' },
+      { label: 'Downtime Prevention: operational technology and resilience', href: '/services/downtime-prevention' },
     ],
   },
   'the-ai-illusion-why-your-ceo-just-ordered-a-wire-transfer-20260226170304': {
@@ -402,6 +468,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://www.fbi.gov/file-repository/reports-and-publications/fy-2022-fbi-congressional-report-business-email-compromise-and-real-estate-wire-fraud-111422.pdf',
       },
     ],
+    related: [
+      { label: 'Downtime Prevention: BEC/Phishing Defense Sprint', href: '/services/downtime-prevention' },
+      { label: 'Email authentication does not replace payment verification', href: '/blog/trusted-senders-false-invoices-the-dkim-replay-threat-20260219173723' },
+    ],
   },
   'your-mfa-can-be-bypassed-here-is-the-starkiller-defense-strategy-20260304141154': {
     title: 'MFA Is Essential, but the Method Matters',
@@ -432,6 +502,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         publisher: 'CISA',
         url: 'https://www.cisa.gov/ncas/tips/st05-012',
       },
+    ],
+    related: [
+      { label: 'Cyber Insurance Qualification: control attestation evidence', href: '/services/insurance-qualification' },
+      { label: 'Email authentication does not replace payment verification', href: '/blog/trusted-senders-false-invoices-the-dkim-replay-threat-20260219173723' },
     ],
   },
   'the-call-is-coming-from-inside-the-house-malicious-outlook-add-ins-20260225223855': {
@@ -464,6 +538,10 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://learn.microsoft.com/en-us/office/dev/add-ins/outlook/privacy-and-security',
       },
     ],
+    related: [
+      { label: 'License Protection: application governance and vendor evidence', href: '/services/license-protection' },
+      { label: 'A practical software supply-chain checklist for operators', href: '/blog/the-trojan-horse-in-your-tech-stack-why-supply-chain-security-matters-20260218170851' },
+    ],
   },
   'your-safety-net-just-became-a-trap-dell-s-zero-day-and-your-recovery-p-20260224012947': {
     title: 'A Backup Is Only Useful If the Recovery Path Is Protected',
@@ -490,11 +568,21 @@ export const BLOG_EDITORIAL: Record<string, EditorialPost> = {
         url: 'https://www.cisa.gov/stopransomware/ransomware-guide',
       },
     ],
+    related: [
+      { label: 'Downtime Prevention: Ransomware Resilience Audit', href: '/services/downtime-prevention' },
+      { label: 'When ransomware uses a trusted driver against you', href: '/blog/reynolds-ransomware-when-the-attackers-use-your-own-keys' },
+    ],
   },
 }
 
 export function renderEditorialContent(post: EditorialPost) {
   const actions = post.actions.map((action) => `<li>${action}</li>`).join('')
+  const related = post.related
+    .map(
+      (link) =>
+        `<li><a href="${escapeHtmlAttribute(link.href)}">${link.label}</a></li>`,
+    )
+    .join('')
 
   return [
     `<p class="lead">${post.intro}</p>`,
@@ -504,6 +592,8 @@ export function renderEditorialContent(post: EditorialPost) {
     `<p>${post.relevance}</p>`,
     '<h2>Operator checklist</h2>',
     `<ul>${actions}</ul>`,
+    '<h2>Where to go next</h2>',
+    `<ul>${related}</ul>`,
     '<div class="highlight-box"><strong>Scope note:</strong> This briefing separates documented facts from practical recommendations. It is cybersecurity guidance, not legal advice or a statement that every recommended control is expressly required by Connecticut cannabis regulations.</div>',
   ].join('')
 }

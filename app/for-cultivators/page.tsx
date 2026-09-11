@@ -495,6 +495,17 @@ export default function ForCultivatorsPage() {
               </Link>
             </div>
 
+            <div className="mt-5 grid gap-5 rounded-lg border border-brand-border bg-brand-background p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
+              <p className="max-w-2xl text-sm leading-relaxed text-brand-secondary">
+                Heading into a cyber-insurance renewal? The Insurance Qualification
+                package builds the MFA, EDR, and backup evidence underwriters ask
+                cultivators for before they quote.
+              </p>
+              <Link href="/services/insurance-qualification" className={secondaryCtaClass}>
+                Insurance Qualification services →
+              </Link>
+            </div>
+
             <div className="mt-5 rounded-lg border border-brand-border bg-brand-background p-6 sm:p-8">
               <p className="text-sm leading-relaxed text-brand-secondary">
                 Want to see the full catalog, or talk through which of these fits your
