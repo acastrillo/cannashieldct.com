@@ -195,7 +195,16 @@ export const servicePages = {
       'Policies exist as templates, not as operating controls your team can demonstrate.',
     ],
     skus: ['LP-1', 'LP-2', 'LP-3'],
-    operatorTypes: ['Dispensary', 'Cultivator', 'MSO', 'Processor'],
+    operatorTypes: [
+      { label: 'Dispensary', href: '/for-dispensaries' },
+      { label: 'Cultivator', href: '/for-cultivators' },
+      { label: 'MSO' },
+      { label: 'Processor' },
+    ],
+    relatedReading: {
+      label: 'What GRC framework should a cannabis company use?',
+      href: '/blog/grc-framework-for-cannabis-companies',
+    },
     faqs: [
       {
         question: 'What is a written ISP and why does my state care?',
@@ -231,7 +240,16 @@ export const servicePages = {
       'One unchecked box can push you into non-renewal, exclusions, or a painful premium increase.',
     ],
     skus: ['IQ-1', 'IQ-2'],
-    operatorTypes: ['Dispensary', 'Cultivator', 'MSO', 'Processor'],
+    operatorTypes: [
+      { label: 'Dispensary', href: '/for-dispensaries' },
+      { label: 'Cultivator', href: '/for-cultivators' },
+      { label: 'MSO' },
+      { label: 'Processor' },
+    ],
+    relatedReading: {
+      label: 'MFA is essential, but the method matters',
+      href: '/blog/your-mfa-can-be-bypassed-here-is-the-starkiller-defense-strategy-20260304141154',
+    },
     faqs: [
       {
         question: 'What do carriers actually want from cannabis operators?',
@@ -268,7 +286,16 @@ export const servicePages = {
       'BEC attacks move faster than policy approvals when finance lacks verification controls.',
     ],
     skus: ['DP-1', 'DP-2', 'DP-3'],
-    operatorTypes: ['Dispensary', 'Cultivator', 'MSO', 'Processor'],
+    operatorTypes: [
+      { label: 'Dispensary', href: '/for-dispensaries' },
+      { label: 'Cultivator', href: '/for-cultivators' },
+      { label: 'MSO' },
+      { label: 'Processor' },
+    ],
+    relatedReading: {
+      label: 'Protecting cannabis POS systems from attackers',
+      href: '/blog/protecting-cannabis-pos-from-hackers',
+    },
     faqs: [
       {
         question: 'What does an Incident Response Retainer (DP-1) actually include?',

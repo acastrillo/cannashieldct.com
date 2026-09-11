@@ -1,4 +1,5 @@
 import { CheckCircle2 } from 'lucide-react'
+import Link from 'next/link'
 
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { FadeIn } from '@/components/motion/FadeIn'
@@ -74,15 +75,39 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
           <p className="section-label">WHO THIS IS FOR</p>
           <h2 className="section-heading">Built for cannabis operators.</h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {page.operatorTypes.map((type) => (
-              <div
-                key={type}
-                className="rounded-lg border border-brand-border bg-brand-background p-5 text-lg font-semibold text-brand-primary"
-              >
-                {type}
-              </div>
-            ))}
+            {page.operatorTypes.map((type) =>
+              type.href ? (
+                <Link
+                  key={type.label}
+                  href={type.href}
+                  className="focus-ring rounded-lg border border-brand-border bg-brand-background p-5 text-lg font-semibold text-brand-primary transition-colors hover:border-brand-accent hover:text-brand-accent"
+                >
+                  {type.label}
+                </Link>
+              ) : (
+                <div
+                  key={type.label}
+                  className="rounded-lg border border-brand-border bg-brand-background p-5 text-lg font-semibold text-brand-primary"
+                >
+                  {type.label}
+                </div>
+              ),
+            )}
           </div>
+        </div>
+      </FadeIn>
+
+      <FadeIn as="section" className="section-shell">
+        <div className="rounded-lg border border-brand-border bg-brand-surface p-6 sm:p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
+            See it in action
+          </p>
+          <Link
+            href={page.relatedReading.href}
+            className="focus-ring mt-3 inline-flex text-lg font-semibold text-brand-primary transition-colors hover:text-brand-accent"
+          >
+            {page.relatedReading.label} →
+          </Link>
         </div>
       </FadeIn>
 
